@@ -6,14 +6,16 @@ format:
   html:
     theme: cosmo
     toc: false
+    css: styles.css  # Add this line
 
 website:
   title: "Mohan Khanal"
   navbar:
     left:
-      - href: index.html
-        text: Home
-      - href: about.html
-        text: About
+      - href: index.html  # Must use .html for GitHub Pages
       - href: cv.html
-        text: CV
+      - text: Home
+      - href: cv.html
+      - text: cv
+      - text: About
+      
