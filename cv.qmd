@@ -1,0 +1,9 @@
+ls -l
+cat << 'EOF' > cv.qmd
+---
+title: "Curriculum Vitae"
+format: pdf
+---
+# Mohan Khanal
+## Education
+- Into Data, Economics and Public Policy

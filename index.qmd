@@ -1,11 +1,14 @@
 ---
-title: "mohankhanal"
+title: "Mohan Khanal"
+subtitle: "PhD Candidate in Economics"
 ---
 
-This is a Quarto website.
+### About Me  
+Brief intro (research interests, university, goals).  
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+### Research Highlights  
+- **Stunting Analysis in Nepal** (DHS Data, R)  
+- **Labor Econometrics** (Wage1 dataset, OLS/IV regression)  
+- **Development Economics** (Ongoing work on [topic])  
 
-```{r}
-1 + 1
-```
+[Download CV (PDF)](cv.pdf) | [GitHub](https://github.com/khanalmohan)  

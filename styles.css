@@ -1,1 +1,8 @@
-/* css styles */
+.navbar-brand {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.5rem;
+}
+.navbar-brand .navbar-title {
+  white-space: nowrap;
+}
