@@ -1,0 +1,160 @@
+---
+title: "2 Data Import and Wrangling"
+author: "Mohan Khanal"
+date: "2025-07-30"
+format:
+  html:
+    toc: true          # Enable table of contents
+    toc-location: left # Place TOC on the left side
+    toc-title: "Contents"
+    toc-depth: 2       # Show headers up to level 2 (##)
+  pdf:
+    toc: true          # Also enable TOC in PDF
+    number-sections: true
+---
+
+# 📘 Chapter 2: Data Import and Data Wrangling
+
+## 🕐 Agenda
+
+-   **Part 1 (30 mins)** – Data Import and Data Wrangling (Reading Different Types of Data)
+-   **Part 2 (40 mins)** – Data Cleaning and Manipulation using `dplyr`
+-   **Part 3 (30 mins)** – Handling Missing Data
+-   **Part 4 (20 mins)** – Practice and Q&A
+
+------------------------------------------------------------------------
+
+## Part 1: Reading Different Types of Data (30 mins)
+
+### Setting up working Directory
+
+```{r,warning=FALSE}
+setwd("D:/DemoPractices/R for Data Science")
+```
+
+We can also check our working directory using the command getwd().
+
+### CSV File Example: Car Dataset
+
+```{r}
+#we can import csv file using the base library using the command read.csv 
+
+car_data <-read.csv("D:/DemoPractices/R for Data Science/data/car data.csv")
+
+# or we can use readr library using the command read_csv to import csv 
+
+library(readr)
+rcar_data <- read_csv("D:/DemoPractices/R for Data Science/data/car data.csv")
+names(car_data)
+```
+
+Similarly we can use
+
+<div>
+
+-   [csv - base R]{style="color:red"}: `read.csv("path/file.csv")`\
+-   [csv - readr]{style="color:red"}: `read_csv("path/file.csv")` from the readr package\
+-   [stata]{style="color:red"}: `read_dta("path/file.dta")` from the haven package\
+-   [spss]{style="color:red"}: `read_sav("path/file.sav")` from the haven package\
+-   [excel]{style="color:red"}: `read_excel("path/file.xlsx")` from the readxl package\
+-   [excel (sheet 2)]{style="color:red"}: `read_excel("path/file.xlsx", sheet = 2)`\
+-   [rds]{style="color:red"}: `readRDS("path/file.rds")` for single R object
+
+</div>
+
+## Part 2: Data Cleaning and Manipulation using `dplyr` (40 mins)
+
+### Load Required Packages
+
+```{r,warning=FALSE}
+library(dplyr)
+```
+
+### Basic Wrangling Examples
+
+#### Selecting and Filtering
+
+```{r,warning=FALSE}
+# Select relevant columns and filter cars after 2015
+car_data_filtered <- car_data %>%
+  select(Car_Name, Year, Selling_Price, Fuel_Type) %>%
+  filter(Year > 2015)
+```
+
+#### Creating New Variables with `mutate()`
+
+```{r,warning=FALSE}
+# Calculate car age and classify it
+car_data <- car_data %>%
+  mutate(
+    Car_Age = 2025 - Year,
+    Age_Group = ifelse(Car_Age <= 5, "New", "Old")
+  )
+```
+
+#### Sorting Rows with `arrange()`
+
+```{r,warning=FALSE}
+# Sort by Selling Price
+car_data_sorted <- car_data %>% arrange(desc(Selling_Price))
+```
+
+#### Summarizing with `group_by()` and `summarize()`
+
+```{r,warning=FALSE}
+# Average selling price by fuel type
+car_data %>%
+  group_by(Fuel_Type) %>%
+  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))
+```
+
+------------------------------------------------------------------------
+
+## Part 3: Handling Missing Data (30 mins)
+
+### Checking Missing Values
+
+```{r}
+library(naniar)
+miss_var_summary(car_data)
+```
+
+### Removing or Replacing NAs
+
+```{r}
+# Remove rows with any missing values
+car_data_clean <- na.omit(car_data)
+
+# Replace missing Selling_Price with 0 (if any)
+car_data <- car_data %>%
+  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))
+
+
+head(car_data)
+```
+
+------------------------------------------------------------------------
+
+## Part 4: Practice and Q&A (20 mins)
+
+### Practice Tasks (based on car data)
+
+-   Import the car dataset
+-   Select cars with Present_Price \> 10
+-   Create a variable to calculate depreciation = Present_Price - Selling_Price
+-   Group by Transmission type and calculate average depreciation
+
+```{r}
+car_data %>%
+  mutate(depreciation = Present_Price - Selling_Price) %>%
+  group_by(Transmission) %>%
+  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))
+```
+
+------------------------------------------------------------------------
+
+## 📚 Further Resources (for Data Import & Wrangling)
+
+-   Tidyverse Documentation: https://www.tidyverse.org/packages/
+-   Importing Data in R: https://r4ds.hadley.nz/data-import.html
+-   Data Transformation Cheatsheet: https://posit.co/resources/cheatsheets/

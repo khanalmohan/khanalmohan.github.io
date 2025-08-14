@@ -10,3 +10,11 @@ website:
         text: Home
       - href: research.qmd
         text: Research
+      - text: "R Tutorial for Data Science"
+        menu: 
+          - href: r-tutorial/1 R for Data Science
+            text: Introduction
+          - href: r-tutorial/2 Data Import and Data Wrangling
+            text: Data Import
+          - href: r-tutorial/3 Exploratory Data Analysis
+            text: EDA

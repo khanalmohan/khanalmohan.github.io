@@ -1,0 +1,125 @@
+---
+title: "Statistical Tests with R: T-tests, ANOVA, and Correlation"
+author: "Mohan Khanal"
+date: "2025-08-05"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 2
+  pdf:
+    toc: true
+    number-sections: true
+---
+# Statistical Tests with R (T-tests, ANOVA, and correlation)
+
+
+## Load required libraries 
+```{r}
+library(dplyr)
+library(readr)
+library(ggplot2)
+```
+
+```{r}
+## Import dataset ----
+car_data <- read.csv("D:/DemoPractices/R for Data Science/data/car data.csv")
+#car_data <- read_csv("D:/DemoPracticedata/car data.csv")
+
+# Preview data
+head(car_data)
+```
+
+## Part 1: Exploratory Data Analysis 
+### Cross-Tabulation 
+Cross-tabulation summarizes the relationship between two categorical variables, showing counts and percentages.
+Example: How do Fuel_Type and Transmission relate?
+```{r}
+#row percentage
+crosstab_rw <- modelsummary::datasummary_crosstab(
+  Fuel_Type ~ Transmission, 
+  statistic = ~N +1 +Percent("row"),
+  data = car_data
+)
+crosstab_rw
+```
+
+
+```{r}
+#column percentage 
+crosstab_cl <- modelsummary::datasummary_crosstab(
+  Fuel_Type ~ Transmission,
+  statistic = ~ N + 1+Percent("col"),
+  data = car_data
+)
+crosstab_cl
+```
+
+### Correlation 
+Correlation measures the strength and direction of the relationship between two numeric variables.
+
+Example: Is there a relationship between Selling_Price and Kms_Driven?
+
+```{r}
+correlation <- cor.test(car_data$Selling_Price, car_data$Kms_Driven)
+correlation
+```
+
+Interpretation:
+Correlation coefficient (r): Positive (both increase together), negative (one increases, other decreases), or near zero (no linear relationship).
+p-value < 0.05 indicates a statistically significant relationship.
+
+## Part 2: T-tests
+T-tests compare the means of two groups to determine if there is a statistically significant difference.
+Example: Is the average Selling_Price different between manual and automatic cars?
+```{r}
+t_test_result <- t.test(Selling_Price ~ Transmission, data = car_data)
+t_test_result
+```
+
+Interpretation:
+p-value < 0.05: Significant difference in means.
+Confidence interval: Shows the range of the true difference in means.
+p-value > 0.05: No strong evidence of a difference.
+
+##Part 3: ANOVA
+ANOVA compares means across three or more groups.
+Example: Does average Selling_Price differ among Fuel_Type categories?
+```{r}
+anova_result <- aov(Selling_Price ~ Transmission, data = car_data)
+summary(anova_result)
+```
+
+### Post-hoc Test
+```{r}
+
+TukeyHSD(anova_result)
+```
+Interpretation:
+
+p-value < 0.05: At least one group mean differs.
+Tukey’s test: Identifies which specific groups differ.
+
+
+## Part 4: Visualizations
+
+```{r}
+# Boxplot for T-test variable
+boxplot(Selling_Price ~ Transmission, data = car_data,
+        main = "Selling Price by Transmission",
+        xlab = "Transmission", ylab = "Selling Price",
+        col = "lightblue")
+
+# Boxplot for ANOVA variable
+boxplot(Selling_Price ~ Fuel_Type, data = car_data,
+        main = "Selling Price by Fuel Type",
+        xlab = "Fuel Type", ylab = "Selling Price",
+        col = "orange")
+
+# Scatter plot for correlation
+plot(car_data$Present_Price, car_data$Selling_Price,
+     main = "Present Price vs Selling Price",
+     xlab = "Present Price", ylab = "Selling Price",
+     pch = 19, col = "darkgreen")
+```
