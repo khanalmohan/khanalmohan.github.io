@@ -12,9 +12,9 @@ website:
         text: Research
       - text: "R Tutorial for Data Science"
         menu: 
-          - href: r-tutorial/1 R for Data Science
+          - href: r-tutorial/1RforDataScience.qmd
             text: Introduction
-          - href: r-tutorial/2 Data Import and Data Wrangling
+          - href: r-tutorial/2DataImportandDataWrangling.qmd
             text: Data Import
-          - href: r-tutorial/3 Exploratory Data Analysis
+          - href: r-tutorial/3ExploratoryDataAnalysis.qmd
             text: EDA
