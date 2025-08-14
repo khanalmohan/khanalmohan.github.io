@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mohan Khanal",
+    "section": "",
+    "text": "** Create index.qmd\n\nAbout Me\nMohan Khanal is a Kathmandu-based researcher and lecturer with a strong academic foundation in economics and an interest in using data to inform public policy. He holds a Master of Arts in Economics from Tribhuvan University, where he focused on microeconomics, public economics, and development issues, and a Bachelor of Business Administration from Kathmandu University.\nMohan’s research spans diverse themes such as tobacco control, inclusive education, vocational training, and social protection. He has worked on several interdisciplinary projects that involved field coordination, survey design, interviews, and policy reporting. His motivation lies in understanding how economic tools can improve lives—especially in developing country contexts.\nAlongside research, Mohan teaches undergraduate economics courses, including microeconomics and macroeconomics, to students from business, technology, and information systems backgrounds. His teaching blends conceptual clarity with real-world applications, and he actively mentors students on writing and presenting academic work.\nMohan has presented his work at academic conferences and is passionate about making research both rigorous and relevant. He values collaboration and continuous learning and is particularly interested in inequality, health, and labor markets.\nOutside of work, Mohan enjoys playing the keyboard and guitar, participating in futsal matches, and following test cricket with enthusiasm. He is also involved in student-led academic forums and environmental awareness activities, reflecting his belief in community engagement and communication.\n[Your introduction here] Download my full academic CV.\n\n\nResearch Highlights\n\nProject 1: [Description]\nProject 2: [Description]’, “index.qmd” )"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Mohan Khanal",
+    "section": "",
+    "text": "echo ’— title: “Curriculum Vitae” format: pdf"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Mohan Khanal",
+    "section": "Education",
+    "text": "Education\n\nPhD Candidate in Economics, [Your University]"
+  },
+  {
+    "objectID": "cv.html#publications",
+    "href": "cv.html#publications",
+    "title": "Mohan Khanal",
+    "section": "Publications",
+    "text": "Publications\n\n[Your Paper Title], 2023’ &gt; cv.qmd"
+  }
+]

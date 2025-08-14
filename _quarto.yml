@@ -2,20 +2,11 @@ project:
   type: website
   output-dir: docs
 
-format:
-  html:
-    theme: cosmo
-    toc: false
-    css: styles.css  # Add this line
-
 website:
   title: "Mohan Khanal"
   navbar:
     left:
-      - href: index.html  # Must use .html for GitHub Pages
-      - href: cv.html
-      - text: Home
-      - href: cv.html
-      - text: cv
-      - text: About
-      
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research

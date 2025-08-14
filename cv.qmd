@@ -1,9 +1,11 @@
-ls -l
-cat << 'EOF' > cv.qmd
 ---
 title: "Curriculum Vitae"
 format: pdf
 ---
+
 # Mohan Khanal
 ## Education
-- Into Data, Economics and Public Policy
+- PhD Candidate in Economics, [Your University]
+
+## Publications
+- [Your Paper Title], 2023' > cv.qmd
