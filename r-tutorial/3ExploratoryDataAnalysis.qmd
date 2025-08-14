@@ -15,6 +15,7 @@ format:
 
 ```{r}
 # Chapter 3: Exploratory Data Analysis
+setwd("D:/PLUS 545 LAB/khanalmohan.github.io/r-tutorial")
 
 # Load required libraries
 library(dplyr)
