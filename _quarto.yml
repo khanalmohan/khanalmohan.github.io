@@ -18,4 +18,6 @@ website:
             text: Data Import
           - href: r-tutorial/3ExploratoryDataAnalysis.qmd
             text: EDA
-          
+          - href: r-tutorial/Day10.rmd
+            text: Interpretation
+            
