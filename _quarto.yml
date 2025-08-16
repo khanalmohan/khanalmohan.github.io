@@ -12,12 +12,16 @@ website:
         text: Research
       - text: "R Tutorial for Data Science"
         menu: 
-          - href: r-tutorial/1RforDataScience.qmd
+          - href: r-tutorial/1RforDataScience.html
             text: Introduction
-          - href: r-tutorial/2DataImportandDataWrangling.qmd
+          - href: r-tutorial/2DataImportandDataWrangling.html
             text: Data Import
-          - href: r-tutorial/3ExploratoryDataAnalysis.qmd
+          - href: r-tutorial/3ExploratoryDataAnalysis.html
             text: EDA
-          - href: r-tutorial/Day10.rmd
-            text: Interpretation
+          - href: r-tutorial/4StatisticalTestsWithR.html
+            text: Statistical Tests with R
+          - href: r-tutorial/5aDataAnalysis.html
+            text: Data Analysis
+          - href: r-tutorial/6DataInterpretation.html
+            text: Data Interpretation
             
