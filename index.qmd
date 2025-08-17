@@ -1,47 +1,18 @@
 ---
+title: "Mohan Khanal"
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/mohan-khanal-06747497/
+    - text: GitHub
+      href: https://github.com/khanalmohan
+    - text: Email
+      href: mailto:khanal.mohan19@gmail.com
 editor: 
   markdown: 
     wrap: 72
 ---
-
-
-### About Me
-
-Mohan Khanal is a Kathmandu-based researcher and lecturer with a strong
-academic foundation in economics and an interest in using data to inform
-public policy. He holds a Master of Arts in Economics from Tribhuvan
-University, where he focused on microeconomics, public economics, and
-development issues, and a Bachelor of Business Administration from
-Kathmandu University.
-
-Mohan’s research spans diverse themes such as tobacco control, inclusive
-education, vocational training, and social protection. He has worked on
-several interdisciplinary projects that involved field coordination,
-survey design, interviews, and policy reporting. His motivation lies in
-understanding how economic tools can improve lives—especially in
-developing country contexts.
-
-Alongside research, Mohan teaches undergraduate economics courses,
-including microeconomics and macroeconomics, to students from business,
-technology, and information systems backgrounds. His teaching blends
-conceptual clarity with real-world applications, and he actively mentors
-students on writing and presenting academic work.
-
-Mohan has presented his work at academic conferences and is passionate
-about making research both rigorous and relevant. He values
-collaboration and continuous learning and is particularly interested in
-inequality, health, and labor markets.
-
-Outside of work, Mohan enjoys playing the keyboard and guitar,
-participating in futsal matches, and following test cricket with
-enthusiasm. He is also involved in student-led academic forums and
-environmental awareness activities, reflecting his belief in community
-engagement and communication.
-
-\[Your introduction here\] Download my [full academic CV](/cv.pdf).
-
-### Research Highlights
-
--   **Project 1**: \[Description\]
-
--   **Project 2**: \[Description\]', "index.qmd" )
