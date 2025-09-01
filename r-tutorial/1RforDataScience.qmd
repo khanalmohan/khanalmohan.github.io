@@ -4,16 +4,15 @@ author: "Mohan Khanal"
 date: "2025-07-29"
 format:
   html:
-    toc: true          # Enable table of contents
-    toc-location: left # Place TOC on the left side
+    toc: true
+    toc-location: left
     toc-title: "Contents"
-    toc-depth: 2       # Show headers up to level 2 (##)
+    toc-depth: 2
   pdf:
-    toc: true          # Also enable TOC in PDF
+    toc: true
     number-sections: true
 ---
-
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Introduction to R and RStudio
 

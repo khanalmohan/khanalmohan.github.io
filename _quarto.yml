@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Mohan Khanal"
+  site-url: https://khanalmohan.github.io
   navbar:
     left:
       - href: index.qmd
@@ -12,16 +13,21 @@ website:
         text: Research
       - text: "R Tutorial for Data Science"
         menu: 
-          - href: r-tutorial/1RforDataScience.html
+          - href: r-tutorial/1RforDataScience.qmd
             text: Introduction
-          - href: r-tutorial/2DataImportandDataWrangling.html
+          - href: r-tutorial/2DataImportandDataWrangling.qmd
             text: Data Import
-          - href: r-tutorial/3ExploratoryDataAnalysis.html
+          - href: r-tutorial/3ExploratoryDataAnalysis.qmd
             text: EDA
-          - href: r-tutorial/4StatisticalTestsWithR.html
+          - href: r-tutorial/4StatisticalTestsWithR.qmd
             text: Statistical Tests with R
-          - href: r-tutorial/5aDataAnalysis.html
+          - href: r-tutorial/5aDataAnalysis.qmd
             text: Data Analysis
-          - href: r-tutorial/6DataInterpretation.html
+          - href: r-tutorial/6DataInterpretation.qmd
             text: Data Interpretation
-            
+
+format:
+  html:
+    theme: cosmo   # (same as Samantha used)
+    css: styles.css
+    toc: true

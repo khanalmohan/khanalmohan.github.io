@@ -1,18 +1,25 @@
 ---
 title: "Mohan Khanal"
-toc: false
-about: 
+image: "D:/PLUS 545 LAB/khanalmohan.github.io/profilepic.png" 
+about:
   template: jolla
-  image-shape: round
-  image-width: 17em
+  image: "D:/PLUS 545 LAB/khanalmohan.github.io/profilepic.png" 
   links:
-    - text: LinkedIn
+    - icon: linkedin
+      text: LinkedIn
       href: https://www.linkedin.com/in/mohan-khanal-06747497/
-    - text: GitHub
+    - icon: github
+      text: GitHub
       href: https://github.com/khanalmohan
-    - text: Email
+    - icon: envelope
+      text: Email
       href: mailto:khanal.mohan19@gmail.com
-editor: 
-  markdown: 
-    wrap: 72
 ---
+
+## About Me
+
+I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.  
+My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.  
+
+I have been engaged in tutoring economics at NIST for the past three years and conducting R for Data Science sessions at GRIT.  
+I am passionate about data-driven research, policy analysis, and promoting local economic development.
