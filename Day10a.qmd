@@ -1,0 +1,127 @@
+---
+title: "Day10"
+author: "Mohan Khanal"
+editor: visual
+---
+
+# Understanding
+
+This is our first document.
+
+To produce our document:
+
+-   we have few commands for texts and R chunks as follows from source pane as you see above. \# Heading1 \## Heading2 \### Heading3
+
+Alternatively, we can go to Visual. Begin new line and type / and we get options.
+
+-   For R chunks (i.e snippet with R codes) we can press `(grave accent)three times and curley bracket. type small r inside the bracket and close the chunk with`. press ctrl + alt + I(shortcut key). we can also get r chunk from /(backslash) in visual mode.
+-   For compilation, which we call here Knit we can press knit or press ctrl+ shift + K
+
+# Data Analysis
+
+```{r,warning=FALSE,echo=TRUE,results='hide'}
+setwd("D:/DemoPractices/R for Data Science")
+rm(list=ls())
+gc()
+```
+
+## Load Libraries
+
+```{r,warning=FALSE,echo=TRUE}
+library(dplyr)
+library(ggplot2)
+library(kableExtra) #please install this before loading, you may not have installed. 
+library(tidyverse)
+
+```
+
+## Loading Datasets
+
+```{r,warning=FALSE,echo=TRUE}
+mtcars <-datasets::mtcars
+
+cardata <- read.csv("D:/DemoPractices/R for Data Science/data/car data.csv")
+```
+
+## working with data
+
+A snapshot of first 6 rows of the mtcars:
+
+```{r}
+head(mtcars)
+```
+
+We are exploring car data : variables, variable types. value and value labels.
+
+```{r,warning=FALSE,echo=TRUE}
+str(cardata)
+#tail()
+#glimpse() and other functions.
+```
+
+## Descriptive analysis
+
+### Summary Statistics
+
+```{r,tab.cap="Table 1 Descriptive Statistics"}
+#summary(cardata)
+
+desc <- cardata %>% 
+  group_by(Transmission) %>% 
+  summarize(
+    count=n(),
+    avg_price = mean(Selling_Price),
+    sd_price =sd(Selling_Price),  
+    max_price=max(Selling_Price))
+
+kableExtra::kable(desc)
+```
+
+### Plots
+
+-   Basic plot using plot() function.
+
+```{r}
+plot(cardata$Selling_Price, cardata$Kms_Driven) 
+```
+
+-   We can also use qplot() function:
+
+```{r,warning=FALSE}
+qplot(data=cardata,x= Selling_Price, y= Kms_Driven,
+      geom="smooth", color= "maroon",
+      size = I(3),
+      main ="Price and Km driven",
+      xlab="Selling Price",
+      ylab = "Km driven")
+```
+
+-   Using ggplot() functions
+
+```{r,warning=FALSE}
+ggplot()+
+  geom_line(mapping = aes(x=Selling_Price,y=Kms_Driven),data=cardata)+
+    geom_line(
+      mapping = aes(x= Selling_Price,y= Kms_Driven),data=cardata,
+       colours='maroon',size=3)
+```
+
+## Inferential Statistics
+
+-   First we Produce cross tabulation results:
+
+```{r,warning=FALSE}
+# Cross tabulation
+crosstab<- modelsummary::datasummary_crosstab(
+  Fuel_Type~Transmission,statistic=~N+ Percent("col"),data=cardata)
+crosstab
+```
+
+-   We can produce Regression results of the mtcars data
+
+```{r}
+regression <- lm(mpg~ hp+wt+am, data =mtcars)
+summary(regression)
+```
+
+
