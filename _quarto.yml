@@ -1,28 +1,11 @@
-navbar:
-  left:
-    - href: index.qmd
-      text: "Home"
-    - sidebar: rtutorials
-    - sidebar: econometrics
-
 sidebar:
   - id: rtutorials
     title: "R Tutorial for Data Science"
     style: docked
     background: light
     contents:
-      - href: r-tutorial/1RforDataScience.qmd
-        text: Introduction
-      - href: r-tutorial/2DataImportandDataWrangling.qmd
-        text: Data Import
-      - href: r-tutorial/3ExploratoryDataAnalysis.qmd
-        text: EDA
-      - href: r-tutorial/4StatisticalTestsWithR.qmd
-        text: Statistical Tests with R
-      - href: r-tutorial/5aDataAnalysis.qmd
-        text: Data Analysis
-      - href: r-tutorial/6DataInterpretation.qmd
-        text: Data Interpretation
+      - href: r-tutorial/RBasics.qmd
+        text: "Day 1: Introduction to R"
   - id: econometrics
     title: "Econometrics"
     style: docked
