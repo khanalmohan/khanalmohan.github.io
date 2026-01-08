@@ -1,3 +1,9 @@
+navbar:
+  left:
+    - href: index.qmd
+      text: "Home"
+    - sidebar: rtutorials
+
 sidebar:
   - id: rtutorials
     title: "R Tutorial for Data Science"
@@ -6,11 +12,3 @@ sidebar:
     contents:
       - href: r-tutorial/RBasics.qmd
         text: "Day 1: Introduction to R"
-  - id: econometrics
-    title: "Econometrics"
-    style: docked
-    background: light
-    contents:
-      - tutorial.qmd
-      - tutorial-1.qmd
-      - tutorial-2.qmd
