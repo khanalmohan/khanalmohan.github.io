@@ -15,19 +15,13 @@ format:
 
 ```{r}
 # Chapter 3: Exploratory Data Analysis
-setwd("D:/PLUS 545 LAB/khanalmohan.github.io/r-tutorial")
-
 # Load required libraries
 library(dplyr)
 library(ggplot2)
 library(here)
 
 # Import dataset
-#car_data <- read.csv("D:/DemoPractices/R for Data Science/data/car data.csv")
-
-
-
-car_data <- read.csv(here("data","car data.csv"))
+car_data <- read.csv("data/car data.csv")
 ``` 
 
 # ---- Part 1: Descriptive Statistics ----

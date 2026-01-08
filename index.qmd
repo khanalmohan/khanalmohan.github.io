@@ -1,9 +1,9 @@
 ---
 title: "Mohan Khanal"
-image: "D:/PLUS 545 LAB/khanalmohan.github.io/profilepic.png" 
+image: "D:/khanalmohan.github.io/profilepic.png" 
 about:
   template: jolla
-  image: "D:/PLUS 545 LAB/khanalmohan.github.io/profilepic.png" 
+  image: "D:/khanalmohan.github.io/profilepic.png" 
   links:
     - icon: linkedin
       text: LinkedIn

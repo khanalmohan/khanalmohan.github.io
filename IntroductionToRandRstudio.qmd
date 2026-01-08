@@ -1,30 +1,24 @@
 ---
-
-title: "Introduction to R and RStudio"
-author: "Mohan Khanal"
-date: "2025-07-29"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-title: "Contents"
-    toc-depth: 2
-    theme: cosmo
-    css: styles.css
-    code-block-bg: true
-    code-block-border-left: "#31BAE9"
-    highlight-style: github
-  pdf:
-    toc: true
-    number-sections: true
-    documentclass: article
-    geometry: margin=1in
-    
+editor: 
+  markdown: 
+    wrap: 72
 ---
+
+------------------------------------------------------------------------
+
+title: "Introduction to R and RStudio" author: "Mohan Khanal" date:
+"2025-07-29" format: html: toc: true toc-location: left toc-title:
+"Contents" toc-depth: 2 theme: cosmo css: styles.css code-block-bg: true
+code-block-border-left: "#31BAE9" highlight-style: github pdf: toc: true
+number-sections: true documentclass: article geometry: margin=1in
+
+------------------------------------------------------------------------
 
 # Introduction to R and RStudio
 
-This 2-hour online session introduces R and RStudio: how to install them, navigate the interface, and use packages and libraries. It includes demos and interactive practice.
+This 2-hour online session introduces R and RStudio: how to install
+them, navigate the interface, and use packages and libraries. It
+includes demos and interactive practice.
 
 ## 🕐 Agenda
 
@@ -48,7 +42,8 @@ This 2-hour online session introduces R and RStudio: how to install them, naviga
 -   Choose the **RStudio Desktop (Free)** version
 -   Install **RStudio after installing R**
 
-> 💡 **Tip**: R is the programming language. RStudio is the environment that helps you work with R more easily.
+> 💡 **Tip**: R is the programming language. RStudio is the environment
+> that helps you work with R more easily.
 
 ## Part 2: RStudio Interface Tour (20 mins)
 
@@ -56,8 +51,10 @@ When you open RStudio, you’ll see four main panels:
 
 1.  **Source (Top-Left)** – Script Editor (`.R`, `.Rmd`)
 2.  **Console (Bottom-Left)** – Command Execution
-3.  **Environment/History (Top-Right)** – Lists variables and past commands
-4.  **Files/Plots/Packages/Help/Viewer (Bottom-Right)** – File manager, plot viewer, documentation, etc.
+3.  **Environment/History (Top-Right)** – Lists variables and past
+    commands
+4.  **Files/Plots/Packages/Help/Viewer (Bottom-Right)** – File manager,
+    plot viewer, documentation, etc.
 
 ### Live Demo
 
@@ -65,17 +62,25 @@ Create an R script (`.R`) and run the following:
 
 \`\`\`r print("Hello, R world!")
 
-To output text in R, use single or double quotes. To output numbers, type them without quotes: 1 2 3
+To output text in R, use single or double quotes. To output numbers,
+type them without quotes: 1 2 3
 
 For simple calculations, add numbers together: 1 + 2
 
-Part 3: Basic R Concepts and Commands (20 mins) Vector A vector is a sequence of data elements of the same basic type, similar to an array in C or C++ (e.g., 1, 3, 4, 5, ..., 10). It is an ordered set with a defined beginning and end. Example: "Z", "f", "7", "yes", "A", "Ab"
+Part 3: Basic R Concepts and Commands (20 mins) Vector A vector is a
+sequence of data elements of the same basic type, similar to an array in
+C or C++ (e.g., 1, 3, 4, 5, ..., 10). It is an ordered set with a
+defined beginning and end. Example: "Z", "f", "7", "yes", "A", "Ab"
 
-Note: If you include a number (e.g., 7) in a character vector, R automatically converts it to a character. Quotation marks are required for characters.
+Note: If you include a number (e.g., 7) in a character vector, R
+automatically converts it to a character. Quotation marks are required
+for characters.
 
 Data Types
 
-Numeric: 7.2, 67, 711 Integer: 1L, 99L, 1000L (L declares an integer) Complex: 7 + 12i (where i is the imaginary part) Character (string): "k", "R is exciting", "FALSE", "11.5" Logical (boolean): TRUE or FALSE
+Numeric: 7.2, 67, 711 Integer: 1L, 99L, 1000L (L declares an integer)
+Complex: 7 + 12i (where i is the imaginary part) Character (string):
+"k", "R is exciting", "FALSE", "11.5" Logical (boolean): TRUE or FALSE
 
 # Numeric
 
@@ -97,27 +102,40 @@ y \<- "Learning R is fun" class(y)
 
 y \<- FALSE class(y)
 
-Note: In R, the numeric data type includes both integers and double-precision floating-point numbers.
+Note: In R, the numeric data type includes both integers and
+double-precision floating-point numbers.
 
-Variables and Math x \<- 10 y \<- 5 x + y \# Addition x \* y \# Multiplication
+Variables and Math x \<- 10 y \<- 5 x + y \# Addition x \* y \#
+Multiplication
 
 Using Functions mean(c(1, 2, 3, 4, 5)) sum(1:10)
 
 Creating Vectors
 
-seq(): Creates a sequence, e.g., seq(1, 15) or 1:15 generates 1, 2, 3, ..., 15; seq(1, 15, 2) generates 1, 3, 5, ..., 15. rep(): Replicates values, e.g., rep(3, 50) repeats 3 50 times; works with character vectors too. rnorm(): Generates random numbers from a normal distribution, e.g., rnorm(10) creates 10 random numbers.
+seq(): Creates a sequence, e.g., seq(1, 15) or 1:15 generates 1, 2, 3,
+..., 15; seq(1, 15, 2) generates 1, 3, 5, ..., 15. rep(): Replicates
+values, e.g., rep(3, 50) repeats 3 50 times; works with character
+vectors too. rnorm(): Generates random numbers from a normal
+distribution, e.g., rnorm(10) creates 10 random numbers.
 
-Using Square Brackets w \<- c("a", "b", "c", "d") w w\[1\] \# Access first element w\[-3\] \# Access all except the third element
+Using Square Brackets w \<- c("a", "b", "c", "d") w w\[1\] \# Access
+first element w\[-3\] \# Access all except the third element
 
 Help System ?mean help("sum")
 
-Part 4: Packages and Libraries (40 mins) What are Packages? Packages are collections of R functions, data, and compiled code in a well-defined format, stored in a directory called a library. They extend R’s functionality, e.g., ggplot2 for plotting, dplyr for data manipulation. Installing Packages install.packages("ggplot2") install.packages("dplyr")
+Part 4: Packages and Libraries (40 mins) What are Packages? Packages are
+collections of R functions, data, and compiled code in a well-defined
+format, stored in a directory called a library. They extend R’s
+functionality, e.g., ggplot2 for plotting, dplyr for data manipulation.
+Installing Packages install.packages("ggplot2")
+install.packages("dplyr")
 
 Loading a Package library(ggplot2) library(dplyr)
 
 Note: Quotation marks are optional when loading packages with library().
 
-Data Structures Vector A list of items of the same type: \# Vector of fruits fruits \<- c("banana", "apple", "orange")
+Data Structures Vector A list of items of the same type: \# Vector of
+fruits fruits \<- c("banana", "apple", "orange")
 
 # Print fruits
 
@@ -127,7 +145,8 @@ fruits
 
 length(fruits)
 
-Lists A collection of ordered, changeable data. Use the list() function: names \<- list("apple", "ball", "cat")
+Lists A collection of ordered, changeable data. Use the list() function:
+names \<- list("apple", "ball", "cat")
 
 # Print the list
 
@@ -137,7 +156,8 @@ names
 
 append(names, "dog")
 
-Matrices A two-dimensional dataset with rows and columns: \# Create a matrix firstmatrix \<- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
+Matrices A two-dimensional dataset with rows and columns: \# Create a
+matrix firstmatrix \<- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
 
 # Print the matrix
 
@@ -145,7 +165,13 @@ firstmatrix
 
 Note: The c() function concatenates items together.
 
-Data Frames Data frames store tabular data, supporting multiple data types across columns. They are like Excel tables, with unique row names and no empty columns. Data must be numeric, character, or factor types. \# Creating company data frame comp.data \<- data.frame( comp_id = c(1:3), comp_name = c("XYZ", "ABC", "KLM"), growth = c(16000, 14000, 12000), comp_start_date = as.Date(c("02/05/25", "04/04/25", "05/03/25"), format = "%m/%d/%y") )
+Data Frames Data frames store tabular data, supporting multiple data
+types across columns. They are like Excel tables, with unique row names
+and no empty columns. Data must be numeric, character, or factor types.
+\# Creating company data frame comp.data \<- data.frame( comp_id =
+c(1:3), comp_name = c("XYZ", "ABC", "KLM"), growth = c(16000, 14000,
+12000), comp_start_date = as.Date(c("02/05/25", "04/04/25", "05/03/25"),
+format = "%m/%d/%y") )
 
 # Print the data frame
 
@@ -159,8 +185,16 @@ names(dat) \# or colnames(dat)
 
 ncol(dat)
 
-Piping Concept Use the pipe operator %\>% (shortcut: Ctrl + Shift + M on Windows) to pass the output of one function as input to another. Accessing Variables/Columns Use the \$ operator, e.g., df\$var1. Part 5: Practice and Q&A (10 mins)
+Piping Concept Use the pipe operator %\>% (shortcut: Ctrl + Shift + M on
+Windows) to pass the output of one function as input to another.
+Accessing Variables/Columns Use the \$ operator, e.g., df\$var1. Part 5:
+Practice and Q&A (10 mins)
 
-Practice exercises with provided datasets Open Q&A session for clarifications
+Practice exercises with provided datasets Open Q&A session for
+clarifications
 
-Notes: Important Codes \# dim() \# Dimensions of an object \# class() \# Class of an object \# attributes() \# Attributes of an object \# rm(list=ls()) \# Clear environment \# Ctrl + L \# Clear console \# Ctrl + + \# Zoom in \# Ctrl + - \# Zoom out \# View() \# View data in new tab
+Notes: Important Codes \# dim() \# Dimensions of an object \# class() \#
+Class of an object \# attributes() \# Attributes of an object \#
+rm(list=ls()) \# Clear environment \# Ctrl + L \# Clear console \#
+Ctrl + + \# Zoom in \# Ctrl + - \# Zoom out \# View() \# View data in
+new tab

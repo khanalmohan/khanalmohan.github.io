@@ -28,10 +28,6 @@ format:
 
 ### Setting up working Directory
 
-```{r,warning=FALSE}
-setwd("D:/PLUS 545 LAB/khanalmohan.github.io/r-tutorial")
-```
-
 We can also check our working directory using the command getwd().
 
 ### CSV File Example: Car Dataset

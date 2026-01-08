@@ -25,7 +25,7 @@ library(ggplot2)
 
 ```{r}
 ## Import dataset ----
-car_data <- read.csv("D:/DemoPractices/R for Data Science/data/car data.csv")
+car_data <- read.csv("data/car data.csv")
 #car_data <- read_csv("D:/DemoPracticedata/car data.csv")
 
 # Preview data
