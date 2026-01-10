@@ -33,28 +33,15 @@ We can also check our working directory using the command getwd().
 ```{r}
 #we can import csv file using the base library using the command read.csv 
 
-car_data <-read.csv("./data/car data.csv")
+car_data <-read.csv("../data/car data.csv")
 
 # or we can use readr library using the command read_csv to import csv 
 
 library(readr)
-rcar_data <- read_csv("./data/car data.csv")
+rcar_data <- read_csv("../data/car data.csv")
 names(car_data)
 ```
 
-Similarly we can use
-
-<div>
-
--   [csv - base R]{style="color:red"}: `read.csv("path/file.csv")`\
--   [csv - readr]{style="color:red"}: `read_csv("path/file.csv")` from the readr package\
--   [stata]{style="color:red"}: `read_dta("path/file.dta")` from the haven package\
--   [spss]{style="color:red"}: `read_sav("path/file.sav")` from the haven package\
--   [excel]{style="color:red"}: `read_excel("path/file.xlsx")` from the readxl package\
--   [excel (sheet 2)]{style="color:red"}: `read_excel("path/file.xlsx", sheet = 2)`\
--   [rds]{style="color:red"}: `readRDS("path/file.rds")` for single R object
-
-</div>
 
 ## Part 2: Data Cleaning and Manipulation using `dplyr` (40 mins)
 
