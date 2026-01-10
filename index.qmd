@@ -6,6 +6,9 @@ about:
   template: jolla
   image: "profilepic.jpg"
   links:
+    - icon: file-earmark-text
+      text: CV (PDF)
+      href: cv/Mohan_Khanal_CV.pdf
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/mohan-khanal-06747497/
