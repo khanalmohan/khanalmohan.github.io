@@ -28,65 +28,255 @@ format:
 
 We can also check our working directory using the command getwd().
 
-### CSV File Example: Car Dataset
+### CSV File Example: Iris Dataset
 
 ```{r}
-#we can import csv file using the base library using the command read.csv 
+# We can import csv file using the base library using the command read.csv 
+iris_data <- read.csv("../data/Iris.csv")
 
-car_data <-read.csv("../data/car data.csv")
-
-# or we can use readr library using the command read_csv to import csv 
-
+# Or we can use readr library using the command read_csv to import csv 
 library(readr)
-rcar_data <- read_csv("../data/car data.csv")
-names(car_data)
+iris_data_r <- read_csv("../data/Iris.csv")
+
+# View column names
+names(iris_data)
+
+# View first few rows
+head(iris_data)
+
+# Check structure
+str(iris_data)
 ```
 
+### Understanding the Difference: read.csv() vs read_csv()
+
+```{r}
+# Base R: read.csv()
+class(iris_data)        # Returns "data.frame"
+
+# readr: read_csv()
+class(iris_data_r)      # Returns "spec_tbl_df" "tbl_df" "tbl" "data.frame"
+
+# Both work, but read_csv() is generally faster and has better defaults
+```
+
+### Quick Data Exploration
+
+```{r}
+# Dimensions
+dim(iris_data)
+
+# Summary statistics
+summary(iris_data)
+
+# View in RStudio
+# View(iris_data)
+```
+
+------------------------------------------------------------------------
 
 ## Part 2: Data Cleaning and Manipulation using `dplyr` (40 mins)
 
 ### Load Required Packages
 
-```{r,warning=FALSE}
+```{r, warning=FALSE}
 library(dplyr)
 ```
 
+### The Pipe Operator: %>%
+
+The pipe operator `%>%` makes code more readable by chaining operations together.
+
+```{r}
+# Without pipe (hard to read)
+head(filter(iris_data, SepalLengthCm > 6))
+
+# With pipe (easier to read)
+iris_data %>%
+  filter(SepalLengthCm > 6) %>%
+  head()
+```
+
+**Keyboard shortcut**: Ctrl + Shift + M (Windows) or Cmd + Shift + M (Mac)
+
 ### Basic Wrangling Examples
 
-#### Selecting and Filtering
+#### Selecting Columns with `select()`
 
-```{r,warning=FALSE}
-# Select relevant columns and filter cars after 2015
-car_data_filtered <- car_data %>%
-  select(Car_Name, Year, Selling_Price, Fuel_Type) %>%
-  filter(Year > 2015)
+```{r, warning=FALSE}
+# Select specific columns
+iris_data %>%
+  select(Species, SepalLengthCm, PetalLengthCm) %>%
+  head()
+
+# Select columns using patterns
+iris_data %>%
+  select(starts_with("Petal")) %>%
+  head()
+
+iris_data %>%
+  select(ends_with("Cm")) %>%
+  head()
+
+# Exclude columns with minus sign
+iris_data %>%
+  select(-Id) %>%
+  head()
+```
+
+#### Filtering Rows with `filter()`
+
+```{r, warning=FALSE}
+# Filter for setosa species only
+iris_data %>%
+  filter(Species == "Iris-setosa") %>%
+  head()
+
+# Filter flowers with long petals
+iris_data %>%
+  filter(PetalLengthCm > 5) %>%
+  head()
+
+# Multiple conditions with AND (&)
+iris_data %>%
+  filter(Species == "Iris-virginica" & SepalLengthCm > 6.5) %>%
+  head()
+
+# Multiple conditions with OR (|)
+iris_data %>%
+  filter(PetalLengthCm > 6 | PetalWidthCm > 2) %>%
+  head()
+
+# Using %in% operator for multiple values
+iris_data %>%
+  filter(Species %in% c("Iris-setosa", "Iris-versicolor")) %>%
+  head()
 ```
 
 #### Creating New Variables with `mutate()`
 
-```{r,warning=FALSE}
-# Calculate car age and classify it
-car_data <- car_data %>%
+```{r, warning=FALSE}
+# Calculate areas
+iris_data <- iris_data %>%
   mutate(
-    Car_Age = 2025 - Year,
-    Age_Group = ifelse(Car_Age <= 5, "New", "Old")
+    SepalArea = SepalLengthCm * SepalWidthCm,
+    PetalArea = PetalLengthCm * PetalWidthCm
   )
+
+head(iris_data)
+
+# Create categorical variables
+iris_data <- iris_data %>%
+  mutate(
+    SizeCategory = ifelse(PetalLengthCm > 4, "Large", "Small"),
+    SepalRatio = SepalLengthCm / SepalWidthCm
+  )
+
+head(iris_data)
+
+# Using case_when() for multiple conditions
+iris_data <- iris_data %>%
+  mutate(
+    PetalSize = case_when(
+      PetalLengthCm < 2 ~ "Small",
+      PetalLengthCm < 5 ~ "Medium",
+      TRUE ~ "Large"
+    )
+  )
+
+head(iris_data)
 ```
 
 #### Sorting Rows with `arrange()`
 
-```{r,warning=FALSE}
-# Sort by Selling Price
-car_data_sorted <- car_data %>% arrange(desc(Selling_Price))
+```{r, warning=FALSE}
+# Sort by Petal Length (ascending)
+iris_data %>%
+  arrange(PetalLengthCm) %>%
+  head()
+
+# Sort by Petal Length (descending)
+iris_data %>%
+  arrange(desc(PetalLengthCm)) %>%
+  head()
+
+# Sort by multiple columns
+iris_data %>%
+  arrange(Species, desc(SepalLengthCm)) %>%
+  head()
 ```
 
 #### Summarizing with `group_by()` and `summarize()`
 
-```{r,warning=FALSE}
-# Average selling price by fuel type
-car_data %>%
-  group_by(Fuel_Type) %>%
-  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))
+```{r, warning=FALSE}
+# Overall summary
+iris_data %>%
+  summarize(
+    avg_sepal_length = mean(SepalLengthCm, na.rm = TRUE),
+    avg_petal_length = mean(PetalLengthCm, na.rm = TRUE),
+    total_flowers = n()
+  )
+
+# Summary by species
+iris_data %>%
+  group_by(Species) %>%
+  summarize(
+    avg_sepal_length = mean(SepalLengthCm, na.rm = TRUE),
+    avg_sepal_width = mean(SepalWidthCm, na.rm = TRUE),
+    avg_petal_length = mean(PetalLengthCm, na.rm = TRUE),
+    avg_petal_width = mean(PetalWidthCm, na.rm = TRUE),
+    count = n()
+  )
+
+# Summary by multiple groups
+iris_data %>%
+  group_by(Species, SizeCategory) %>%
+  summarize(
+    avg_sepal_length = mean(SepalLengthCm, na.rm = TRUE),
+    count = n(),
+    .groups = 'drop'
+  )
+```
+
+### Combining Multiple Operations
+
+```{r, warning=FALSE}
+# Complex pipeline: Find large virginica flowers and their stats
+iris_data %>%
+  filter(Species == "Iris-virginica", PetalLengthCm > 6) %>%
+  select(Species, SepalLengthCm, PetalLengthCm, SepalArea, PetalArea) %>%
+  arrange(desc(PetalArea)) %>%
+  head(10)
+```
+
+### Additional Useful Functions
+
+#### Count rows with `count()`
+
+```{r}
+# Count flowers by species
+iris_data %>%
+  count(Species)
+
+# Count with sorting
+iris_data %>%
+  count(Species, sort = TRUE)
+
+# Count by multiple variables
+iris_data %>%
+  count(Species, SizeCategory)
+```
+
+#### Get unique values with `distinct()`
+
+```{r}
+# Get unique species
+iris_data %>%
+  distinct(Species)
+
+# Get unique combinations
+iris_data %>%
+  distinct(Species, PetalSize)
 ```
 
 ------------------------------------------------------------------------
@@ -96,40 +286,192 @@ car_data %>%
 ### Checking Missing Values
 
 ```{r}
+# Load naniar for missing data visualization
 library(naniar)
-miss_var_summary(car_data)
+
+# Check for missing values
+miss_var_summary(iris_data)
+
+# Check if any values are missing
+any(is.na(iris_data))
+
+# Count NAs in each column
+colSums(is.na(iris_data))
 ```
 
-### Removing or Replacing NAs
+### Creating Sample Data with Missing Values
+
+For demonstration, let's introduce some missing values:
+
+```{r}
+# Create a copy with missing values
+iris_missing <- iris_data
+set.seed(123)  # For reproducibility
+
+# Randomly introduce NAs
+iris_missing$SepalLengthCm[sample(1:nrow(iris_missing), 10)] <- NA
+iris_missing$PetalWidthCm[sample(1:nrow(iris_missing), 15)] <- NA
+
+# Check missing data
+miss_var_summary(iris_missing)
+```
+
+### Removing Missing Values
 
 ```{r}
 # Remove rows with any missing values
-car_data_clean <- na.omit(car_data)
+iris_complete <- na.omit(iris_missing)
 
-# Replace missing Selling_Price with 0 (if any)
-car_data <- car_data %>%
-  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))
+cat("Original rows:", nrow(iris_missing), "\n")
+cat("After removing NAs:", nrow(iris_complete), "\n")
 
+# Remove only if specific column has NA
+iris_filtered <- iris_missing %>%
+  filter(!is.na(SepalLengthCm))
 
-head(car_data)
+cat("After filtering SepalLengthCm:", nrow(iris_filtered), "\n")
+```
+
+### Replacing Missing Values
+
+```{r}
+# Replace NAs with mean
+iris_mean <- iris_missing %>%
+  mutate(
+    SepalLengthCm = ifelse(is.na(SepalLengthCm), 
+                          mean(SepalLengthCm, na.rm = TRUE), 
+                          SepalLengthCm),
+    PetalWidthCm = ifelse(is.na(PetalWidthCm), 
+                         mean(PetalWidthCm, na.rm = TRUE), 
+                         PetalWidthCm)
+  )
+
+# Verify
+miss_var_summary(iris_mean)
+
+# Replace with median (more robust to outliers)
+iris_median <- iris_missing %>%
+  mutate(
+    SepalLengthCm = ifelse(is.na(SepalLengthCm), 
+                          median(SepalLengthCm, na.rm = TRUE), 
+                          SepalLengthCm),
+    PetalWidthCm = ifelse(is.na(PetalWidthCm), 
+                         median(PetalWidthCm, na.rm = TRUE), 
+                         PetalWidthCm)
+  )
+
+# Replace with species-specific mean (group imputation)
+iris_group_mean <- iris_missing %>%
+  group_by(Species) %>%
+  mutate(
+    SepalLengthCm = ifelse(is.na(SepalLengthCm), 
+                          mean(SepalLengthCm, na.rm = TRUE), 
+                          SepalLengthCm),
+    PetalWidthCm = ifelse(is.na(PetalWidthCm), 
+                         mean(PetalWidthCm, na.rm = TRUE), 
+                         PetalWidthCm)
+  ) %>%
+  ungroup()
+
+miss_var_summary(iris_group_mean)
+```
+
+### Handling NAs During Analysis
+
+```{r}
+# Without na.rm - returns NA
+mean(iris_missing$SepalLengthCm)
+
+# With na.rm = TRUE - ignores NAs
+mean(iris_missing$SepalLengthCm, na.rm = TRUE)
+
+# Summary with NA handling
+iris_missing %>%
+  summarize(
+    mean_sepal = mean(SepalLengthCm, na.rm = TRUE),
+    median_sepal = median(SepalLengthCm, na.rm = TRUE),
+    count_non_na = sum(!is.na(SepalLengthCm)),
+    count_na = sum(is.na(SepalLengthCm))
+  )
 ```
 
 ------------------------------------------------------------------------
 
 ## Part 4: Practice and Q&A (20 mins)
 
-### Practice Tasks (based on car data)
+### Practice Tasks (based on iris data)
 
--   Import the car dataset
--   Select cars with Present_Price \> 10
--   Create a variable to calculate depreciation = Present_Price - Selling_Price
--   Group by Transmission type and calculate average depreciation
+#### Task 1: Import and Explore
+-   Import the iris dataset
+-   Display the first 10 rows
+-   Check the number of rows and columns
 
 ```{r}
-car_data %>%
-  mutate(depreciation = Present_Price - Selling_Price) %>%
-  group_by(Transmission) %>%
-  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))
+# Solution
+iris_practice <- read.csv("../data/Iris.csv")
+head(iris_practice, 10)
+dim(iris_practice)
+```
+
+#### Task 2: Filter and Select
+-   Select only Iris-virginica flowers with PetalLengthCm > 6
+-   Show only Species, SepalLengthCm, and PetalLengthCm columns
+
+```{r}
+# Solution
+iris_practice %>%
+  filter(Species == "Iris-virginica", PetalLengthCm > 6) %>%
+  select(Species, SepalLengthCm, PetalLengthCm)
+```
+
+#### Task 3: Create New Variables
+-   Create a variable for PetalRatio = PetalLengthCm / PetalWidthCm
+-   Create a variable for SepalRatio = SepalLengthCm / SepalWidthCm
+
+```{r}
+# Solution
+iris_practice <- iris_practice %>%
+  mutate(
+    PetalRatio = PetalLengthCm / PetalWidthCm,
+    SepalRatio = SepalLengthCm / SepalWidthCm
+  )
+
+head(iris_practice)
+```
+
+#### Task 4: Group and Summarize
+-   Group by Species
+-   Calculate average SepalLengthCm, PetalLengthCm, and count per species
+
+```{r}
+# Solution
+iris_practice %>%
+  group_by(Species) %>%
+  summarize(
+    avg_sepal_length = mean(SepalLengthCm, na.rm = TRUE),
+    avg_petal_length = mean(PetalLengthCm, na.rm = TRUE),
+    count = n()
+  )
+```
+
+#### Task 5: Complex Pipeline
+-   Filter for flowers with SepalLengthCm > 6
+-   Create a new variable TotalLength = SepalLengthCm + PetalLengthCm
+-   Group by Species
+-   Calculate average TotalLength
+-   Sort by average TotalLength descending
+
+```{r}
+# Solution
+iris_practice %>%
+  filter(SepalLengthCm > 6) %>%
+  mutate(TotalLength = SepalLengthCm + PetalLengthCm) %>%
+  group_by(Species) %>%
+  summarize(
+    avg_total_length = mean(TotalLength, na.rm = TRUE),
+    count = n()
+  ) %>%
+  arrange(desc(avg_total_length))
 ```
 
 ------------------------------------------------------------------------

@@ -1,0 +1,484 @@
+---
+title: "3 Exploratory Data Analysis (EDA)"
+author: "Mohan Khanal"
+date: "2025-01-08"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 2
+  pdf:
+    toc: true
+    number-sections: true
+---
+
+# 📊 Chapter 3: Exploratory Data Analysis (EDA)
+
+## 🕐 Agenda
+
+-   **Part 1 (30 mins)** – Descriptive Statistics
+-   **Part 2 (50 mins)** – Data Visualization with ggplot2
+-   **Part 3 (30 mins)** – Creating Basic Plots (Scatter, Bar, Histogram, Boxplot)
+-   **Part 4 (10 mins)** – Practice and Q&A
+
+------------------------------------------------------------------------
+
+## Part 1: Descriptive Statistics (30 mins)
+
+### Loading Built-in Datasets
+
+R comes with several built-in datasets perfect for practice.
+
+```{r}
+# Load iris dataset (flower measurements)
+data(iris)
+head(iris)
+
+# Load mtcars dataset (car specifications)
+data(mtcars)
+head(mtcars)
+
+# See all available datasets
+# data()
+```
+
+### Summary Statistics
+
+```{r}
+# Quick overview
+summary(iris)
+
+# Summary for mtcars
+summary(mtcars)
+```
+
+### Measures of Central Tendency
+
+```{r}
+# Mean
+mean(iris$Sepal.Length)
+mean(mtcars$mpg)
+
+# Median
+median(iris$Sepal.Length)
+median(mtcars$mpg)
+
+# Mode (R doesn't have built-in mode function)
+# We can find it using table
+table(iris$Species)
+```
+
+### Measures of Dispersion
+
+```{r}
+# Range
+range(iris$Sepal.Length)
+range(mtcars$mpg)
+
+# Variance
+var(iris$Sepal.Length)
+var(mtcars$mpg)
+
+# Standard Deviation
+sd(iris$Sepal.Length)
+sd(mtcars$mpg)
+
+# Interquartile Range
+IQR(iris$Sepal.Length)
+IQR(mtcars$mpg)
+```
+
+### Quantiles and Percentiles
+
+```{r}
+# Quartiles
+quantile(iris$Sepal.Length)
+
+# Specific percentiles
+quantile(mtcars$mpg, probs = c(0.25, 0.50, 0.75, 0.90, 0.95))
+```
+
+### Grouped Statistics with dplyr
+
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+
+# Summary by species
+iris %>%
+  group_by(Species) %>%
+  summarize(
+    mean_sepal = mean(Sepal.Length),
+    sd_sepal = sd(Sepal.Length),
+    min_sepal = min(Sepal.Length),
+    max_sepal = max(Sepal.Length),
+    n = n()
+  )
+
+# Summary by number of cylinders
+mtcars %>%
+  group_by(cyl) %>%
+  summarize(
+    mean_mpg = mean(mpg),
+    sd_mpg = sd(mpg),
+    mean_hp = mean(hp),
+    count = n()
+  )
+```
+
+### Correlation Analysis
+
+```{r}
+# Correlation between two variables
+cor(iris$Sepal.Length, iris$Sepal.Width)
+cor(mtcars$mpg, mtcars$wt)
+
+# Correlation matrix (numeric columns only)
+cor(iris[, 1:4])
+cor(mtcars[, c("mpg", "hp", "wt", "qsec")])
+
+# Round for better readability
+round(cor(iris[, 1:4]), 2)
+```
+
+------------------------------------------------------------------------
+
+## Part 2: Data Visualization with ggplot2 (50 mins)
+
+### Introduction to ggplot2
+
+`ggplot2` is the most popular visualization package in R, following the "grammar of graphics" philosophy.
+
+```{r, warning=FALSE, message=FALSE}
+library(ggplot2)
+```
+
+### Basic ggplot2 Syntax
+
+```
+ggplot(data = <DATA>, aes(x = <X-VARIABLE>, y = <Y-VARIABLE>)) +
+  geom_<TYPE>()
+```
+
+Components:
+- `ggplot()`: Initialize the plot
+- `aes()`: Define aesthetics (what goes on x, y, color, etc.)
+- `geom_*()`: Add layers (points, lines, bars, etc.)
+
+------------------------------------------------------------------------
+
+## Part 3: Creating Basic Plots (30 mins)
+
+### 1. Scatter Plots (Relationship between two numeric variables)
+
+```{r}
+# Basic scatter plot
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+
+# Add color by species
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point()
+
+# Add labels and title
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(
+    title = "Sepal Dimensions by Species",
+    x = "Sepal Length (cm)",
+    y = "Sepal Width (cm)"
+  ) +
+  theme_minimal()
+
+# Scatter plot with mtcars
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(aes(color = factor(cyl)), size = 3) +
+  labs(
+    title = "Car Weight vs Fuel Efficiency",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon",
+    color = "Cylinders"
+  ) +
+  theme_bw()
+```
+
+### 2. Bar Plots (Categorical data)
+
+```{r}
+# Count of each species
+ggplot(iris, aes(x = Species)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Count of Iris Species",
+    x = "Species",
+    y = "Count"
+  )
+
+# Bar plot with custom colors
+ggplot(iris, aes(x = Species, fill = Species)) +
+  geom_bar() +
+  labs(title = "Iris Species Distribution") +
+  theme_minimal()
+
+# Bar plot for mtcars (count by cylinders)
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(fill = "coral") +
+  labs(
+    title = "Number of Cars by Cylinder Count",
+    x = "Number of Cylinders",
+    y = "Count"
+  )
+
+# Bar plot with aggregated data
+mtcars %>%
+  group_by(cyl) %>%
+  summarize(avg_mpg = mean(mpg)) %>%
+  ggplot(aes(x = factor(cyl), y = avg_mpg)) +
+  geom_col(fill = "darkgreen") +
+  labs(
+    title = "Average MPG by Cylinder Count",
+    x = "Cylinders",
+    y = "Average MPG"
+  )
+```
+
+### 3. Histograms (Distribution of numeric variable)
+
+```{r}
+# Basic histogram
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_histogram(bins = 20, fill = "purple", color = "black") +
+  labs(
+    title = "Distribution of Sepal Length",
+    x = "Sepal Length (cm)",
+    y = "Frequency"
+  )
+
+# Histogram by species
+ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_histogram(bins = 20, alpha = 0.6, position = "identity") +
+  labs(title = "Sepal Length Distribution by Species")
+
+# Histogram for mtcars
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(bins = 15, fill = "skyblue", color = "black") +
+  labs(
+    title = "Distribution of Fuel Efficiency",
+    x = "Miles per Gallon",
+    y = "Frequency"
+  ) +
+  theme_classic()
+
+# Density plot (smooth histogram)
+ggplot(iris, aes(x = Petal.Length, fill = Species)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Petal Length Density by Species")
+```
+
+### 4. Box Plots (Distribution and outliers)
+
+```{r}
+# Basic boxplot
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() +
+  labs(
+    title = "Sepal Length by Species",
+    x = "Species",
+    y = "Sepal Length (cm)"
+  )
+
+# Boxplot with color
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  labs(title = "Sepal Length Distribution by Species") +
+  theme_minimal()
+
+# Boxplot for mtcars
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(
+    title = "MPG Distribution by Cylinder Count",
+    x = "Number of Cylinders",
+    y = "Miles per Gallon"
+  )
+
+# Boxplot with points overlay
+ggplot(iris, aes(x = Species, y = Petal.Width, fill = Species)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  labs(title = "Petal Width by Species with Data Points")
+```
+
+### 5. Line Plots (Trends over time or ordered data)
+
+```{r}
+# Create sample time series data
+time_data <- data.frame(
+  day = 1:30,
+  temperature = rnorm(30, mean = 20, sd = 5)
+)
+
+ggplot(time_data, aes(x = day, y = temperature)) +
+  geom_line(color = "red", size = 1) +
+  geom_point() +
+  labs(
+    title = "Temperature Over 30 Days",
+    x = "Day",
+    y = "Temperature (°C)"
+  )
+```
+
+### Multiple Plots in One (Faceting)
+
+```{r}
+# Facet by species
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(aes(color = Species)) +
+  facet_wrap(~ Species) +
+  labs(title = "Sepal Dimensions by Species (Faceted)")
+
+# Facet for mtcars
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  facet_wrap(~ cyl) +
+  labs(title = "Weight vs MPG by Cylinder Count")
+```
+
+### Customizing Themes
+
+```{r}
+# Different themes
+p <- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot()
+
+# Default
+p + labs(title = "Default Theme")
+
+# Minimal
+p + theme_minimal() + labs(title = "Minimal Theme")
+
+# Classic
+p + theme_classic() + labs(title = "Classic Theme")
+
+# Black and white
+p + theme_bw() + labs(title = "Black & White Theme")
+```
+
+------------------------------------------------------------------------
+
+## Part 4: Practice and Q&A (10 mins)
+
+### Practice Tasks
+
+#### Task 1: Descriptive Statistics
+Calculate mean, median, and standard deviation for `mtcars$hp` (horsepower).
+
+```{r}
+# Solution
+mean(mtcars$hp)
+median(mtcars$hp)
+sd(mtcars$hp)
+
+# Summary
+summary(mtcars$hp)
+```
+
+#### Task 2: Grouped Summary
+Find the average petal length for each iris species.
+
+```{r}
+# Solution
+iris %>%
+  group_by(Species) %>%
+  summarize(avg_petal_length = mean(Petal.Length))
+```
+
+#### Task 3: Create a Scatter Plot
+Plot the relationship between `mtcars$hp` and `mtcars$qsec` (quarter mile time).
+
+```{r}
+# Solution
+ggplot(mtcars, aes(x = hp, y = qsec)) +
+  geom_point(aes(color = factor(cyl)), size = 3) +
+  labs(
+    title = "Horsepower vs Quarter Mile Time",
+    x = "Horsepower",
+    y = "Quarter Mile Time (seconds)",
+    color = "Cylinders"
+  ) +
+  theme_minimal()
+```
+
+#### Task 4: Create a Histogram
+Create a histogram of `iris$Petal.Width` with 15 bins.
+
+```{r}
+# Solution
+ggplot(iris, aes(x = Petal.Width)) +
+  geom_histogram(bins = 15, fill = "orange", color = "black") +
+  labs(
+    title = "Distribution of Petal Width",
+    x = "Petal Width (cm)",
+    y = "Frequency"
+  )
+```
+
+#### Task 5: Create a Boxplot
+Create a boxplot comparing `mpg` across different gear counts in `mtcars`.
+
+```{r}
+# Solution
+ggplot(mtcars, aes(x = factor(gear), y = mpg, fill = factor(gear))) +
+  geom_boxplot() +
+  labs(
+    title = "MPG by Gear Count",
+    x = "Number of Gears",
+    y = "Miles per Gallon",
+    fill = "Gears"
+  ) +
+  theme_bw()
+```
+
+### Challenge: Combined Analysis
+
+Analyze the relationship between car weight and fuel efficiency:
+1. Calculate correlation
+2. Create a scatter plot
+3. Add a trend line
+
+```{r}
+# 1. Correlation
+cor(mtcars$wt, mtcars$mpg)
+
+# 2 & 3. Scatter plot with trend line
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(aes(color = factor(cyl)), size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(
+    title = "Weight vs Fuel Efficiency with Trend Line",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon",
+    color = "Cylinders"
+  ) +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+## 📚 Key Takeaways
+
+✅ Descriptive statistics summarize data: mean, median, sd, range  
+✅ `summary()` gives quick overview of data  
+✅ `cor()` measures linear relationships  
+✅ ggplot2 follows: `ggplot(data, aes()) + geom_*()`  
+✅ Common plots: scatter, bar, histogram, boxplot  
+✅ Use `facet_wrap()` for multiple plots  
+✅ Customize with themes and labels  
+
+------------------------------------------------------------------------
+
+## 📖 Resources
+
+-   ggplot2 Documentation: https://ggplot2.tidyverse.org/
+-   R Graph Gallery: https://r-graph-gallery.com/
+-   ggplot2 Cheatsheet: https://posit.co/resources/cheatsheets/
