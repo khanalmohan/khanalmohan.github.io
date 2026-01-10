@@ -1,23 +1,6 @@
 ---
 title: "Mohan Khanal"
 image: "profilepic.jpg"
-
-about:
-  template: jolla
-  image: "profilepic.jpg"
-  links:
-    - icon: file-earmark-text
-      text: CV (PDF)
-      href: cv/Mohan_Khanal_CV.pdf
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/mohan-khanal-06747497/
-    - icon: github
-      text: GitHub
-      href: https://github.com/khanalmohan
-    - icon: envelope
-      text: Email
-      href: mailto:khanal.mohan19@gmail.com
 ---
 
 ## About Me
@@ -25,5 +8,11 @@ about:
 I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.  
 My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.
 
-I am engaged in tutoring econometrics and behavioral economics for FALL 2025 intake. I am conducting **R for Data Science** sessions to multidisciplinary data science enthusiasts.  
+I am engaged in tutoring econometrics and behavioral economics for FALL 2025 session at undergraduate levels and conducting **R for Data Science** sessions.  
 I am passionate about data-driven research, policy analysis, and promoting local economic development.
+
+### Links
+- [CV (PDF)](cv/Mohan_Khanal_CV.pdf)
+- [LinkedIn](https://www.linkedin.com/in/mohan-khanal-06747497/)
+- [GitHub](https://github.com/khanalmohan)
+- [Email](mailto:khanal.mohan19@gmail.com)

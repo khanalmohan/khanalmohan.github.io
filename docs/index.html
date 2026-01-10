@@ -35,6 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -93,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./r-tutorial/RBasics.html"> 
+    <a class="nav-link" href="./r-tutorial/day-01-r-basics.qmd"> 
 <span class="menu-text">R Tutorial</span></a>
   </li>  
 </ul>
@@ -110,56 +111,66 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About Me</a></li>
+  <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About Me</a>
+  <ul class="collapse">
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="profilepic.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Mohan Khanal</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
+  
+
+
+</header>
+
 
 <section id="about-me" class="level2">
-<h2 data-anchor-id="about-me">About Me</h2>
+<h2 class="anchored" data-anchor-id="about-me">About Me</h2>
 <p>I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.<br>
 My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.</p>
-<p>I am engaged in tutoring econometrics and behavioral economics for FALL 2025 intake. I am conducting <strong>R for Data Science</strong> sessions to multidisciplinary data science enthusiasts.<br>
+<p>I am engaged in tutoring econometrics and behavioral economics for FALL 2025 session at undergraduate levels and conducting <strong>R for Data Science</strong> sessions.<br>
 I am passionate about data-driven research, policy analysis, and promoting local economic development.</p>
+<section id="links" class="level3">
+<h3 class="anchored" data-anchor-id="links">Links</h3>
+<ul>
+<li><a href="cv/Mohan_Khanal_CV.pdf">CV (PDF)</a></li>
+<li><a href="https://www.linkedin.com/in/mohan-khanal-06747497/">LinkedIn</a></li>
+<li><a href="https://github.com/khanalmohan">GitHub</a></li>
+<li><a href="mailto:khanal.mohan19@gmail.com">Email</a></li>
+</ul>
 
 
 </section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="/cv/Mohan_Khanal_CV.pdf" class="about-link" rel="" target="">
-    <i class="bi bi-file-earmark-text"></i>
-     <span class="about-link-text">CV (PDF)</span>
-  </a>
-  <a href="https://www.linkedin.com/in/mohan-khanal-06747497/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/khanalmohan" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="mailto:khanal.mohan19@gmail.com" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
