@@ -9,8 +9,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: R Tutorial
-        href: r-tutorial/RBasics.qmd
+      - href: r-tutorial/index.qmd
+        text: R Tutorial
 
   sidebar:
     - id: rtutorials
@@ -19,9 +19,18 @@ website:
       background: light
       contents:
         - href: r-tutorial/RBasics.qmd
-          text: "Day 1: Introduction to R"
-        - href: r-tutorial/DataImportandDataWrangling.qmd
-          text: "Day 2: Data Import & Wrangling"
+          text: "Introduction to R"
+        - href: r-tutorial/2DataImportandDataWrangling.qmd
+          text: "Data Import & Wrangling"
+        # add next lessons as you create them:
+        # - href: r-tutorial/3ExploratoryDataAnalysis.qmd
+        #   text: "Exploratory Data Analysis"
+        # - href: r-tutorial/4StatisticalTests.qmd
+        #   text: "Statistical Tests"
+        # - href: r-tutorial/5Regression.qmd
+        #   text: "Regression Analysis"
+        # - href: r-tutorial/6Interpretation.qmd
+        #   text: "Interpretation & Reporting"
 
 format:
   html:

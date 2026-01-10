@@ -1,0 +1,20 @@
+---
+title: "R Tutorial for Data Science"
+sidebar: rtutorials
+---
+
+# Welcome to the R Tutorial 👋
+
+This tutorial will guide you through a structured introduction to R and data science concepts.  
+Use the **sidebar on the right** to navigate between lessons.
+
+---
+
+## Course Overview
+
+1. **Introduction to R**
+2. **Data Import & Wrangling**
+3. **Exploratory Data Analysis (EDA)**
+4. **Statistical Tests**
+5. **Regression Analysis**
+6. **Data Interpretation & Reporting**

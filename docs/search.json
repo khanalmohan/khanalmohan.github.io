@@ -4,63 +4,70 @@
     "href": "r-tutorial/2DataImportandDataWrangling.html",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "Part 1 (30 mins) – Data Import and Data Wrangling (Reading Different Types of Data)\nPart 2 (40 mins) – Data Cleaning and Manipulation using dplyr\nPart 3 (30 mins) – Handling Missing Data\nPart 4 (20 mins) – Practice and Q&A\n\n\n\n\n\nWe can also check our working directory using the command getwd().\n\n\n\n#we can import csv file using the base library using the command read.csv \n\ncar_data &lt;-read.csv(\"../data/car data.csv\")\n\n# or we can use readr library using the command read_csv to import csv \n\nlibrary(readr)\nrcar_data &lt;- read_csv(\"../data/car data.csv\")\n\nRows: 301 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Car_Name, Fuel_Type, Seller_Type, Transmission\ndbl (5): Year, Selling_Price, Present_Price, Kms_Driven, Owner\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnames(car_data)\n\n[1] \"Car_Name\"      \"Year\"          \"Selling_Price\" \"Present_Price\"\n[5] \"Kms_Driven\"    \"Fuel_Type\"     \"Seller_Type\"   \"Transmission\" \n[9] \"Owner\"        \n\n\n\n\n\n\n\n\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\n\n# Select relevant columns and filter cars after 2015\ncar_data_filtered &lt;- car_data %&gt;%\n  select(Car_Name, Year, Selling_Price, Fuel_Type) %&gt;%\n  filter(Year &gt; 2015)\n\n\n\n\n\n# Calculate car age and classify it\ncar_data &lt;- car_data %&gt;%\n  mutate(\n    Car_Age = 2025 - Year,\n    Age_Group = ifelse(Car_Age &lt;= 5, \"New\", \"Old\")\n  )\n\n\n\n\n\n# Sort by Selling Price\ncar_data_sorted &lt;- car_data %&gt;% arrange(desc(Selling_Price))\n\n\n\n\n\n# Average selling price by fuel type\ncar_data %&gt;%\n  group_by(Fuel_Type) %&gt;%\n  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  Fuel_Type avg_price\n  &lt;chr&gt;         &lt;dbl&gt;\n1 CNG            3.1 \n2 Diesel        10.3 \n3 Petrol         3.26\n\n\n\n\n\n\n\n\n\n\n\nlibrary(naniar)\nmiss_var_summary(car_data)\n\n# A tibble: 11 × 3\n   variable      n_miss pct_miss\n   &lt;chr&gt;          &lt;int&gt;    &lt;num&gt;\n 1 Car_Name           0        0\n 2 Year               0        0\n 3 Selling_Price      0        0\n 4 Present_Price      0        0\n 5 Kms_Driven         0        0\n 6 Fuel_Type          0        0\n 7 Seller_Type        0        0\n 8 Transmission       0        0\n 9 Owner              0        0\n10 Car_Age            0        0\n11 Age_Group          0        0\n\n\n\n\n\n\n# Remove rows with any missing values\ncar_data_clean &lt;- na.omit(car_data)\n\n# Replace missing Selling_Price with 0 (if any)\ncar_data &lt;- car_data %&gt;%\n  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))\n\n\nhead(car_data)\n\n       Car_Name Year Selling_Price Present_Price Kms_Driven Fuel_Type\n1          ritz 2014          3.35          5.59      27000    Petrol\n2           sx4 2013          4.75          9.54      43000    Diesel\n3          ciaz 2017          7.25          9.85       6900    Petrol\n4       wagon r 2011          2.85          4.15       5200    Petrol\n5         swift 2014          4.60          6.87      42450    Diesel\n6 vitara brezza 2018          9.25          9.83       2071    Diesel\n  Seller_Type Transmission Owner Car_Age Age_Group\n1      Dealer       Manual     0      11       Old\n2      Dealer       Manual     0      12       Old\n3      Dealer       Manual     0       8       Old\n4      Dealer       Manual     0      14       Old\n5      Dealer       Manual     0      11       Old\n6      Dealer       Manual     0       7       Old\n\n\n\n\n\n\n\n\n\n\nImport the car dataset\nSelect cars with Present_Price &gt; 10\nCreate a variable to calculate depreciation = Present_Price - Selling_Price\nGroup by Transmission type and calculate average depreciation\n\n\ncar_data %&gt;%\n  mutate(depreciation = Present_Price - Selling_Price) %&gt;%\n  group_by(Transmission) %&gt;%\n  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  Transmission avg_depreciation\n  &lt;chr&gt;                   &lt;dbl&gt;\n1 Automatic                5.90\n2 Manual                   2.52\n\n\n\n\n\n\n\n\nTidyverse Documentation: https://www.tidyverse.org/packages/\nImporting Data in R: https://r4ds.hadley.nz/data-import.html\nData Transformation Cheatsheet: https://posit.co/resources/cheatsheets/"
+    "text": "Part 1 (30 mins) – Data Import and Data Wrangling (Reading Different Types of Data)\nPart 2 (40 mins) – Data Cleaning and Manipulation using dplyr\nPart 3 (30 mins) – Handling Missing Data\nPart 4 (20 mins) – Practice and Q&A\n\n\n\n\n\nWe can also check our working directory using the command getwd().\n\n\n\n#we can import csv file using the base library using the command read.csv \n\ncar_data &lt;-read.csv(\"../data/car data.csv\")\n\n# or we can use readr library using the command read_csv to import csv \n\nlibrary(readr)\nrcar_data &lt;- read_csv(\"../data/car data.csv\")\n\nRows: 301 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Car_Name, Fuel_Type, Seller_Type, Transmission\ndbl (5): Year, Selling_Price, Present_Price, Kms_Driven, Owner\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnames(car_data)\n\n[1] \"Car_Name\"      \"Year\"          \"Selling_Price\" \"Present_Price\"\n[5] \"Kms_Driven\"    \"Fuel_Type\"     \"Seller_Type\"   \"Transmission\" \n[9] \"Owner\"        \n\n\n\n\n\n\n\n\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\n\n# Select relevant columns and filter cars after 2015\ncar_data_filtered &lt;- car_data %&gt;%\n  select(Car_Name, Year, Selling_Price, Fuel_Type) %&gt;%\n  filter(Year &gt; 2015)\n\n\n\n\n\n# Calculate car age and classify it\ncar_data &lt;- car_data %&gt;%\n  mutate(\n    Car_Age = 2025 - Year,\n    Age_Group = ifelse(Car_Age &lt;= 5, \"New\", \"Old\")\n  )\n\n\n\n\n\n# Sort by Selling Price\ncar_data_sorted &lt;- car_data %&gt;% arrange(desc(Selling_Price))\n\n\n\n\n\n# Average selling price by fuel type\ncar_data %&gt;%\n  group_by(Fuel_Type) %&gt;%\n  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  Fuel_Type avg_price\n  &lt;chr&gt;         &lt;dbl&gt;\n1 CNG            3.1 \n2 Diesel        10.3 \n3 Petrol         3.26\n\n\n\n\n\n\n\n\n\n\n\nlibrary(naniar)\nmiss_var_summary(car_data)\n\n# A tibble: 11 × 3\n   variable      n_miss pct_miss\n   &lt;chr&gt;          &lt;int&gt;    &lt;num&gt;\n 1 Car_Name           0        0\n 2 Year               0        0\n 3 Selling_Price      0        0\n 4 Present_Price      0        0\n 5 Kms_Driven         0        0\n 6 Fuel_Type          0        0\n 7 Seller_Type        0        0\n 8 Transmission       0        0\n 9 Owner              0        0\n10 Car_Age            0        0\n11 Age_Group          0        0\n\n\n\n\n\n\n# Remove rows with any missing values\ncar_data_clean &lt;- na.omit(car_data)\n\n# Replace missing Selling_Price with 0 (if any)\ncar_data &lt;- car_data %&gt;%\n  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))\n\n\nhead(car_data)\n\n       Car_Name Year Selling_Price Present_Price Kms_Driven Fuel_Type\n1          ritz 2014          3.35          5.59      27000    Petrol\n2           sx4 2013          4.75          9.54      43000    Diesel\n3          ciaz 2017          7.25          9.85       6900    Petrol\n4       wagon r 2011          2.85          4.15       5200    Petrol\n5         swift 2014          4.60          6.87      42450    Diesel\n6 vitara brezza 2018          9.25          9.83       2071    Diesel\n  Seller_Type Transmission Owner Car_Age Age_Group\n1      Dealer       Manual     0      11       Old\n2      Dealer       Manual     0      12       Old\n3      Dealer       Manual     0       8       Old\n4      Dealer       Manual     0      14       Old\n5      Dealer       Manual     0      11       Old\n6      Dealer       Manual     0       7       Old\n\n\n\n\n\n\n\n\n\n\nImport the car dataset\nSelect cars with Present_Price &gt; 10\nCreate a variable to calculate depreciation = Present_Price - Selling_Price\nGroup by Transmission type and calculate average depreciation\n\n\ncar_data %&gt;%\n  mutate(depreciation = Present_Price - Selling_Price) %&gt;%\n  group_by(Transmission) %&gt;%\n  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  Transmission avg_depreciation\n  &lt;chr&gt;                   &lt;dbl&gt;\n1 Automatic                5.90\n2 Manual                   2.52\n\n\n\n\n\n\n\n\nTidyverse Documentation: https://www.tidyverse.org/packages/\nImporting Data in R: https://r4ds.hadley.nz/data-import.html\nData Transformation Cheatsheet: https://posit.co/resources/cheatsheets/",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#agenda",
     "href": "r-tutorial/2DataImportandDataWrangling.html#agenda",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "Part 1 (30 mins) – Data Import and Data Wrangling (Reading Different Types of Data)\nPart 2 (40 mins) – Data Cleaning and Manipulation using dplyr\nPart 3 (30 mins) – Handling Missing Data\nPart 4 (20 mins) – Practice and Q&A"
+    "text": "Part 1 (30 mins) – Data Import and Data Wrangling (Reading Different Types of Data)\nPart 2 (40 mins) – Data Cleaning and Manipulation using dplyr\nPart 3 (30 mins) – Handling Missing Data\nPart 4 (20 mins) – Practice and Q&A",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#part-1-reading-different-types-of-data-30-mins",
     "href": "r-tutorial/2DataImportandDataWrangling.html#part-1-reading-different-types-of-data-30-mins",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "We can also check our working directory using the command getwd().\n\n\n\n#we can import csv file using the base library using the command read.csv \n\ncar_data &lt;-read.csv(\"../data/car data.csv\")\n\n# or we can use readr library using the command read_csv to import csv \n\nlibrary(readr)\nrcar_data &lt;- read_csv(\"../data/car data.csv\")\n\nRows: 301 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Car_Name, Fuel_Type, Seller_Type, Transmission\ndbl (5): Year, Selling_Price, Present_Price, Kms_Driven, Owner\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnames(car_data)\n\n[1] \"Car_Name\"      \"Year\"          \"Selling_Price\" \"Present_Price\"\n[5] \"Kms_Driven\"    \"Fuel_Type\"     \"Seller_Type\"   \"Transmission\" \n[9] \"Owner\""
+    "text": "We can also check our working directory using the command getwd().\n\n\n\n#we can import csv file using the base library using the command read.csv \n\ncar_data &lt;-read.csv(\"../data/car data.csv\")\n\n# or we can use readr library using the command read_csv to import csv \n\nlibrary(readr)\nrcar_data &lt;- read_csv(\"../data/car data.csv\")\n\nRows: 301 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Car_Name, Fuel_Type, Seller_Type, Transmission\ndbl (5): Year, Selling_Price, Present_Price, Kms_Driven, Owner\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnames(car_data)\n\n[1] \"Car_Name\"      \"Year\"          \"Selling_Price\" \"Present_Price\"\n[5] \"Kms_Driven\"    \"Fuel_Type\"     \"Seller_Type\"   \"Transmission\" \n[9] \"Owner\"",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#part-2-data-cleaning-and-manipulation-using-dplyr-40-mins",
     "href": "r-tutorial/2DataImportandDataWrangling.html#part-2-data-cleaning-and-manipulation-using-dplyr-40-mins",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\n\n# Select relevant columns and filter cars after 2015\ncar_data_filtered &lt;- car_data %&gt;%\n  select(Car_Name, Year, Selling_Price, Fuel_Type) %&gt;%\n  filter(Year &gt; 2015)\n\n\n\n\n\n# Calculate car age and classify it\ncar_data &lt;- car_data %&gt;%\n  mutate(\n    Car_Age = 2025 - Year,\n    Age_Group = ifelse(Car_Age &lt;= 5, \"New\", \"Old\")\n  )\n\n\n\n\n\n# Sort by Selling Price\ncar_data_sorted &lt;- car_data %&gt;% arrange(desc(Selling_Price))\n\n\n\n\n\n# Average selling price by fuel type\ncar_data %&gt;%\n  group_by(Fuel_Type) %&gt;%\n  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  Fuel_Type avg_price\n  &lt;chr&gt;         &lt;dbl&gt;\n1 CNG            3.1 \n2 Diesel        10.3 \n3 Petrol         3.26"
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\n\n# Select relevant columns and filter cars after 2015\ncar_data_filtered &lt;- car_data %&gt;%\n  select(Car_Name, Year, Selling_Price, Fuel_Type) %&gt;%\n  filter(Year &gt; 2015)\n\n\n\n\n\n# Calculate car age and classify it\ncar_data &lt;- car_data %&gt;%\n  mutate(\n    Car_Age = 2025 - Year,\n    Age_Group = ifelse(Car_Age &lt;= 5, \"New\", \"Old\")\n  )\n\n\n\n\n\n# Sort by Selling Price\ncar_data_sorted &lt;- car_data %&gt;% arrange(desc(Selling_Price))\n\n\n\n\n\n# Average selling price by fuel type\ncar_data %&gt;%\n  group_by(Fuel_Type) %&gt;%\n  summarize(avg_price = mean(Selling_Price, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  Fuel_Type avg_price\n  &lt;chr&gt;         &lt;dbl&gt;\n1 CNG            3.1 \n2 Diesel        10.3 \n3 Petrol         3.26",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#part-3-handling-missing-data-30-mins",
     "href": "r-tutorial/2DataImportandDataWrangling.html#part-3-handling-missing-data-30-mins",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "library(naniar)\nmiss_var_summary(car_data)\n\n# A tibble: 11 × 3\n   variable      n_miss pct_miss\n   &lt;chr&gt;          &lt;int&gt;    &lt;num&gt;\n 1 Car_Name           0        0\n 2 Year               0        0\n 3 Selling_Price      0        0\n 4 Present_Price      0        0\n 5 Kms_Driven         0        0\n 6 Fuel_Type          0        0\n 7 Seller_Type        0        0\n 8 Transmission       0        0\n 9 Owner              0        0\n10 Car_Age            0        0\n11 Age_Group          0        0\n\n\n\n\n\n\n# Remove rows with any missing values\ncar_data_clean &lt;- na.omit(car_data)\n\n# Replace missing Selling_Price with 0 (if any)\ncar_data &lt;- car_data %&gt;%\n  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))\n\n\nhead(car_data)\n\n       Car_Name Year Selling_Price Present_Price Kms_Driven Fuel_Type\n1          ritz 2014          3.35          5.59      27000    Petrol\n2           sx4 2013          4.75          9.54      43000    Diesel\n3          ciaz 2017          7.25          9.85       6900    Petrol\n4       wagon r 2011          2.85          4.15       5200    Petrol\n5         swift 2014          4.60          6.87      42450    Diesel\n6 vitara brezza 2018          9.25          9.83       2071    Diesel\n  Seller_Type Transmission Owner Car_Age Age_Group\n1      Dealer       Manual     0      11       Old\n2      Dealer       Manual     0      12       Old\n3      Dealer       Manual     0       8       Old\n4      Dealer       Manual     0      14       Old\n5      Dealer       Manual     0      11       Old\n6      Dealer       Manual     0       7       Old"
+    "text": "library(naniar)\nmiss_var_summary(car_data)\n\n# A tibble: 11 × 3\n   variable      n_miss pct_miss\n   &lt;chr&gt;          &lt;int&gt;    &lt;num&gt;\n 1 Car_Name           0        0\n 2 Year               0        0\n 3 Selling_Price      0        0\n 4 Present_Price      0        0\n 5 Kms_Driven         0        0\n 6 Fuel_Type          0        0\n 7 Seller_Type        0        0\n 8 Transmission       0        0\n 9 Owner              0        0\n10 Car_Age            0        0\n11 Age_Group          0        0\n\n\n\n\n\n\n# Remove rows with any missing values\ncar_data_clean &lt;- na.omit(car_data)\n\n# Replace missing Selling_Price with 0 (if any)\ncar_data &lt;- car_data %&gt;%\n  mutate(Selling_Price = ifelse(is.na(Selling_Price), 0, Selling_Price))\n\n\nhead(car_data)\n\n       Car_Name Year Selling_Price Present_Price Kms_Driven Fuel_Type\n1          ritz 2014          3.35          5.59      27000    Petrol\n2           sx4 2013          4.75          9.54      43000    Diesel\n3          ciaz 2017          7.25          9.85       6900    Petrol\n4       wagon r 2011          2.85          4.15       5200    Petrol\n5         swift 2014          4.60          6.87      42450    Diesel\n6 vitara brezza 2018          9.25          9.83       2071    Diesel\n  Seller_Type Transmission Owner Car_Age Age_Group\n1      Dealer       Manual     0      11       Old\n2      Dealer       Manual     0      12       Old\n3      Dealer       Manual     0       8       Old\n4      Dealer       Manual     0      14       Old\n5      Dealer       Manual     0      11       Old\n6      Dealer       Manual     0       7       Old",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#part-4-practice-and-qa-20-mins",
     "href": "r-tutorial/2DataImportandDataWrangling.html#part-4-practice-and-qa-20-mins",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "Import the car dataset\nSelect cars with Present_Price &gt; 10\nCreate a variable to calculate depreciation = Present_Price - Selling_Price\nGroup by Transmission type and calculate average depreciation\n\n\ncar_data %&gt;%\n  mutate(depreciation = Present_Price - Selling_Price) %&gt;%\n  group_by(Transmission) %&gt;%\n  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  Transmission avg_depreciation\n  &lt;chr&gt;                   &lt;dbl&gt;\n1 Automatic                5.90\n2 Manual                   2.52"
+    "text": "Import the car dataset\nSelect cars with Present_Price &gt; 10\nCreate a variable to calculate depreciation = Present_Price - Selling_Price\nGroup by Transmission type and calculate average depreciation\n\n\ncar_data %&gt;%\n  mutate(depreciation = Present_Price - Selling_Price) %&gt;%\n  group_by(Transmission) %&gt;%\n  summarize(avg_depreciation = mean(depreciation, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  Transmission avg_depreciation\n  &lt;chr&gt;                   &lt;dbl&gt;\n1 Automatic                5.90\n2 Manual                   2.52",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/2DataImportandDataWrangling.html#further-resources-for-data-import-wrangling",
     "href": "r-tutorial/2DataImportandDataWrangling.html#further-resources-for-data-import-wrangling",
     "title": "2 Data Import and Wrangling",
     "section": "",
-    "text": "Tidyverse Documentation: https://www.tidyverse.org/packages/\nImporting Data in R: https://r4ds.hadley.nz/data-import.html\nData Transformation Cheatsheet: https://posit.co/resources/cheatsheets/"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mohan Khanal",
-    "section": "",
-    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for FALL 2025 session at undergraduate levels and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development.\n\n\n\nCV (PDF)\nLinkedIn\nGitHub\nEmail"
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Mohan Khanal",
-    "section": "",
-    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for FALL 2025 session at undergraduate levels and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development.\n\n\n\nCV (PDF)\nLinkedIn\nGitHub\nEmail"
+    "text": "Tidyverse Documentation: https://www.tidyverse.org/packages/\nImporting Data in R: https://r4ds.hadley.nz/data-import.html\nData Transformation Cheatsheet: https://posit.co/resources/cheatsheets/",
+    "crumbs": [
+      "Data Import & Wrangling"
+    ]
   },
   {
     "objectID": "r-tutorial/RBasics.html",
@@ -69,8 +76,7 @@
     "section": "",
     "text": "R is a powerful programming language and environment for:\n\nStatistical computing and analysis\nData visualization\nData manipulation and cleaning\nMachine learning and predictive modeling\nReproducible research\n\n\n\n\n\nFree and Open Source: No licensing costs\nExtensive Packages: Over 19,000 packages available\nStrong Community: Active support and resources\nIndustry Standard: Used in academia, healthcare, finance, tech\nData Science Ready: Built specifically for data analysis",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -80,8 +86,7 @@
     "section": "",
     "text": "R is a powerful programming language and environment for:\n\nStatistical computing and analysis\nData visualization\nData manipulation and cleaning\nMachine learning and predictive modeling\nReproducible research",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -91,8 +96,7 @@
     "section": "",
     "text": "Free and Open Source: No licensing costs\nExtensive Packages: Over 19,000 packages available\nStrong Community: Active support and resources\nIndustry Standard: Used in academia, healthcare, finance, tech\nData Science Ready: Built specifically for data analysis",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -102,8 +106,7 @@
     "section": "RStudio Interface Overview",
     "text": "RStudio Interface Overview\nRStudio has 4 main panes:\n\nSource/Editor Pane (Top Left): Where you write and save your code\nConsole Pane (Bottom Left): Where code executes and shows output\nEnvironment/History Pane (Top Right): Shows variables and command history\nFiles/Plots/Packages/Help Pane (Bottom Right): Multiple tabs for different functions\n\n\nQuick Tips:\n\nPress Ctrl + Enter (Windows) or Cmd + Enter (Mac) to run current line\nPress Ctrl + Shift + Enter to run entire script\nUse # for comments (code that won’t execute)",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -113,8 +116,7 @@
     "section": "The Classic “Hello World”",
     "text": "The Classic “Hello World”\n\nprint(\"Hello World\")\n\n[1] \"Hello World\"",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -124,8 +126,7 @@
     "section": "Built-in Constants",
     "text": "Built-in Constants\n\n# Pi is a built-in constant in R\npi\n\n[1] 3.141593\n\n# R has many mathematical constants\nexp(1)  # Euler's number (e)\n\n[1] 2.718282",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -135,8 +136,7 @@
     "section": "Arithmetic Operators",
     "text": "Arithmetic Operators\n\n# Addition\n2 + 2\n\n[1] 4\n\n# Subtraction\n10 - 3\n\n[1] 7\n\n# Multiplication\n4 * 5\n\n[1] 20\n\n# Division\n20 / 4\n\n[1] 5\n\n# Exponentiation (Power)\n2^3\n\n[1] 8\n\n# Modulo (Remainder)\n10 %% 3\n\n[1] 1\n\n# Integer Division\n10 %/% 3\n\n[1] 3",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -146,8 +146,7 @@
     "section": "Order of Operations (PEMDAS)",
     "text": "Order of Operations (PEMDAS)\n\n# R follows standard mathematical order\n2 + 3 * 4      # Multiplication first\n\n[1] 14\n\n# Use parentheses to change order\n(2 + 3) * 4    # Addition first\n\n[1] 20",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -157,8 +156,7 @@
     "section": "1. Numeric (Double)",
     "text": "1. Numeric (Double)\nThe default for numbers with decimals:\n\nx &lt;- 5\nx\n\n[1] 5\n\nclass(x)\n\n[1] \"numeric\"\n\ntypeof(x)\n\n[1] \"double\"\n\n# Decimal numbers\nm &lt;- 0.03\nclass(m)\n\n[1] \"numeric\"\n\n# Scientific notation\nlarge_num &lt;- 1.5e6  # 1,500,000\nlarge_num\n\n[1] 1500000",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -168,8 +166,7 @@
     "section": "2. Integer",
     "text": "2. Integer\nWhole numbers (add ‘L’ suffix):\n\ny &lt;- 444L\nclass(y)\n\n[1] \"integer\"\n\ntypeof(y)\n\n[1] \"integer\"\n\n# Check if it's an integer\nis.integer(y)\n\n[1] TRUE\n\nis.integer(5)      # FALSE - default is numeric\n\n[1] FALSE\n\nis.integer(5L)     # TRUE\n\n[1] TRUE",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -179,8 +176,7 @@
     "section": "3. Character (String)",
     "text": "3. Character (String)\nText data enclosed in quotes:\n\nz &lt;- \"This is our first data camp\"\nz\n\n[1] \"This is our first data camp\"\n\nclass(z)\n\n[1] \"character\"\n\n# Single or double quotes both work\nname &lt;- 'John'\ngreeting &lt;- \"Hello, World!\"\n\n# Combine strings\npaste(\"Hello\", \"R\", \"Programming\")\n\n[1] \"Hello R Programming\"\n\npaste0(\"Hello\", \"World\")  # No space\n\n[1] \"HelloWorld\"",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -190,8 +186,7 @@
     "section": "4. Logical (Boolean)",
     "text": "4. Logical (Boolean)\nTRUE or FALSE values:\n\naa &lt;- FALSE\nclass(aa)\n\n[1] \"logical\"\n\nbb &lt;- TRUE\nbb\n\n[1] TRUE\n\n# Logical operations\nTRUE & FALSE   # AND\n\n[1] FALSE\n\nTRUE | FALSE   # OR\n\n[1] TRUE\n\n!TRUE          # NOT\n\n[1] FALSE\n\n# Comparisons return logical values\n5 &gt; 3\n\n[1] TRUE\n\n10 == 10\n\n[1] TRUE\n\n7 != 8\n\n[1] TRUE",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -201,8 +196,7 @@
     "section": "Quick Type Check Summary",
     "text": "Quick Type Check Summary\n\n# Check multiple types at once\ncheck_value &lt;- 42\n\nis.numeric(check_value)\n\n[1] TRUE\n\nis.character(check_value)\n\n[1] FALSE\n\nis.logical(check_value)\n\n[1] FALSE",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -212,8 +206,7 @@
     "section": "Creating Variables",
     "text": "Creating Variables\n\n# Use &lt;- or = for assignment (← is preferred in R)\nk &lt;- 11\nl &lt;- 9\n\n# View variables\nk\n\n[1] 11\n\nl\n\n[1] 9\n\n# Use variables in calculations\nk + l\n\n[1] 20\n\nk * l\n\n[1] 99\n\nk / l\n\n[1] 1.222222\n\n# Update variables\nk &lt;- k + 5\nk\n\n[1] 16",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -223,8 +216,7 @@
     "section": "Variable Naming Rules",
     "text": "Variable Naming Rules\n\n# Good variable names\nstudent_age &lt;- 20\nstudentAge &lt;- 20      # camelCase\nstudent.age &lt;- 20     # dot notation\n\n# Names can include numbers (but not start with them)\ndata1 &lt;- 100\n# 1data &lt;- 100  # This would cause an ERROR\n\n# Case sensitive\nValue &lt;- 10\nvalue &lt;- 20\nValue == value  # FALSE\n\n[1] FALSE",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -234,8 +226,7 @@
     "section": "Best Practices",
     "text": "Best Practices\n\nUse descriptive names: student_score instead of x\nBe consistent with naming style\nAvoid special characters except . and _\nDon’t overwrite built-in functions (like mean, sum, c)",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -245,8 +236,7 @@
     "section": "What are Functions?",
     "text": "What are Functions?\nFunctions are pre-built commands that perform specific tasks.\nSyntax: function_name(arguments)",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -256,8 +246,7 @@
     "section": "Basic Mathematical Functions",
     "text": "Basic Mathematical Functions\n\n# Square root\nsqrt(16)\n\n[1] 4\n\n# Absolute value\nabs(-5)\n\n[1] 5\n\n# Rounding\nround(3.14159, 2)  # Round to 2 decimal places\n\n[1] 3.14\n\n# Logarithms\nlog(10)      # Natural log\n\n[1] 2.302585\n\nlog10(100)   # Base 10 log\n\n[1] 2\n\n# Exponential\nexp(2)\n\n[1] 7.389056",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -267,8 +256,7 @@
     "section": "The c() Function (Concatenate)",
     "text": "The c() Function (Concatenate)\nCreates vectors (collections of values):\n\n# Create a vector of numbers\nnumbers &lt;- c(4, 5, 6)\nnumbers\n\n[1] 4 5 6\n\n# Calculate mean\nmean(c(4, 5, 6))\n\n[1] 5\n\n# Calculate sum\nsum(c(4, 5, 6, 7))\n\n[1] 22\n\n# Create sequences\nsum(1:10)      # Sum of 1 to 10\n\n[1] 55\n\nmean(1:10)     # Mean of 1 to 10\n\n[1] 5.5\n\n# More with vectors\nages &lt;- c(23, 45, 67, 34, 29)\nmin(ages)\n\n[1] 23\n\nmax(ages)\n\n[1] 67\n\nmedian(ages)\n\n[1] 34\n\nlength(ages)   # How many elements\n\n[1] 5",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -278,8 +266,7 @@
     "section": "Statistical Functions",
     "text": "Statistical Functions\n\n# Create sample data\nscores &lt;- c(85, 90, 78, 92, 88, 76, 95)\n\n# Descriptive statistics\nmean(scores)       # Average\n\n[1] 86.28571\n\nmedian(scores)     # Middle value\n\n[1] 88\n\nsd(scores)         # Standard deviation\n\n[1] 7.087884\n\nvar(scores)        # Variance\n\n[1] 50.2381\n\nrange(scores)      # Min and max\n\n[1] 76 95\n\nsummary(scores)    # Quick summary\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  76.00   81.50   88.00   86.29   91.00   95.00",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -289,8 +276,7 @@
     "section": "Creating Sequences",
     "text": "Creating Sequences\n\n# Using colon operator\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n5:15\n\n [1]  5  6  7  8  9 10 11 12 13 14 15\n\n10:1  # Descending\n\n [1] 10  9  8  7  6  5  4  3  2  1\n\n# Using seq() function\nseq(1, 10)                    # Same as 1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\nseq(0, 100, by = 10)          # Specify step\n\n [1]   0  10  20  30  40  50  60  70  80  90 100\n\nseq(0, 1, by = 0.1)           # Decimal steps\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length.out = 11)    # Specify length\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\n# Repeating values\nrep(5, times = 3)             # Repeat 5 three times\n\n[1] 5 5 5\n\nrep(1:3, times = 3)           # Repeat sequence\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, each = 3)            # Repeat each element\n\n[1] 1 1 1 2 2 2 3 3 3",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -300,8 +286,7 @@
     "section": "Help Functions",
     "text": "Help Functions\n\n# Get help on a function\n?mean\nhelp(sum)\n\n# Search for topics\n??regression\nhelp.search(\"linear model\")\n\n# Examples of function usage\nexample(mean)\n\n# See arguments of a function\nargs(seq)",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -311,8 +296,7 @@
     "section": "Useful Commands",
     "text": "Useful Commands\n\n# List objects in environment\nls()\n\n [1] \"aa\"              \"ages\"            \"bb\"              \"check_value\"    \n [5] \"data1\"           \"greeting\"        \"k\"               \"l\"              \n [9] \"large_num\"       \"m\"               \"name\"            \"numbers\"        \n[13] \"pandoc_dir\"      \"quarto_bin_path\" \"scores\"          \"student_age\"    \n[17] \"student.age\"     \"studentAge\"      \"value\"           \"Value\"          \n[21] \"x\"               \"y\"               \"z\"              \n\n# Remove an object\n# rm(x)\n\n# Clear entire environment\n# rm(list = ls())\n\n# Check current working directory\ngetwd()\n\n[1] \"/home/mk/Documents/khanalmohan.github.io/r-tutorial\"\n\n# Set working directory (example - modify path)\n# setwd(\"C:/Users/YourName/Documents/R_Training\")",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -322,8 +306,7 @@
     "section": "Exercise 1: Basic Calculations",
     "text": "Exercise 1: Basic Calculations\nCalculate the following and store in variables:\n\nThe sum of 15 and 27\n8 raised to the power of 3\nThe square root of 144\n\n\n# Your code here\nsum_result &lt;- 15 + 27\npower_result &lt;- 8^3\nsqrt_result &lt;- sqrt(144)\n\n# View results\nsum_result\n\n[1] 42\n\npower_result\n\n[1] 512\n\nsqrt_result\n\n[1] 12",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -333,8 +316,7 @@
     "section": "Exercise 2: Working with Vectors",
     "text": "Exercise 2: Working with Vectors\nCreate a vector of temperatures: 72, 68, 75, 80, 77\nCalculate: - Mean temperature - Highest temperature - Temperature range\n\n# Your code here\ntemperatures &lt;- c(72, 68, 75, 80, 77)\n\nmean(temperatures)\n\n[1] 74.4\n\nmax(temperatures)\n\n[1] 80\n\nrange(temperatures)\n\n[1] 68 80",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
   },
   {
@@ -344,8 +326,35 @@
     "section": "Exercise 3: Data Types",
     "text": "Exercise 3: Data Types\nIdentify the data type of the following:\n\nvar1 &lt;- 42\nvar2 &lt;- \"Data Science\"\nvar3 &lt;- TRUE\nvar4 &lt;- 3.14159\n\nclass(var1)\n\n[1] \"numeric\"\n\nclass(var2)\n\n[1] \"character\"\n\nclass(var3)\n\n[1] \"logical\"\n\nclass(var4)\n\n[1] \"numeric\"",
     "crumbs": [
-      "R Tutorial",
-      "Day 1: Introduction to R"
+      "Introduction to R"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mohan Khanal",
+    "section": "",
+    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for Fall 2025 at undergraduate level and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Mohan Khanal",
+    "section": "",
+    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for Fall 2025 at undergraduate level and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development."
+  },
+  {
+    "objectID": "r-tutorial/index.html",
+    "href": "r-tutorial/index.html",
+    "title": "R Tutorial for Data Science",
+    "section": "",
+    "text": "This tutorial will guide you through a structured introduction to R and data science concepts.\nUse the sidebar on the right to navigate between lessons.\n\n\n\n\nIntroduction to R\nData Import & Wrangling\nExploratory Data Analysis (EDA)\nStatistical Tests\nRegression Analysis\nData Interpretation & Reporting"
+  },
+  {
+    "objectID": "r-tutorial/index.html#course-overview",
+    "href": "r-tutorial/index.html#course-overview",
+    "title": "R Tutorial for Data Science",
+    "section": "",
+    "text": "Introduction to R\nData Import & Wrangling\nExploratory Data Analysis (EDA)\nStatistical Tests\nRegression Analysis\nData Interpretation & Reporting"
   }
 ]
