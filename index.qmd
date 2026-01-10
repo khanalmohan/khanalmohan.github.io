@@ -1,9 +1,10 @@
 ---
 title: "Mohan Khanal"
-image: "D:/khanalmohan.github.io/profilepic.png" 
+image: "profilepic.jpg"
+
 about:
   template: jolla
-  image: "D:/khanalmohan.github.io/profilepic.png" 
+  image: "profilepic.jpg"
   links:
     - icon: linkedin
       text: LinkedIn
@@ -19,7 +20,7 @@ about:
 ## About Me
 
 I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.  
-My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.  
+My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.
 
-I have been engaged in tutoring economics at NIST for the past three years and conducting R for Data Science sessions at GRIT.  
+I have been engaged in tutoring economics at NIST for the past three years and conducting **R for Data Science** sessions at GRIT.  
 I am passionate about data-driven research, policy analysis, and promoting local economic development.
