@@ -1,14 +1,27 @@
-navbar:
-  left:
-    - href: index.qmd
-      text: "Home"
-    - sidebar: rtutorials
+project:
+  type: website
+  output-dir: docs
 
-sidebar:
-  - id: rtutorials
-    title: "R Tutorial for Data Science"
-    style: docked
-    background: light
-    contents:
+website:
+  title: "Mohan Khanal"
+
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
       - href: r-tutorial/RBasics.qmd
-        text: "Day 1: Introduction to R"
+        text: R Tutorial
+
+  sidebar:
+    - id: rtutorials
+      title: "R Tutorial for Data Science"
+      style: docked
+      background: light
+      contents:
+        - href: r-tutorial/RBasics.qmd
+          text: "Day 1: Introduction to R"
+
+format:
+  html:
+    theme: cosmo
+    toc: true

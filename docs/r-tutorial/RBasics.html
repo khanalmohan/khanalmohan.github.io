@@ -8,7 +8,7 @@
 
 <meta name="author" content="Mohan Khanal">
 
-<title>Day 1: Introduction to R and RStudio</title>
+<title>Day 1: Introduction to R and RStudio – Mohan Khanal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -75,13 +76,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f0b4e5cf8ad58cb2f959a8653ceff67c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-988da1e01cf162376563127ce6fc50e1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -107,14 +108,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Mohan Khanal</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../r-tutorial/RBasics.html" aria-current="page"> 
+<span class="menu-text">R Tutorial</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-tutorial/RBasics.html">Day 1: Introduction to R</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r-tutorial/RBasics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 1: Introduction to R</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welcome-to-r-programming" id="toc-welcome-to-r-programming" class="nav-link active" data-scroll-target="#welcome-to-r-programming">Welcome to R Programming! 🎉</a>
+  <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">What is R?</a></li>
+  <li><a href="#why-learn-r" id="toc-why-learn-r" class="nav-link" data-scroll-target="#why-learn-r">Why Learn R?</a></li>
+  </ul></li>
+  <li><a href="#getting-started-with-rstudio" id="toc-getting-started-with-rstudio" class="nav-link" data-scroll-target="#getting-started-with-rstudio">Getting Started with RStudio</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-interface-overview" id="toc-rstudio-interface-overview" class="nav-link" data-scroll-target="#rstudio-interface-overview">RStudio Interface Overview</a>
+  <ul class="collapse">
+  <li><a href="#quick-tips" id="toc-quick-tips" class="nav-link" data-scroll-target="#quick-tips">Quick Tips:</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#your-first-r-code" id="toc-your-first-r-code" class="nav-link" data-scroll-target="#your-first-r-code">Your First R Code</a>
+  <ul class="collapse">
+  <li><a href="#the-classic-hello-world" id="toc-the-classic-hello-world" class="nav-link" data-scroll-target="#the-classic-hello-world">The Classic “Hello World”</a></li>
+  <li><a href="#built-in-constants" id="toc-built-in-constants" class="nav-link" data-scroll-target="#built-in-constants">Built-in Constants</a></li>
+  </ul></li>
+  <li><a href="#basic-math-operations" id="toc-basic-math-operations" class="nav-link" data-scroll-target="#basic-math-operations">Basic Math Operations</a>
+  <ul class="collapse">
+  <li><a href="#arithmetic-operators" id="toc-arithmetic-operators" class="nav-link" data-scroll-target="#arithmetic-operators">Arithmetic Operators</a></li>
+  <li><a href="#order-of-operations-pemdas" id="toc-order-of-operations-pemdas" class="nav-link" data-scroll-target="#order-of-operations-pemdas">Order of Operations (PEMDAS)</a></li>
+  </ul></li>
+  <li><a href="#data-types-in-r" id="toc-data-types-in-r" class="nav-link" data-scroll-target="#data-types-in-r">Data Types in R</a>
+  <ul class="collapse">
+  <li><a href="#numeric-double" id="toc-numeric-double" class="nav-link" data-scroll-target="#numeric-double">1. Numeric (Double)</a></li>
+  <li><a href="#integer" id="toc-integer" class="nav-link" data-scroll-target="#integer">2. Integer</a></li>
+  <li><a href="#character-string" id="toc-character-string" class="nav-link" data-scroll-target="#character-string">3. Character (String)</a></li>
+  <li><a href="#logical-boolean" id="toc-logical-boolean" class="nav-link" data-scroll-target="#logical-boolean">4. Logical (Boolean)</a></li>
+  <li><a href="#quick-type-check-summary" id="toc-quick-type-check-summary" class="nav-link" data-scroll-target="#quick-type-check-summary">Quick Type Check Summary</a></li>
+  </ul></li>
+  <li><a href="#variables-and-assignment" id="toc-variables-and-assignment" class="nav-link" data-scroll-target="#variables-and-assignment">Variables and Assignment</a>
+  <ul class="collapse">
+  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables">Creating Variables</a></li>
+  <li><a href="#variable-naming-rules" id="toc-variable-naming-rules" class="nav-link" data-scroll-target="#variable-naming-rules">Variable Naming Rules</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  </ul></li>
+  <li><a href="#using-functions" id="toc-using-functions" class="nav-link" data-scroll-target="#using-functions">Using Functions</a>
+  <ul class="collapse">
+  <li><a href="#what-are-functions" id="toc-what-are-functions" class="nav-link" data-scroll-target="#what-are-functions">What are Functions?</a></li>
+  <li><a href="#basic-mathematical-functions" id="toc-basic-mathematical-functions" class="nav-link" data-scroll-target="#basic-mathematical-functions">Basic Mathematical Functions</a></li>
+  <li><a href="#the-c-function-concatenate" id="toc-the-c-function-concatenate" class="nav-link" data-scroll-target="#the-c-function-concatenate">The c() Function (Concatenate)</a></li>
+  <li><a href="#statistical-functions" id="toc-statistical-functions" class="nav-link" data-scroll-target="#statistical-functions">Statistical Functions</a></li>
+  </ul></li>
+  <li><a href="#sequences-and-patterns" id="toc-sequences-and-patterns" class="nav-link" data-scroll-target="#sequences-and-patterns">Sequences and Patterns</a>
+  <ul class="collapse">
+  <li><a href="#creating-sequences" id="toc-creating-sequences" class="nav-link" data-scroll-target="#creating-sequences">Creating Sequences</a></li>
+  </ul></li>
+  <li><a href="#getting-help-in-r" id="toc-getting-help-in-r" class="nav-link" data-scroll-target="#getting-help-in-r">Getting Help in R</a>
+  <ul class="collapse">
+  <li><a href="#help-functions" id="toc-help-functions" class="nav-link" data-scroll-target="#help-functions">Help Functions</a></li>
+  <li><a href="#useful-commands" id="toc-useful-commands" class="nav-link" data-scroll-target="#useful-commands">Useful Commands</a></li>
+  </ul></li>
+  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises">Practice Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-basic-calculations" id="toc-exercise-1-basic-calculations" class="nav-link" data-scroll-target="#exercise-1-basic-calculations">Exercise 1: Basic Calculations</a></li>
+  <li><a href="#exercise-2-working-with-vectors" id="toc-exercise-2-working-with-vectors" class="nav-link" data-scroll-target="#exercise-2-working-with-vectors">Exercise 2: Working with Vectors</a></li>
+  <li><a href="#exercise-3-data-types" id="toc-exercise-3-data-types" class="nav-link" data-scroll-target="#exercise-3-data-types">Exercise 3: Data Types</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways 📝</a></li>
+  <li><a href="#homework-practice" id="toc-homework-practice" class="nav-link" data-scroll-target="#homework-practice">Homework / Practice</a></li>
+  <li><a href="#next-session-preview" id="toc-next-session-preview" class="nav-link" data-scroll-target="#next-session-preview">Next Session Preview</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
