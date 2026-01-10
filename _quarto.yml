@@ -10,7 +10,7 @@ website:
       - href: index.qmd
         text: Home
       - text: R Tutorial
-        href: r-tutorial/day-01-r-basics.qmd
+        href: r-tutorial/RBasics.qmd
 
   sidebar:
     - id: rtutorials
@@ -18,9 +18,9 @@ website:
       style: docked
       background: light
       contents:
-        - href: r-tutorial/day-01-r-basics.qmd
+        - href: r-tutorial/RBasics.qmd
           text: "Day 1: Introduction to R"
-        - href: r-tutorial/day-02-data-import-wrangling.qmd
+        - href: r-tutorial/DataImportandDataWrangling.qmd
           text: "Day 2: Data Import & Wrangling"
 
 format:
