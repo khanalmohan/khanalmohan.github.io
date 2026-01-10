@@ -25,5 +25,5 @@ about:
 I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.  
 My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.
 
-I have been engaged in tutoring economics at NIST for the past three years and conducting **R for Data Science** sessions at GRIT.  
+I am engaged in tutoring econometrics and behavioral economics for FALL 2025 intake. I am conducting **R for Data Science** sessions to multidisciplinary data science enthusiasts.  
 I am passionate about data-driven research, policy analysis, and promoting local economic development.
