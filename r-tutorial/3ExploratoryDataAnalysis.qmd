@@ -1,18 +1,19 @@
 ---
 title: "3 Exploratory Data Analysis (EDA)"
 author: "Mohan Khanal"
-date: "2025-01-08"
+date: "2026-01-10"
 format:
   html:
     toc: true
     toc-location: left
     toc-title: "Contents"
     toc-depth: 2
-  pdf:
-    toc: true
-    number-sections: true
 ---
-
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+options(warn = -1)
+```
 # 📊 Chapter 3: Exploratory Data Analysis (EDA)
 
 ## 🕐 Agenda

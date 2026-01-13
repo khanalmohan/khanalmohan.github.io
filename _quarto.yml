@@ -22,9 +22,8 @@ website:
           text: "Introduction to R"
         - href: r-tutorial/2DataImportandDataWrangling.qmd
           text: "Data Import & Wrangling"
-        # add next lessons as you create them:
-        # - href: r-tutorial/3ExploratoryDataAnalysis.qmd
-        #   text: "Exploratory Data Analysis"
+        - href: r-tutorial/3ExploratoryDataAnalysis.qmd
+          text: "Exploratory Data Analysis"
         # - href: r-tutorial/4StatisticalTests.qmd
         #   text: "Statistical Tests"
         # - href: r-tutorial/5Regression.qmd
