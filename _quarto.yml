@@ -24,8 +24,8 @@ website:
           text: "Data Import & Wrangling"
         - href: r-tutorial/3ExploratoryDataAnalysis.qmd
           text: "Exploratory Data Analysis"
-        # - href: r-tutorial/4StatisticalTests.qmd
-        #   text: "Statistical Tests"
+        - href: r-tutorial/4StatisticalAnalysis.qmd
+          text: "Statistical Analysis"
         # - href: r-tutorial/5Regression.qmd
         #   text: "Regression Analysis"
         # - href: r-tutorial/6Interpretation.qmd

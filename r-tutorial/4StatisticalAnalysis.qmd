@@ -1,0 +1,539 @@
+---
+title: "4 Statistical Tests with R"
+author: "Mohan Khanal"
+date: "2026-01-17"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 2
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+options(warn = -1)
+```
+
+# 📊 Chapter 4: Statistical Tests with R
+
+## 🕐 Agenda
+
+-   **Part 1 (30 mins)** – Exploratory Data Analysis (Cross-tabulation & Correlation)
+-   **Part 2 (30 mins)** – T-Tests (Comparing Two Groups)
+-   **Part 3 (30 mins)** – ANOVA (Comparing Multiple Groups)
+-   **Part 4 (20 mins)** – Visualizations & Interpretation
+-   **Part 5 (10 mins)** – Practice and Q&A
+
+------------------------------------------------------------------------
+
+## Setup: Load Data and Libraries
+
+```{r, warning=FALSE, message=FALSE}
+# Load required libraries
+library(dplyr)
+library(readr)
+library(ggplot2)
+
+# Import car sales dataset
+
+car_data <- read.csv("~/Documents/khanalmohan.github.io/data/car_data.csv")
+
+# Check structure
+str(car_data)
+
+```
+
+### Understanding the Dataset
+
+Our car sales dataset contains:
+- **Selling_Price**: Price at which car was sold
+- **Present_Price**: Current market price
+- **Kms_Driven**: Total kilometers driven
+- **Fuel_Type**: Petrol, Diesel, or CNG
+- **Transmission**: Manual or Automatic
+- **Owner**: Number of previous owners
+- **Year**: Year of manufacture
+
+------------------------------------------------------------------------
+
+## Part 1: Exploratory Data Analysis (30 mins)
+
+### Cross-Tabulation (Contingency Tables)
+
+Cross-tabulation shows the relationship between two categorical variables.
+
+```{r}
+# Basic cross-tabulation with counts
+table(car_data$Fuel_Type, car_data$Transmission)
+
+# Add row and column totals
+addmargins(table(car_data$Fuel_Type, car_data$Transmission))
+```
+
+#### Enhanced Cross-Tabulation with Percentages
+
+```{r, warning=FALSE, message=FALSE}
+library(modelsummary)
+
+# Row percentages - "Of cars with this fuel type, what % have each transmission?"
+crosstab_row <- datasummary_crosstab(
+  Fuel_Type ~ Transmission, 
+  statistic = ~ N + 1 + Percent("row"),
+  data = car_data
+)
+crosstab_row
+```
+
+```{r}
+# Column percentages - "Of cars with this transmission, what % have each fuel type?"
+crosstab_col <- datasummary_crosstab(
+  Fuel_Type ~ Transmission,
+  statistic = ~ N + 1 + Percent("col"),
+  data = car_data
+)
+crosstab_col
+```
+
+**💡 Interpretation Tips:**
+- Look for cells with notably high or low counts
+- Row % shows distribution within each row category
+- Column % shows distribution within each column category
+
+### Correlation Analysis
+
+Correlation measures the strength of relationship between two numeric variables.
+
+```{r}
+# Correlation between Selling Price and Kilometers Driven
+cor.test(car_data$Selling_Price, car_data$Kms_Driven)
+```
+
+**Understanding Correlation:**
+- **Range**: -1 to +1
+- **Positive (0 to +1)**: Variables increase together
+- **Negative (-1 to 0)**: One increases, other decreases
+- **Near zero**: No linear relationship
+
+**Strength Guide:**
+- 0.0 to 0.3: Weak
+- 0.3 to 0.7: Moderate
+- 0.7 to 1.0: Strong
+
+```{r}
+# Correlation matrix for multiple variables
+numeric_vars <- car_data %>% 
+  select(Selling_Price, Present_Price, Kms_Driven, Year)
+
+cor_matrix <- cor(numeric_vars, use = "complete.obs")
+round(cor_matrix, 3)
+```
+
+### Visualize Correlation
+
+```{r}
+# Scatter plot with correlation
+ggplot(car_data, aes(x = Present_Price, y = Selling_Price)) +
+  geom_point(alpha = 0.5, color = "darkgreen") +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(
+    title = "Present Price vs Selling Price",
+    subtitle = paste("Correlation:", round(cor(car_data$Present_Price, car_data$Selling_Price), 3)),
+    x = "Present Price (in lakhs)",
+    y = "Selling Price (in lakhs)"
+  ) +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+## Part 2: T-Tests (30 mins)
+
+### What is a T-Test?
+
+T-tests compare the **means** of two groups to see if they're significantly different.
+
+**Example Question:** Do automatic cars have different selling prices than manual cars?
+
+### Hypotheses
+
+- **Null Hypothesis (H₀)**: No difference in average selling prices
+- **Alternative Hypothesis (H₁)**: There IS a difference in average selling prices
+
+### Running the T-Test
+
+```{r}
+# Independent samples t-test
+t_test_result <- t.test(Selling_Price ~ Transmission, data = car_data)
+t_test_result
+```
+
+### Interpreting T-Test Results
+
+**Key Components:**
+1. **t-statistic**: How many standard errors separate the two means
+2. **p-value**: 
+   - p < 0.05 → **Significant difference** (reject null hypothesis)
+   - p > 0.05 → No significant difference
+3. **Confidence interval**: Range where true difference likely falls
+4. **Sample means**: Average for each group
+
+### Visualizing T-Test Results
+
+```{r}
+# Boxplot comparison
+ggplot(car_data, aes(x = Transmission, y = Selling_Price, fill = Transmission)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Selling Price by Transmission Type",
+    subtitle = paste("p-value:", round(t_test_result$p.value, 4)),
+    x = "Transmission Type",
+    y = "Selling Price (in lakhs)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+### Calculate Descriptive Stats by Group
+
+```{r}
+car_data %>%
+  group_by(Transmission) %>%
+  summarize(
+    Mean = mean(Selling_Price),
+    SD = sd(Selling_Price),
+    Median = median(Selling_Price),
+    Count = n()
+  )
+```
+
+### Check T-Test Assumptions
+
+```{r}
+# Visual check: Q-Q plots for normality
+par(mfrow = c(1, 2))
+qqnorm(car_data$Selling_Price[car_data$Transmission == "Manual"], 
+       main = "Q-Q Plot: Manual")
+qqline(car_data$Selling_Price[car_data$Transmission == "Manual"])
+
+qqnorm(car_data$Selling_Price[car_data$Transmission == "Automatic"], 
+       main = "Q-Q Plot: Automatic")
+qqline(car_data$Selling_Price[car_data$Transmission == "Automatic"])
+```
+
+------------------------------------------------------------------------
+
+## Part 3: ANOVA (30 mins)
+
+### What is ANOVA?
+
+ANOVA (Analysis of Variance) compares means across **three or more groups**.
+
+**Example Question:** Do selling prices differ among different fuel types (Petrol, Diesel, CNG)?
+
+### Hypotheses
+
+- **Null Hypothesis (H₀)**: All group means are equal
+- **Alternative Hypothesis (H₁)**: At least one group mean differs
+
+### Running ANOVA
+
+```{r}
+# One-way ANOVA
+anova_result <- aov(Selling_Price ~ Fuel_Type, data = car_data)
+summary(anova_result)
+```
+
+### Interpreting ANOVA Results
+
+**Key Components:**
+1. **F-statistic**: Ratio of between-group to within-group variance
+2. **p-value (Pr(>F))**: 
+   - p < 0.05 → At least one group differs significantly
+   - p > 0.05 → No significant differences detected
+
+### Post-Hoc Tests (Which groups differ?)
+
+If ANOVA is significant, use **Tukey's HSD** to find which specific groups differ.
+
+```{r}
+# Tukey's Honestly Significant Difference
+tukey_result <- TukeyHSD(anova_result)
+tukey_result
+```
+
+**💡 Reading Tukey Results:**
+- **diff**: Difference in means between groups
+- **p adj**: Adjusted p-value
+  - p adj < 0.05 → Groups significantly differ
+  - p adj > 0.05 → No significant difference
+- If confidence interval includes 0 → not significant
+
+### Visualize Tukey Results
+
+```{r}
+# Plot Tukey confidence intervals
+plot(tukey_result, las = 1)
+```
+
+### Group Statistics
+
+```{r}
+car_data %>%
+  group_by(Fuel_Type) %>%
+  summarize(
+    Mean = mean(Selling_Price),
+    SD = sd(Selling_Price),
+    Median = median(Selling_Price),
+    Count = n()
+  )
+```
+
+------------------------------------------------------------------------
+
+## Part 4: Visualizations & Interpretation (20 mins)
+
+### Comprehensive Comparison Plots
+
+```{r}
+# Create three-panel comparison
+par(mfrow = c(1, 3))
+
+# 1. T-test visualization
+boxplot(Selling_Price ~ Transmission, data = car_data,
+        main = "T-Test: Transmission",
+        xlab = "Transmission", 
+        ylab = "Selling Price",
+        col = c("lightblue", "lightcoral"))
+
+# 2. ANOVA visualization
+boxplot(Selling_Price ~ Fuel_Type, data = car_data,
+        main = "ANOVA: Fuel Type",
+        xlab = "Fuel Type", 
+        ylab = "Selling Price",
+        col = c("orange", "lightgreen", "yellow"))
+
+# 3. Correlation visualization
+plot(car_data$Present_Price, car_data$Selling_Price,
+     main = "Correlation Analysis",
+     xlab = "Present Price", 
+     ylab = "Selling Price",
+     pch = 19, col = "darkgreen")
+abline(lm(Selling_Price ~ Present_Price, data = car_data), 
+       col = "red", lwd = 2)
+```
+
+### Enhanced ANOVA Visualization
+
+```{r}
+# Boxplot with individual points
+ggplot(car_data, aes(x = Fuel_Type, y = Selling_Price, fill = Fuel_Type)) +
+  geom_boxplot(alpha = 0.7, outlier.color = "red") +
+  geom_jitter(width = 0.2, alpha = 0.3, size = 1) +
+  stat_summary(fun = mean, geom = "point", 
+               shape = 23, size = 3, fill = "white", color = "black") +
+  labs(
+    title = "Selling Price by Fuel Type",
+    subtitle = "Diamonds show group means",
+    x = "Fuel Type",
+    y = "Selling Price (in lakhs)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+### How to Report Results
+
+**T-Test Example:**
+"Automatic transmission cars (M = 7.5 lakhs) had significantly higher selling prices than manual transmission cars (M = 4.3 lakhs), t(298) = 6.82, p < .001."
+
+**ANOVA Example:**
+"Selling prices differed significantly across fuel types, F(2, 297) = 12.45, p < .001. Post-hoc tests showed diesel cars were more expensive than petrol (p = .002) and CNG cars (p < .001)."
+
+**Correlation Example:**
+"There was a strong positive correlation between present price and selling price, r = .89, p < .001."
+
+------------------------------------------------------------------------
+
+## Part 5: Practice and Q&A (10 mins)
+
+### Practice Tasks
+
+#### Task 1: Cross-Tabulation
+Create a cross-tabulation of `Owner` and `Fuel_Type`. What patterns do you see?
+
+```{r}
+# Solution
+table(car_data$Owner, car_data$Fuel_Type)
+```
+
+#### Task 2: Correlation
+Calculate the correlation between `Year` and `Selling_Price`. Interpret the result.
+
+```{r}
+# Solution
+cor.test(car_data$Year, car_data$Selling_Price)
+
+# Visualization
+ggplot(car_data, aes(x = Year, y = Selling_Price)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "Year vs Selling Price") +
+  theme_minimal()
+```
+
+#### Task 3: T-Test
+Test if there's a difference in kilometers driven between Petrol and Diesel cars.
+
+```{r}
+# Solution
+# Filter for just Petrol and Diesel
+petrol_diesel <- car_data %>% 
+  filter(Fuel_Type %in% c("Petrol", "Diesel"))
+
+t.test(Kms_Driven ~ Fuel_Type, data = petrol_diesel)
+```
+
+#### Task 4: ANOVA
+Test if `Present_Price` differs across different `Owner` categories.
+
+```{r}
+# Solution
+anova_owner <- aov(Present_Price ~ factor(Owner), data = car_data)
+summary(anova_owner)
+
+# If significant, run Tukey
+TukeyHSD(anova_owner)
+```
+
+#### Task 5: Complete Analysis
+Compare `Kms_Driven` between Manual and Automatic transmission:
+1. Calculate descriptive statistics
+2. Run t-test
+3. Create visualization
+
+```{r}
+# Solution
+
+# 1. Descriptive statistics
+car_data %>%
+  group_by(Transmission) %>%
+  summarize(
+    Mean_Kms = mean(Kms_Driven),
+    SD_Kms = sd(Kms_Driven),
+    Median_Kms = median(Kms_Driven),
+    N = n()
+  )
+
+# 2. T-test
+t_test_kms <- t.test(Kms_Driven ~ Transmission, data = car_data)
+t_test_kms
+
+# 3. Visualization
+ggplot(car_data, aes(x = Transmission, y = Kms_Driven, fill = Transmission)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Kilometers Driven by Transmission Type",
+    subtitle = paste("p-value:", round(t_test_kms$p.value, 4)),
+    x = "Transmission",
+    y = "Kilometers Driven"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+### Challenge: Multi-Step Analysis
+
+Investigate the relationship between car age and selling price:
+1. Create an `Age` variable (2026 - Year)
+2. Calculate correlation with `Selling_Price`
+3. Create scatter plot with trend line
+4. Group cars into "New" (Age < 5) and "Old" (Age >= 5)
+5. Run t-test comparing selling prices
+
+```{r}
+# Solution
+
+# 1. Create Age variable
+car_data <- car_data %>%
+  mutate(Age = 2026 - Year)
+
+# 2. Correlation
+cor_test <- cor.test(car_data$Age, car_data$Selling_Price)
+cor_test
+
+# 3. Scatter plot
+ggplot(car_data, aes(x = Age, y = Selling_Price)) +
+  geom_point(alpha = 0.5, color = "blue") +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(
+    title = "Car Age vs Selling Price",
+    subtitle = paste("Correlation:", round(cor_test$estimate, 3)),
+    x = "Car Age (years)",
+    y = "Selling Price (in lakhs)"
+  ) +
+  theme_minimal()
+
+# 4. Create age groups
+car_data <- car_data %>%
+  mutate(Age_Group = ifelse(Age < 5, "New", "Old"))
+
+# 5. T-test
+t.test(Selling_Price ~ Transmission, data = car_data)
+
+# Visualization
+ggplot(car_data, aes(x = Age_Group, y = Selling_Price, fill = Age_Group)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Selling Price: New vs Old Cars",
+    x = "Age Group",
+    y = "Selling Price (in lakhs)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+------------------------------------------------------------------------
+
+## 📚 Key Takeaways
+
+✅ **Cross-tabulation** shows relationships between categorical variables  
+✅ **Correlation** measures strength of relationship between numeric variables (-1 to +1)  
+✅ **T-tests** compare means of two groups (p < 0.05 = significant)  
+✅ **ANOVA** compares means of 3+ groups  
+✅ **Tukey's HSD** identifies which specific groups differ after ANOVA  
+✅ Always visualize results with boxplots and scatter plots  
+✅ Check assumptions: normality, equal variance  
+✅ Report: test statistic, p-value, means, and interpretation  
+
+------------------------------------------------------------------------
+
+## 🎯 Statistical Decision Guide
+
+| **Question** | **Test to Use** |
+|-------------|----------------|
+| Compare 2 groups (numeric outcome) | T-test |
+| Compare 3+ groups (numeric outcome) | ANOVA + Tukey |
+| Relationship between 2 numeric variables | Correlation |
+| Relationship between 2 categorical variables | Cross-tabulation / Chi-square |
+
+------------------------------------------------------------------------
+
+## 📖 Resources
+
+-   Quick-R Statistical Tests: https://www.statmethods.net/stats/
+-   R Statistics Documentation: `?t.test`, `?aov`, `?cor.test`
+-   ANOVA Tutorial: https://www.datanovia.com/en/lessons/anova-in-r/
+-   Correlation Guide: https://www.statology.org/correlation-in-r/
+
+------------------------------------------------------------------------
+
+## 🔜 Next Chapter Preview
+
+**Chapter 5: Regression Analysis**
+- Simple and multiple linear regression
+- Model building and interpretation
+- Prediction and forecasting
+- Model diagnostics
