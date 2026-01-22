@@ -1,5 +1,5 @@
 ---
-title: "Day 1: Introduction to R and RStudio"
+title: "1 Introduction to R and RStudio"
 subtitle: "January 05-06, 2026 | 7:00 - 8:30 PM"
 author: "Mohan Khanal"
 ---

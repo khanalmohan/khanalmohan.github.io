@@ -26,8 +26,8 @@ website:
           text: "Exploratory Data Analysis"
         - href: r-tutorial/4StatisticalAnalysis.qmd
           text: "Statistical Analysis"
-        # - href: r-tutorial/5Regression.qmd
-        #   text: "Regression Analysis"
+        - href: r-tutorial/5RegressionAnalysis.qmd
+          text: "Regression Analysis"
         # - href: r-tutorial/6Interpretation.qmd
         #   text: "Interpretation & Reporting"
 

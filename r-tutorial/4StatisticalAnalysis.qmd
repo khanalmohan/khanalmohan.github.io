@@ -485,7 +485,7 @@ t.test(Selling_Price ~ Transmission, data = car_data)
 
 # Visualization
 ggplot(car_data, aes(x = Age_Group, y = Selling_Price, fill = Age_Group)) +
-  geom_boxplot(alpha = 0.7) +
+  geom_boxplot(alpha = 0.7) + 
   labs(
     title = "Selling Price: New vs Old Cars",
     x = "Age Group",
