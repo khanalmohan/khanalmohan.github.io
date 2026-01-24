@@ -1,0 +1,221 @@
+---
+title: "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Chapter 1 Introduction
+
+**Objective:** Establish the framework of economic analysis —
+preferences, choices, and basic optimization.
+
+## 1.1 Economic Agents and Choice
+
+An economic agent faces alternatives and must choose. The essence of
+microeconomics lies in modeling **choice under scarcity** and **rational
+decision-making**.
+
+### Rationality
+
+*An agent is rational if preferences are complete and transitive.*
+
+-   **Completeness:** For any two alternatives ( x, y ), either (x
+    \succeq y), (y \succeq x), or both.
+-   **Transitivity:** If (x \succeq y) and (y \succeq z), then (x
+    \succeq z).
+
+### Choice Correspondence
+
+A choice correspondence (C(A)) selects a subset of (A) that the agent
+prefers most according to her preference relation (\succeq).
+
+> A rational preference relation induces a well-defined choice rule.
+
+## 1.2 Optimization
+
+Agents are assumed to **maximize** some objective (utility, profit,
+etc.) subject to constraints.
+
+The solution concept is: \[ x\^\* \in \arg\max\_{x \in X} u(x), \] where
+(X) is the feasible set and (u) is the utility function representing
+preferences.
+
+------------------------------------------------------------------------
+
+# Chapter 2 Preferences and Utility
+
+## 2.1 Preference Relations
+
+A **preference relation** (\succeq) on a choice set (X) satisfies:
+
+-   **Reflexivity:** (x \succeq x)
+-   **Completeness**
+-   **Transitivity**
+
+From these, we get a ranking of items.
+
+## 2.2 Utility Representation
+
+A utility function (u: X \to \mathbb{R}) represents (\succeq) if: \[ x
+\succeq y \iff u(x) \ge u(y). \]
+
+### Theorem (Utility Representation)
+
+If (\succeq) is complete, transitive, and continuous, then a continuous
+utility function exists.
+
+Proof sketch: - Continuity ensures upper and lower contour sets are
+closed. - This permits construction of a real-valued mapping preserving
+ordering.
+
+## 2.3 Numerical vs. Ordinal Utility
+
+-   **Ordinal utility:** Ranking of bundles; cardinal meaning is
+    irrelevant.
+-   Only preference ordering matters.
+
+## 2.4 Monotonicity and Convexity
+
+### Monotonicity
+
+More is better: If (x \ge y) component-wise, then (x \succeq y).
+
+### Convex Preferences
+
+If (x \succeq y), then for any (0\le \alpha\le 1): \[ \alpha x +
+(1-\alpha) y \succeq y. \] This captures **diversification** or
+preference for averages.
+
+------------------------------------------------------------------------
+
+# Chapter 3 Utility Maximization
+
+## 3.1 Consumer Choice Problem
+
+Given:
+
+-   A price vector (p \in \mathbb{R}\^n\_{++}),
+-   Income (m \> 0),
+
+The consumer solves: \[ \max\*{x\* \\in \\mathbb{R}\\\^n+} u(x)
+\quad \text{s.t.} \quad p \cdot x \le m. \]
+
+## 3.2 Budget Set
+
+\[ B(p,m) = {x \ge 0: p \cdot x \le m}. \]
+
+## 3.3 Solutions and Demand
+
+The solution to the maximization yields the **Marshallian
+(uncompensated) demand** (x(p,m)).
+
+### Interior Solution Conditions
+
+With differentiable utility and interior optimality: \[
+\frac{\partial u / \partial x_i}{\partial u / \partial x_j} =
+\frac{p_i}{p_j}, \quad \forall i,j. \]
+
+This is the **tangency condition**.
+
+## 3.4 Indirect Utility
+
+Define the **indirect utility function**: \[ v(p,m) = u(x(p,m)), \] the
+maximum utility given prices and income.
+
+Properties:
+
+-   Homogeneous of degree 0 in ((p,m)),
+-   Non-increasing in prices,
+-   Non-decreasing in income.
+
+------------------------------------------------------------------------
+
+# Chapter 4 Expenditure Minimization and Duality
+
+## 4.1 Expenditure Minimization
+
+Rather than maximizing utility subject to a budget, an alternative
+perspective: \[ e(p, u_0) = \min\_{x \ge 0} p \cdot x \quad \text{s.t.}
+\quad u(x) \ge u_0, \] where (u_0) is a target utility level.
+
+## 4.2 Hicksian Demand
+
+The minimizer (h(p, u_0)) is called the **Hicksian (compensated)
+demand**.
+
+-   It depends on prices and utility level.
+-   Compensates the consumer for price changes while holding utility
+    constant.
+
+## 4.3 Expenditure Function
+
+Properties:
+
+1.  **Homogeneity of degree 1 in prices:** (e(\alpha p, u_0) = \alpha
+    e(p, u_0))
+2.  **Non-decreasing in prices**
+3.  **Non-decreasing in (u_0)**
+
+## 4.4 Duality
+
+Key relationships:
+
+### Shephard’s Lemma
+
+\[ \frac{\partial e(p, u)}{\partial p_i} = h_i(p,u). \]
+
+This links Hicksian demand directly to expenditure derivatives.
+
+### Roy’s Identity
+
+\[ x_i(p,m) =
+-\frac{\partial v(p,m)/\partial p_i}{\partial v(p,m)/\partial m}. \]
+
+This derives Marshallian demand from the indirect utility.
+
+------------------------------------------------------------------------
+
+# Key Concepts & Theorems (Summary Table)
+
+| Topic                  | Function/Definition                  |
+|------------------------|--------------------------------------|
+| Preference             | Rational (complete & transitive)     |
+| Utility Representation | \(u\) represents (\succeq)           |
+| Budget Constraint      | (p \cdot x \le m)                    |
+| Marshallian Demand     | (x(p,m))                             |
+| Indirect Utility       | (v(p,m))                             |
+| Expenditure Function   | (e(p,u))                             |
+| Hicksian Demand        | (h(p,u))                             |
+| Shephard’s Lemma       | (\partial e/\partial p_i = h_i(p,u)) |
+| Roy’s Identity         | Derived from (v(p,m))                |
+
+------------------------------------------------------------------------
+
+# Visualizing Consumer Optimization
+
+**Primal problem:** maximize utility on the budget line\
+→ solution (x(p,m))
+
+**Dual problem:** minimize expenditure subject to utility target\
+→ solution (h(p,u))
+
+Duality shows these perspectives are consistent and linked.
+
+------------------------------------------------------------------------
+
+# What You Should Know by End of Part I
+
+1.  Rational preferences imply utility ordering.
+2.  Utility maximization leads to observable demand functions.
+3.  Expenditure minimization gives compensating variation measures.
+4.  Duality (Shephard & Roy) bridges demand and expenditure in a
+    systematic way.
+
+------------------------------------------------------------------------
+
+# End of Summary
+
+*This document is suitable for undergraduate or graduate review and fits
+within \~10 pages Word.*

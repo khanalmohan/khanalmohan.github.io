@@ -605,5 +605,110 @@
     "crumbs": [
       "Statistical Analysis"
     ]
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html",
+    "href": "mascollelmicroeconomics/Part1.html",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "",
+    "text": "Objective: Establish the framework of economic analysis — preferences, choices, and basic optimization.\n\n\nAn economic agent faces alternatives and must choose. The essence of microeconomics lies in modeling choice under scarcity and rational decision-making.\n\n\nAn agent is rational if preferences are complete and transitive.\n\nCompleteness: For any two alternatives ( x, y ), either (x y), (y x), or both.\nTransitivity: If (x y) and (y z), then (x z).\n\n\n\n\nA choice correspondence (C(A)) selects a subset of (A) that the agent prefers most according to her preference relation ().\n\nA rational preference relation induces a well-defined choice rule.\n\n\n\n\n\nAgents are assumed to maximize some objective (utility, profit, etc.) subject to constraints.\nThe solution concept is: [ x^* _{x X} u(x), ] where (X) is the feasible set and (u) is the utility function representing preferences."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#economic-agents-and-choice",
+    "href": "mascollelmicroeconomics/Part1.html#economic-agents-and-choice",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "",
+    "text": "An economic agent faces alternatives and must choose. The essence of microeconomics lies in modeling choice under scarcity and rational decision-making.\n\n\nAn agent is rational if preferences are complete and transitive.\n\nCompleteness: For any two alternatives ( x, y ), either (x y), (y x), or both.\nTransitivity: If (x y) and (y z), then (x z).\n\n\n\n\nA choice correspondence (C(A)) selects a subset of (A) that the agent prefers most according to her preference relation ().\n\nA rational preference relation induces a well-defined choice rule."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#optimization",
+    "href": "mascollelmicroeconomics/Part1.html#optimization",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "",
+    "text": "Agents are assumed to maximize some objective (utility, profit, etc.) subject to constraints.\nThe solution concept is: [ x^* _{x X} u(x), ] where (X) is the feasible set and (u) is the utility function representing preferences."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#preference-relations",
+    "href": "mascollelmicroeconomics/Part1.html#preference-relations",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "2.1 Preference Relations",
+    "text": "2.1 Preference Relations\nA preference relation () on a choice set (X) satisfies:\n\nReflexivity: (x x)\nCompleteness\nTransitivity\n\nFrom these, we get a ranking of items."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#utility-representation",
+    "href": "mascollelmicroeconomics/Part1.html#utility-representation",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "2.2 Utility Representation",
+    "text": "2.2 Utility Representation\nA utility function (u: X ) represents () if: [ x y u(x) u(y). ]\n\nTheorem (Utility Representation)\nIf () is complete, transitive, and continuous, then a continuous utility function exists.\nProof sketch: - Continuity ensures upper and lower contour sets are closed. - This permits construction of a real-valued mapping preserving ordering."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#numerical-vs.-ordinal-utility",
+    "href": "mascollelmicroeconomics/Part1.html#numerical-vs.-ordinal-utility",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "2.3 Numerical vs. Ordinal Utility",
+    "text": "2.3 Numerical vs. Ordinal Utility\n\nOrdinal utility: Ranking of bundles; cardinal meaning is irrelevant.\nOnly preference ordering matters."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#monotonicity-and-convexity",
+    "href": "mascollelmicroeconomics/Part1.html#monotonicity-and-convexity",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "2.4 Monotonicity and Convexity",
+    "text": "2.4 Monotonicity and Convexity\n\nMonotonicity\nMore is better: If (x y) component-wise, then (x y).\n\n\nConvex Preferences\nIf (x y), then for any (0): [ x + (1-) y y. ] This captures diversification or preference for averages."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#consumer-choice-problem",
+    "href": "mascollelmicroeconomics/Part1.html#consumer-choice-problem",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "3.1 Consumer Choice Problem",
+    "text": "3.1 Consumer Choice Problem\nGiven:\n\nA price vector (p ^n_{++}),\nIncome (m &gt; 0),\n\nThe consumer solves: [ *{x* \\in \\mathbb{R}\\^n+} u(x) p x m. ]"
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#budget-set",
+    "href": "mascollelmicroeconomics/Part1.html#budget-set",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "3.2 Budget Set",
+    "text": "3.2 Budget Set\n[ B(p,m) = {x : p x m}. ]"
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#solutions-and-demand",
+    "href": "mascollelmicroeconomics/Part1.html#solutions-and-demand",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "3.3 Solutions and Demand",
+    "text": "3.3 Solutions and Demand\nThe solution to the maximization yields the Marshallian (uncompensated) demand (x(p,m)).\n\nInterior Solution Conditions\nWith differentiable utility and interior optimality: [ = , i,j. ]\nThis is the tangency condition."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#indirect-utility",
+    "href": "mascollelmicroeconomics/Part1.html#indirect-utility",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "3.4 Indirect Utility",
+    "text": "3.4 Indirect Utility\nDefine the indirect utility function: [ v(p,m) = u(x(p,m)), ] the maximum utility given prices and income.\nProperties:\n\nHomogeneous of degree 0 in ((p,m)),\nNon-increasing in prices,\nNon-decreasing in income."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#expenditure-minimization",
+    "href": "mascollelmicroeconomics/Part1.html#expenditure-minimization",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "4.1 Expenditure Minimization",
+    "text": "4.1 Expenditure Minimization\nRather than maximizing utility subject to a budget, an alternative perspective: [ e(p, u_0) = _{x } p x u(x) u_0, ] where (u_0) is a target utility level."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#hicksian-demand",
+    "href": "mascollelmicroeconomics/Part1.html#hicksian-demand",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "4.2 Hicksian Demand",
+    "text": "4.2 Hicksian Demand\nThe minimizer (h(p, u_0)) is called the Hicksian (compensated) demand.\n\nIt depends on prices and utility level.\nCompensates the consumer for price changes while holding utility constant."
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#expenditure-function",
+    "href": "mascollelmicroeconomics/Part1.html#expenditure-function",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "4.3 Expenditure Function",
+    "text": "4.3 Expenditure Function\nProperties:\n\nHomogeneity of degree 1 in prices: (e(p, u_0) = e(p, u_0))\nNon-decreasing in prices\nNon-decreasing in (u_0)"
+  },
+  {
+    "objectID": "mascollelmicroeconomics/Part1.html#duality",
+    "href": "mascollelmicroeconomics/Part1.html#duality",
+    "title": "Summary: Mas-Colell Microeconomic Theory — Chapters 1–4 (Part I)",
+    "section": "4.4 Duality",
+    "text": "4.4 Duality\nKey relationships:\n\nShephard’s Lemma\n[ = h_i(p,u). ]\nThis links Hicksian demand directly to expenditure derivatives.\n\n\nRoy’s Identity\n[ x_i(p,m) = -. ]\nThis derives Marshallian demand from the indirect utility."
   }
 ]
