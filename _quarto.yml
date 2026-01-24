@@ -10,23 +10,19 @@ website:
         text: Home
       - href: r-tutorial/RBasics.qmd
         text: R Tutorials
-      - href: mascollel-microeconomics/Part1.qmd
+      - href: mascollelmicroeconomics/Part1.qmd
         text: Microeconomics
 
   sidebar:
     - id: rtutorials
       title: "R Tutorial for Data Science"
-      style: docked
-      background: light
       contents:
-        - href: r-tutorial/RBasics.qmd
-          text: "Day 1: Introduction to R"
+        - r-tutorial/RBasics.qmd
 
     - id: micro
       title: "Mas-Colell Microeconomics"
-      style: docked
-      background: light
       contents:
-        - href: mascollel-microeconomics/Part1.qmd
-          text: "Part I: Chapters 1–4"
+        - mascollelmicroeconomics/Part1.qmd
 
+  # 🔴 THIS IS THE CRITICAL LINE
+  page-navigation: true
