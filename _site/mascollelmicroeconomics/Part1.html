@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R Tutorial for Data Science</title>
+<title>Mas-Colell Microeconomic Theory — Part I (Chapters 1–4) – Mohan Khanal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,31 +23,125 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="index_files/libs/quarto-html/popper.min.js"></script>
-<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
-<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-1b49dd9fb0c9e1e995fd240b2ee21a5c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9a8768fbd4480a0821d6dd14cec4ac45.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Mohan Khanal</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../r-tutorial/RBasics.html"> 
+<span class="menu-text">R Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../mascollel-microeconomics/Part1.qmd" aria-current="page"> 
+<span class="menu-text">Microeconomics</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mascollel-microeconomics/Part1.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part I: Chapters 1–4</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R Tutorial for Data Science</h1>
+<h1 class="title">Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)</h1>
 </div>
 
 
@@ -64,26 +158,244 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-the-r-tutorial" class="level1">
-<h1>Welcome to the R Tutorial 👋</h1>
-<p>This tutorial will guide you through a structured introduction to R and data science concepts.<br>
-Use the <strong>sidebar on the right</strong> to navigate between lessons.</p>
+<section id="overview-of-part-i" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-part-i">Overview of Part I</h2>
+<p>Part I of <em>Mas-Colell, Whinston, and Green</em> lays the <strong>foundations of microeconomic theory</strong>. The goal is to build a rigorous framework for individual choice that can later be aggregated into market behavior.</p>
+<p>The key idea is <strong>duality</strong>: - choices ↔︎ preferences - preferences ↔︎ utility - utility maximization ↔︎ expenditure minimization</p>
 <hr>
-<section id="course-overview" class="level2">
-<h2 class="anchored" data-anchor-id="course-overview">Course Overview</h2>
-<ol type="1">
-<li><strong>Introduction to R</strong></li>
-<li><strong>Data Import &amp; Wrangling</strong></li>
-<li><strong>Exploratory Data Analysis (EDA)</strong></li>
-<li><strong>Statistical Tests</strong></li>
-<li><strong>Regression Analysis</strong></li>
-<li><strong>Data Interpretation &amp; Reporting</strong></li>
-</ol>
 </section>
+<section id="chapter-1-introduction" class="level1">
+<h1>Chapter 1 Introduction</h1>
+<p><strong>Core question:</strong> How do we model economic decision-making in a logically consistent way?</p>
+<p>Microeconomics begins with <strong>choice under scarcity</strong>. Rather than starting with prices or markets, Mas-Colell starts with the <strong>economic agent</strong>.</p>
+<hr>
+<section id="economic-agents-and-choice" class="level2">
+<h2 class="anchored" data-anchor-id="economic-agents-and-choice">1.1 Economic Agents and Choice</h2>
+<p>An economic agent faces a set of feasible alternatives ( A X ) and must select among them.</p>
+<section id="preference-relations" class="level3">
+<h3 class="anchored" data-anchor-id="preference-relations">Preference Relations</h3>
+<p>Preferences are represented by a binary relation ( ) on ( X ).</p>
+<p><strong>Rationality assumptions:</strong></p>
+<ul>
+<li><strong>Completeness</strong>:<br>
+For any ( x,y X ), either ( x y ) or ( y x ).</li>
+<li><strong>Transitivity</strong>:<br>
+If ( x y ) and ( y z ), then ( x z ).</li>
+</ul>
+<p>These assumptions ensure internally consistent choices.</p>
+<hr>
+</section>
+</section>
+<section id="choice-correspondence" class="level2">
+<h2 class="anchored" data-anchor-id="choice-correspondence">1.2 Choice Correspondence</h2>
+<p>A <strong>choice correspondence</strong> ( C(A) A ) selects the most preferred elements of a feasible set ( A ).</p>
+<blockquote class="blockquote">
+<p>If preferences are rational, choice behavior can be explained by preference maximization.</p>
+</blockquote>
+<p>Mas-Colell emphasizes that <strong>observed choice</strong> is the primitive object; preferences are inferred.</p>
+<hr>
+</section>
+<section id="optimization-as-a-modeling-tool" class="level2">
+<h2 class="anchored" data-anchor-id="optimization-as-a-modeling-tool">1.3 Optimization as a Modeling Tool</h2>
+<p>Economic behavior is modeled as solving:</p>
+<p>[ x^* _{x X} u(x) ]</p>
+<p>subject to feasibility constraints.</p>
+<p>Optimization is not psychological—it is a <strong>consistency device</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="chapter-2-preferences-and-utility" class="level1">
+<h1>Chapter 2 Preferences and Utility</h1>
+<p>This chapter connects <strong>preferences</strong> to <strong>utility functions</strong>.</p>
+<hr>
+<section id="properties-of-preferences" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-preferences">2.1 Properties of Preferences</h2>
+<p>A preference relation ( ) is:</p>
+<ul>
+<li><strong>Reflexive</strong>: ( x x )</li>
+<li><strong>Complete</strong></li>
+<li><strong>Transitive</strong></li>
+</ul>
+<p>These define a <strong>rational preference relation</strong>.</p>
+<hr>
+</section>
+<section id="utility-representation" class="level2">
+<h2 class="anchored" data-anchor-id="utility-representation">2.2 Utility Representation</h2>
+<p>A utility function ( u: X ) represents ( ) if:</p>
+<p>[ x y u(x) u(y) ]</p>
+<section id="utility-representation-theorem-informal" class="level3">
+<h3 class="anchored" data-anchor-id="utility-representation-theorem-informal">Utility Representation Theorem (Informal)</h3>
+<p>If preferences are: - complete - transitive - continuous<br>
+(on a suitable topological space),</p>
+<p>then a <strong>continuous utility function exists</strong>.</p>
+<p>This is foundational: utility is <em>derived</em>, not assumed.</p>
+<hr>
+</section>
+</section>
+<section id="ordinal-nature-of-utility" class="level2">
+<h2 class="anchored" data-anchor-id="ordinal-nature-of-utility">2.3 Ordinal Nature of Utility</h2>
+<p>Utility is <strong>ordinal</strong>: - Only rankings matter - Any monotonic transformation represents the same preferences</p>
+<p>Cardinal comparisons are meaningless at this stage.</p>
+<hr>
+</section>
+<section id="monotonicity-and-convexity" class="level2">
+<h2 class="anchored" data-anchor-id="monotonicity-and-convexity">2.4 Monotonicity and Convexity</h2>
+<section id="monotonicity" class="level3">
+<h3 class="anchored" data-anchor-id="monotonicity">Monotonicity</h3>
+<p>More is better:</p>
+<p>[ x y x y ]</p>
+<p>This ensures no satiation.</p>
+</section>
+<section id="convex-preferences" class="level3">
+<h3 class="anchored" data-anchor-id="convex-preferences">Convex Preferences</h3>
+<p>For any ( x y ) and ( ):</p>
+<p>[ x + (1-)y y ]</p>
+<p>Convexity captures <strong>preference for diversification</strong> and implies unique optimal choices under standard conditions.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="chapter-3-utility-maximization" class="level1">
+<h1>Chapter 3 Utility Maximization</h1>
+<p>Now preferences meet <strong>prices and income</strong>.</p>
+<hr>
+<section id="consumer-problem" class="level2">
+<h2 class="anchored" data-anchor-id="consumer-problem">3.1 Consumer Problem</h2>
+<p>Given: - Prices ( p ^n_{++} ) - Income ( m &gt; 0 )</p>
+<p>The consumer solves:</p>
+<p>[ _{x } u(x) p x m ]</p>
+<hr>
+</section>
+<section id="budget-set" class="level2">
+<h2 class="anchored" data-anchor-id="budget-set">3.2 Budget Set</h2>
+<p>[ B(p,m) = { x : p x m } ]</p>
+<p>Key properties: - Closed - Convex - Compact (if prices are strictly positive)</p>
+<p>Compactness guarantees existence of a solution.</p>
+<hr>
+</section>
+<section id="marshallian-demand" class="level2">
+<h2 class="anchored" data-anchor-id="marshallian-demand">3.3 Marshallian Demand</h2>
+<p>The solution defines <strong>Marshallian (uncompensated) demand</strong>:</p>
+<p>[ x(p,m) ]</p>
+<p>If utility is differentiable and the solution is interior:</p>
+<p>[ = ]</p>
+<p>This is the <strong>tangency condition</strong>.</p>
+<hr>
+</section>
+<section id="indirect-utility" class="level2">
+<h2 class="anchored" data-anchor-id="indirect-utility">3.4 Indirect Utility</h2>
+<p>Define:</p>
+<p>[ v(p,m) = _{x B(p,m)} u(x) ]</p>
+<p>Properties: - Homogeneous of degree 0 in ( (p,m) ) - Non-increasing in prices - Non-decreasing in income</p>
+<p>Indirect utility summarizes consumer welfare.</p>
+<hr>
+</section>
+</section>
+<section id="chapter-4-expenditure-minimization-and-duality" class="level1">
+<h1>Chapter 4 Expenditure Minimization and Duality</h1>
+<p>Mas-Colell emphasizes <strong>duality</strong> as the organizing principle.</p>
+<hr>
+<section id="expenditure-minimization" class="level2">
+<h2 class="anchored" data-anchor-id="expenditure-minimization">4.1 Expenditure Minimization</h2>
+<p>The dual problem:</p>
+<p>[ e(p,u_0) = _{x } p x u(x) u_0 ]</p>
+<p>This asks: <em>What is the cheapest way to reach a given utility level?</em></p>
+<hr>
+</section>
+<section id="hicksian-demand" class="level2">
+<h2 class="anchored" data-anchor-id="hicksian-demand">4.2 Hicksian Demand</h2>
+<p>The solution ( h(p,u_0) ) is <strong>Hicksian (compensated) demand</strong>.</p>
+<ul>
+<li>Depends on prices and utility</li>
+<li>Holds utility constant</li>
+</ul>
+<p>Used for welfare analysis.</p>
+<hr>
+</section>
+<section id="expenditure-function-properties" class="level2">
+<h2 class="anchored" data-anchor-id="expenditure-function-properties">4.3 Expenditure Function Properties</h2>
+<ol type="1">
+<li>Homogeneous of degree 1 in prices<br>
+</li>
+<li>Non-decreasing in prices<br>
+</li>
+<li>Concave in prices<br>
+</li>
+<li>Continuous</li>
+</ol>
+<hr>
+</section>
+<section id="duality-results" class="level2">
+<h2 class="anchored" data-anchor-id="duality-results">4.4 Duality Results</h2>
+<section id="shephards-lemma" class="level3">
+<h3 class="anchored" data-anchor-id="shephards-lemma">Shephard’s Lemma</h3>
+<p>[ = h_i(p,u) ]</p>
+</section>
+<section id="roys-identity" class="level3">
+<h3 class="anchored" data-anchor-id="roys-identity">Roy’s Identity</h3>
+<p>[ x_i(p,m) = - {v(p,m)/m} ]</p>
+<p>These identities link <strong>observable demand</strong> to <strong>value functions</strong>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="summary-table" class="level1">
+<h1>Summary Table</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Preferences</td>
+<td>( )</td>
+</tr>
+<tr class="even">
+<td>Utility</td>
+<td>( u(x) )</td>
+</tr>
+<tr class="odd">
+<td>Budget Set</td>
+<td>( B(p,m) )</td>
+</tr>
+<tr class="even">
+<td>Marshallian Demand</td>
+<td>( x(p,m) )</td>
+</tr>
+<tr class="odd">
+<td>Indirect Utility</td>
+<td>( v(p,m) )</td>
+</tr>
+<tr class="even">
+<td>Expenditure Function</td>
+<td>( e(p,u) )</td>
+</tr>
+<tr class="odd">
+<td>Hicksian Demand</td>
+<td>( h(p,u) )</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="what-you-should-master-after-part-i" class="level1">
+<h1>What You Should Master After Part I</h1>
+<ol type="1">
+<li>Preferences → utility → choice</li>
+<li>Utility maximization ↔︎ expenditure minimization</li>
+<li>Marshallian vs Hicksian demand</li>
+<li>Role of duality in welfare analysis</li>
+</ol>
+<hr>
+<p><em>This Part I summary is suitable for upper-level undergraduate and first-year graduate microeconomics and aligns closely with Mas-Colell Chapters 1–4.</em></p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
