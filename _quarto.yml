@@ -24,5 +24,5 @@ website:
       contents:
         - mascollelmicroeconomics/Part1.qmd
 
-  # 🔴 THIS IS THE CRITICAL LINE
   page-navigation: true
+
