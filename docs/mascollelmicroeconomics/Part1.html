@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Advanced Microeconomics Notes">
 
-<title>Mas-Colell Microeconomic Theory — Part I (Chapters 1–4) – Mohan Khanal</title>
+<title>Microeconomic Theory: Foundations – Mohan Khanal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f0b4e5cf8ad58cb2f959a8653ceff67c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7e2b56cb0bd412cdc9782270bf0c939a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,10 +70,54 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mascollelmicroeconomics/Part1.html">Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mascollelmicroeconomics/Part1.html">Microeconomic Theory: Foundations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -146,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mascollelmicroeconomics/Part1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)</span></a>
+ <span class="menu-text">Microeconomic Theory: Foundations</span></a>
   </div>
 </li>
     </ul>
@@ -154,19 +199,86 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preference-and-choice" id="toc-preference-and-choice" class="nav-link active" data-scroll-target="#preference-and-choice"><span class="header-section-number">1</span> Preference and Choice</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1</span> Introduction</a></li>
+  <li><a href="#preference-relations" id="toc-preference-relations" class="nav-link" data-scroll-target="#preference-relations"><span class="header-section-number">1.2</span> Preference Relations</a>
+  <ul class="collapse">
+  <li><a href="#definition-1-preference-relation" id="toc-definition-1-preference-relation" class="nav-link" data-scroll-target="#definition-1-preference-relation"><span class="header-section-number">1.2.1</span> Definition 1 (Preference Relation)</a></li>
+  <li><a href="#definition-2-rationality-axioms" id="toc-definition-2-rationality-axioms" class="nav-link" data-scroll-target="#definition-2-rationality-axioms"><span class="header-section-number">1.2.2</span> Definition 2 (Rationality Axioms)</a></li>
+  <li><a href="#proposition-1-properties-of-rational-preferences" id="toc-proposition-1-properties-of-rational-preferences" class="nav-link" data-scroll-target="#proposition-1-properties-of-rational-preferences"><span class="header-section-number">1.2.3</span> Proposition 1 (Properties of Rational Preferences)</a></li>
+  </ul></li>
+  <li><a href="#continuity-and-monotonicity" id="toc-continuity-and-monotonicity" class="nav-link" data-scroll-target="#continuity-and-monotonicity"><span class="header-section-number">1.3</span> Continuity and Monotonicity</a>
+  <ul class="collapse">
+  <li><a href="#definition-3-continuity" id="toc-definition-3-continuity" class="nav-link" data-scroll-target="#definition-3-continuity"><span class="header-section-number">1.3.1</span> Definition 3 (Continuity)</a></li>
+  <li><a href="#definition-4-monotonicity" id="toc-definition-4-monotonicity" class="nav-link" data-scroll-target="#definition-4-monotonicity"><span class="header-section-number">1.3.2</span> Definition 4 (Monotonicity)</a></li>
+  <li><a href="#proposition-2-monotonicity-relationships" id="toc-proposition-2-monotonicity-relationships" class="nav-link" data-scroll-target="#proposition-2-monotonicity-relationships"><span class="header-section-number">1.3.3</span> Proposition 2 (Monotonicity Relationships)</a></li>
+  </ul></li>
+  <li><a href="#convexity" id="toc-convexity" class="nav-link" data-scroll-target="#convexity"><span class="header-section-number">1.4</span> Convexity</a>
+  <ul class="collapse">
+  <li><a href="#definition-5-convex-preferences" id="toc-definition-5-convex-preferences" class="nav-link" data-scroll-target="#definition-5-convex-preferences"><span class="header-section-number">1.4.1</span> Definition 5 (Convex Preferences)</a></li>
+  <li><a href="#proposition-3-convexity-and-indifference-sets" id="toc-proposition-3-convexity-and-indifference-sets" class="nav-link" data-scroll-target="#proposition-3-convexity-and-indifference-sets"><span class="header-section-number">1.4.2</span> Proposition 3 (Convexity and Indifference Sets)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#utility-representation" id="toc-utility-representation" class="nav-link" data-scroll-target="#utility-representation"><span class="header-section-number">2</span> Utility Representation</a>
+  <ul class="collapse">
+  <li><a href="#utility-functions" id="toc-utility-functions" class="nav-link" data-scroll-target="#utility-functions"><span class="header-section-number">2.1</span> Utility Functions</a>
+  <ul class="collapse">
+  <li><a href="#definition-6-utility-function" id="toc-definition-6-utility-function" class="nav-link" data-scroll-target="#definition-6-utility-function"><span class="header-section-number">2.1.1</span> Definition 6 (Utility Function)</a></li>
+  <li><a href="#proposition-4-utility-and-derived-relations" id="toc-proposition-4-utility-and-derived-relations" class="nav-link" data-scroll-target="#proposition-4-utility-and-derived-relations"><span class="header-section-number">2.1.2</span> Proposition 4 (Utility and Derived Relations)</a></li>
+  <li><a href="#proposition-5-positive-monotonic-transformations" id="toc-proposition-5-positive-monotonic-transformations" class="nav-link" data-scroll-target="#proposition-5-positive-monotonic-transformations"><span class="header-section-number">2.1.3</span> Proposition 5 (Positive Monotonic Transformations)</a></li>
+  </ul></li>
+  <li><a href="#the-representation-theorem" id="toc-the-representation-theorem" class="nav-link" data-scroll-target="#the-representation-theorem"><span class="header-section-number">2.2</span> The Representation Theorem</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-existence-of-utility-representation" id="toc-theorem-1-existence-of-utility-representation" class="nav-link" data-scroll-target="#theorem-1-existence-of-utility-representation"><span class="header-section-number">2.2.1</span> Theorem 1 (Existence of Utility Representation)</a></li>
+  <li><a href="#proposition-6-uniqueness-up-to-monotonic-transformation" id="toc-proposition-6-uniqueness-up-to-monotonic-transformation" class="nav-link" data-scroll-target="#proposition-6-uniqueness-up-to-monotonic-transformation"><span class="header-section-number">2.2.2</span> Proposition 6 (Uniqueness Up to Monotonic Transformation)</a></li>
+  </ul></li>
+  <li><a href="#properties-of-utility-functions" id="toc-properties-of-utility-functions" class="nav-link" data-scroll-target="#properties-of-utility-functions"><span class="header-section-number">2.3</span> Properties of Utility Functions</a>
+  <ul class="collapse">
+  <li><a href="#definition-7-quasi-concavity" id="toc-definition-7-quasi-concavity" class="nav-link" data-scroll-target="#definition-7-quasi-concavity"><span class="header-section-number">2.3.1</span> Definition 7 (Quasi-concavity)</a></li>
+  <li><a href="#proposition-7-quasi-concavity-and-convex-preferences" id="toc-proposition-7-quasi-concavity-and-convex-preferences" class="nav-link" data-scroll-target="#proposition-7-quasi-concavity-and-convex-preferences"><span class="header-section-number">2.3.2</span> Proposition 7 (Quasi-concavity and Convex Preferences)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-set-1.b" id="toc-exercise-set-1.b" class="nav-link" data-scroll-target="#exercise-set-1.b"><span class="header-section-number">3.1</span> Exercise Set 1.B</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.b.1-verifying-rationality" id="toc-exercise-1.b.1-verifying-rationality" class="nav-link" data-scroll-target="#exercise-1.b.1-verifying-rationality"><span class="header-section-number">3.1.1</span> Exercise 1.B.1 (Verifying Rationality)</a></li>
+  <li><a href="#exercise-1.b.2-lexicographic-preferences" id="toc-exercise-1.b.2-lexicographic-preferences" class="nav-link" data-scroll-target="#exercise-1.b.2-lexicographic-preferences"><span class="header-section-number">3.1.2</span> Exercise 1.B.2 (Lexicographic Preferences)</a></li>
+  </ul></li>
+  <li><a href="#exercise-set-2.a" id="toc-exercise-set-2.a" class="nav-link" data-scroll-target="#exercise-set-2.a"><span class="header-section-number">3.2</span> Exercise Set 2.A</a>
+  <ul class="collapse">
+  <li><a href="#exercise-2.a.1-computing-utility-functions" id="toc-exercise-2.a.1-computing-utility-functions" class="nav-link" data-scroll-target="#exercise-2.a.1-computing-utility-functions"><span class="header-section-number">3.2.1</span> Exercise 2.A.1 (Computing Utility Functions)</a></li>
+  <li><a href="#exercise-2.a.2-monotonic-transformations" id="toc-exercise-2.a.2-monotonic-transformations" class="nav-link" data-scroll-target="#exercise-2.a.2-monotonic-transformations"><span class="header-section-number">3.2.2</span> Exercise 2.A.2 (Monotonic Transformations)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)</h1>
+<h1 class="title">Microeconomic Theory: Foundations</h1>
+<p class="subtitle lead">Consumer Preference and Choice</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Advanced Microeconomics Notes </p>
+          </div>
+  </div>
     
   
     
@@ -177,241 +289,483 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview-of-part-i" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-part-i">Overview of Part I</h2>
-<p>Part I of <em>Mas-Colell, Whinston, and Green</em> lays the <strong>foundations of microeconomic theory</strong>. The goal is to build a rigorous framework for individual choice that can later be aggregated into market behavior.</p>
-<p>The key idea is <strong>duality</strong>: - choices ↔︎ preferences - preferences ↔︎ utility - utility maximization ↔︎ expenditure minimization</p>
-<hr>
-</section>
-<section id="chapter-1-introduction" class="level1">
-<h1>Chapter 1 Introduction</h1>
-<p><strong>Core question:</strong> How do we model economic decision-making in a logically consistent way?</p>
-<p>Microeconomics begins with <strong>choice under scarcity</strong>. Rather than starting with prices or markets, Mas-Colell starts with the <strong>economic agent</strong>.</p>
-<hr>
-<section id="economic-agents-and-choice" class="level2">
-<h2 class="anchored" data-anchor-id="economic-agents-and-choice">1.1 Economic Agents and Choice</h2>
-<p>An economic agent faces a set of feasible alternatives ( A X ) and must select among them.</p>
-<section id="preference-relations" class="level3">
-<h3 class="anchored" data-anchor-id="preference-relations">Preference Relations</h3>
-<p>Preferences are represented by a binary relation ( ) on ( X ).</p>
-<p><strong>Rationality assumptions:</strong></p>
+<style>
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #2c3e50;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  color: #1a1a1a;
+  font-size: 1.8em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  border-bottom: 2px solid #34495e;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.4em;
+  margin-top: 1.3em;
+  margin-bottom: 0.6em;
+}
+
+h3 {
+  color: #34495e;
+  font-size: 1.15em;
+  margin-top: 1.1em;
+  margin-bottom: 0.5em;
+  font-style: italic;
+}
+
+.definition {
+  background-color: #f8f9fa;
+  border-left: 4px solid #5d6d7e;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.theorem, .proposition {
+  background-color: #fef9f5;
+  border-left: 4px solid #b8860b;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.proof {
+  background-color: #fafafa;
+  border-left: 3px solid #95a5a6;
+  padding: 0.8em 1.2em;
+  margin: 1em 0;
+  font-size: 0.97em;
+}
+
+.exercise {
+  background-color: #f0f4f8;
+  border-left: 4px solid #3498db;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.definition-title, .theorem-title, .proposition-title, .exercise-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.proof-title {
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+em {
+  font-style: italic;
+  color: #34495e;
+}
+
+strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.qed {
+  float: right;
+  font-size: 1.2em;
+}
+
+code {
+  background-color: #f4f4f4;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+}
+</style>
+<section id="preference-and-choice" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Preference and Choice</h1>
+<section id="introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>The theory of consumer choice forms the foundation of microeconomic analysis. We begin by studying how individuals make decisions when faced with alternatives. The approach is axiomatic: we start with primitive concepts (preferences) and build toward observable behavior (choice and demand).</p>
+<p>The central questions we address are:</p>
 <ul>
-<li><strong>Completeness</strong>:<br>
-For any ( x,y X ), either ( x y ) or ( y x ).</li>
-<li><strong>Transitivity</strong>:<br>
-If ( x y ) and ( y z ), then ( x z ).</li>
+<li>How do we formally represent an individual’s tastes or preferences?</li>
+<li>Under what conditions can preferences be represented by a utility function?</li>
+<li>How does a rational consumer choose when constrained by limited resources?</li>
 </ul>
-<p>These assumptions ensure internally consistent choices.</p>
-<hr>
+<p>This chapter develops the preference-based approach to consumer theory, which proceeds in three stages: (1) axioms on preference relations, (2) representation by utility functions, and (3) choice under budget constraints.</p>
 </section>
-</section>
-<section id="choice-correspondence" class="level2">
-<h2 class="anchored" data-anchor-id="choice-correspondence">1.2 Choice Correspondence</h2>
-<p>A <strong>choice correspondence</strong> ( C(A) A ) selects the most preferred elements of a feasible set ( A ).</p>
-<blockquote class="blockquote">
-<p>If preferences are rational, choice behavior can be explained by preference maximization.</p>
-</blockquote>
-<p>Mas-Colell emphasizes that <strong>observed choice</strong> is the primitive object; preferences are inferred.</p>
-<hr>
-</section>
-<section id="optimization-as-a-modeling-tool" class="level2">
-<h2 class="anchored" data-anchor-id="optimization-as-a-modeling-tool">1.3 Optimization as a Modeling Tool</h2>
-<p>Economic behavior is modeled as solving:</p>
-<p>[ x^* _{x X} u(x) ]</p>
-<p>subject to feasibility constraints.</p>
-<p>Optimization is not psychological—it is a <strong>consistency device</strong>.</p>
-<hr>
-</section>
-</section>
-<section id="chapter-2-preferences-and-utility" class="level1">
-<h1>Chapter 2 Preferences and Utility</h1>
-<p>This chapter connects <strong>preferences</strong> to <strong>utility functions</strong>.</p>
-<hr>
-<section id="properties-of-preferences" class="level2">
-<h2 class="anchored" data-anchor-id="properties-of-preferences">2.1 Properties of Preferences</h2>
-<p>A preference relation ( ) is:</p>
+<section id="preference-relations" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="preference-relations"><span class="header-section-number">1.2</span> Preference Relations</h2>
+<section id="definition-1-preference-relation" class="level3 definition" data-number="1.2.1">
+<h3 class="definition anchored" data-number="1.2.1" data-anchor-id="definition-1-preference-relation"><span class="header-section-number">1.2.1</span> Definition 1 (Preference Relation)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 1.B.1</strong> (Preference Relation)</p>
+</div>
+<p>Let <span class="math inline">X</span> be the consumption set, representing all possible alternatives available to the consumer. A <strong>preference relation</strong> <span class="math inline">\succeq</span> on <span class="math inline">X</span> is a binary relation where, for any <span class="math inline">x, y \in X</span>, we write:</p>
 <ul>
-<li><strong>Reflexive</strong>: ( x x )</li>
-<li><strong>Complete</strong></li>
-<li><strong>Transitive</strong></li>
+<li><span class="math inline">x \succeq y</span> meaning “x is at least as good as y” (weak preference)</li>
 </ul>
-<p>These define a <strong>rational preference relation</strong>.</p>
-<hr>
-</section>
-<section id="utility-representation" class="level2">
-<h2 class="anchored" data-anchor-id="utility-representation">2.2 Utility Representation</h2>
-<p>A utility function ( u: X ) represents ( ) if:</p>
-<p>[ x y u(x) u(y) ]</p>
-<section id="utility-representation-theorem-informal" class="level3">
-<h3 class="anchored" data-anchor-id="utility-representation-theorem-informal">Utility Representation Theorem (Informal)</h3>
-<p>If preferences are: - complete - transitive - continuous<br>
-(on a suitable topological space),</p>
-<p>then a <strong>continuous utility function exists</strong>.</p>
-<p>This is foundational: utility is <em>derived</em>, not assumed.</p>
-<hr>
-</section>
-</section>
-<section id="ordinal-nature-of-utility" class="level2">
-<h2 class="anchored" data-anchor-id="ordinal-nature-of-utility">2.3 Ordinal Nature of Utility</h2>
-<p>Utility is <strong>ordinal</strong>: - Only rankings matter - Any monotonic transformation represents the same preferences</p>
-<p>Cardinal comparisons are meaningless at this stage.</p>
-<hr>
-</section>
-<section id="monotonicity-and-convexity" class="level2">
-<h2 class="anchored" data-anchor-id="monotonicity-and-convexity">2.4 Monotonicity and Convexity</h2>
-<section id="monotonicity" class="level3">
-<h3 class="anchored" data-anchor-id="monotonicity">Monotonicity</h3>
-<p>More is better:</p>
-<p>[ x y x y ]</p>
-<p>This ensures no satiation.</p>
-</section>
-<section id="convex-preferences" class="level3">
-<h3 class="anchored" data-anchor-id="convex-preferences">Convex Preferences</h3>
-<p>For any ( x y ) and ( ):</p>
-<p>[ x + (1-)y y ]</p>
-<p>Convexity captures <strong>preference for diversification</strong> and implies unique optimal choices under standard conditions.</p>
-<hr>
-</section>
-</section>
-</section>
-<section id="chapter-3-utility-maximization" class="level1">
-<h1>Chapter 3 Utility Maximization</h1>
-<p>Now preferences meet <strong>prices and income</strong>.</p>
-<hr>
-<section id="consumer-problem" class="level2">
-<h2 class="anchored" data-anchor-id="consumer-problem">3.1 Consumer Problem</h2>
-<p>Given: - Prices ( p ^n_{++} ) - Income ( m &gt; 0 )</p>
-<p>The consumer solves:</p>
-<p>[ _{x } u(x) p x m ]</p>
-<hr>
-</section>
-<section id="budget-set" class="level2">
-<h2 class="anchored" data-anchor-id="budget-set">3.2 Budget Set</h2>
-<p>[ B(p,m) = { x : p x m } ]</p>
-<p>Key properties: - Closed - Convex - Compact (if prices are strictly positive)</p>
-<p>Compactness guarantees existence of a solution.</p>
-<hr>
-</section>
-<section id="marshallian-demand" class="level2">
-<h2 class="anchored" data-anchor-id="marshallian-demand">3.3 Marshallian Demand</h2>
-<p>The solution defines <strong>Marshallian (uncompensated) demand</strong>:</p>
-<p>[ x(p,m) ]</p>
-<p>If utility is differentiable and the solution is interior:</p>
-<p>[ = ]</p>
-<p>This is the <strong>tangency condition</strong>.</p>
-<hr>
-</section>
-<section id="indirect-utility" class="level2">
-<h2 class="anchored" data-anchor-id="indirect-utility">3.4 Indirect Utility</h2>
-<p>Define:</p>
-<p>[ v(p,m) = _{x B(p,m)} u(x) ]</p>
-<p>Properties: - Homogeneous of degree 0 in ( (p,m) ) - Non-increasing in prices - Non-decreasing in income</p>
-<p>Indirect utility summarizes consumer welfare.</p>
-<hr>
-</section>
-</section>
-<section id="chapter-4-expenditure-minimization-and-duality" class="level1">
-<h1>Chapter 4 Expenditure Minimization and Duality</h1>
-<p>Mas-Colell emphasizes <strong>duality</strong> as the organizing principle.</p>
-<hr>
-<section id="expenditure-minimization" class="level2">
-<h2 class="anchored" data-anchor-id="expenditure-minimization">4.1 Expenditure Minimization</h2>
-<p>The dual problem:</p>
-<p>[ e(p,u_0) = _{x } p x u(x) u_0 ]</p>
-<p>This asks: <em>What is the cheapest way to reach a given utility level?</em></p>
-<hr>
-</section>
-<section id="hicksian-demand" class="level2">
-<h2 class="anchored" data-anchor-id="hicksian-demand">4.2 Hicksian Demand</h2>
-<p>The solution ( h(p,u_0) ) is <strong>Hicksian (compensated) demand</strong>.</p>
+<p>From the weak preference relation <span class="math inline">\succeq</span>, we derive two additional relations:</p>
 <ul>
-<li>Depends on prices and utility</li>
-<li>Holds utility constant</li>
+<li><span class="math inline">x \succ y</span> if and only if <span class="math inline">x \succeq y</span> and not <span class="math inline">y \succeq x</span> (strict preference: “x is strictly preferred to y”)</li>
+<li><span class="math inline">x \sim y</span> if and only if <span class="math inline">x \succeq y</span> and <span class="math inline">y \succeq x</span> (indifference: “x is indifferent to y”)</li>
 </ul>
-<p>Used for welfare analysis.</p>
-<hr>
+<p>The consumption set <span class="math inline">X</span> is typically assumed to be <span class="math inline">X = \mathbb{R}^L_+</span>, the non-negative orthant of <span class="math inline">L</span>-dimensional Euclidean space, where <span class="math inline">L</span> is the number of commodities.</p>
+</div>
 </section>
-<section id="expenditure-function-properties" class="level2">
-<h2 class="anchored" data-anchor-id="expenditure-function-properties">4.3 Expenditure Function Properties</h2>
-<ol type="1">
-<li>Homogeneous of degree 1 in prices<br>
+<section id="definition-2-rationality-axioms" class="level3 definition" data-number="1.2.2">
+<h3 class="definition anchored" data-number="1.2.2" data-anchor-id="definition-2-rationality-axioms"><span class="header-section-number">1.2.2</span> Definition 2 (Rationality Axioms)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 1.B.2</strong> (Rationality Axioms)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> on <span class="math inline">X</span> is <strong>rational</strong> if it satisfies:</p>
+<p><strong>Axiom 1 (Completeness)</strong>: For all <span class="math inline">x, y \in X</span>, either <span class="math inline">x \succeq y</span> or <span class="math inline">y \succeq x</span> (or both).</p>
+<p><strong>Axiom 2 (Transitivity)</strong>: For all <span class="math inline">x, y, z \in X</span>, if <span class="math inline">x \succeq y</span> and <span class="math inline">y \succeq z</span>, then <span class="math inline">x \succeq z</span>.</p>
+<p><em>Interpretation</em>: Completeness means the consumer can always compare any two bundles. Transitivity ensures consistency: if you prefer apples to oranges and oranges to bananas, you must prefer apples to bananas.</p>
+</div>
+</section>
+<section id="proposition-1-properties-of-rational-preferences" class="level3 proposition" data-number="1.2.3">
+<h3 class="proposition anchored" data-number="1.2.3" data-anchor-id="proposition-1-properties-of-rational-preferences"><span class="header-section-number">1.2.3</span> Proposition 1 (Properties of Rational Preferences)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 1.B.3</strong> (Properties of Rational Preferences)</p>
+</div>
+<p>If <span class="math inline">\succeq</span> is a rational preference relation on <span class="math inline">X</span>, then:</p>
+<ol type="i">
+<li>The indifference relation <span class="math inline">\sim</span> is transitive<br>
 </li>
-<li>Non-decreasing in prices<br>
+<li>The strict preference relation <span class="math inline">\succ</span> is transitive<br>
 </li>
-<li>Concave in prices<br>
-</li>
-<li>Continuous</li>
+<li>The strict preference relation <span class="math inline">\succ</span> is asymmetric: if <span class="math inline">x \succ y</span>, then not <span class="math inline">y \succ x</span></li>
 </ol>
-<hr>
-</section>
-<section id="duality-results" class="level2">
-<h2 class="anchored" data-anchor-id="duality-results">4.4 Duality Results</h2>
-<section id="shephards-lemma" class="level3">
-<h3 class="anchored" data-anchor-id="shephards-lemma">Shephard’s Lemma</h3>
-<p>[ = h_i(p,u) ]</p>
-</section>
-<section id="roys-identity" class="level3">
-<h3 class="anchored" data-anchor-id="roys-identity">Roy’s Identity</h3>
-<p>[ x_i(p,m) = - {v(p,m)/m} ]</p>
-<p>These identities link <strong>observable demand</strong> to <strong>value functions</strong>.</p>
-<hr>
-</section>
-</section>
-</section>
-<section id="summary-table" class="level1">
-<h1>Summary Table</h1>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Concept</th>
-<th>Object</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Preferences</td>
-<td>( )</td>
-</tr>
-<tr class="even">
-<td>Utility</td>
-<td>( u(x) )</td>
-</tr>
-<tr class="odd">
-<td>Budget Set</td>
-<td>( B(p,m) )</td>
-</tr>
-<tr class="even">
-<td>Marshallian Demand</td>
-<td>( x(p,m) )</td>
-</tr>
-<tr class="odd">
-<td>Indirect Utility</td>
-<td>( v(p,m) )</td>
-</tr>
-<tr class="even">
-<td>Expenditure Function</td>
-<td>( e(p,u) )</td>
-</tr>
-<tr class="odd">
-<td>Hicksian Demand</td>
-<td>( h(p,u) )</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="what-you-should-master-after-part-i" class="level1">
-<h1>What You Should Master After Part I</h1>
-<ol type="1">
-<li>Preferences → utility → choice</li>
-<li>Utility maximization ↔︎ expenditure minimization</li>
-<li>Marshallian vs Hicksian demand</li>
-<li>Role of duality in welfare analysis</li>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em>:</p>
+</div>
+<ol type="i">
+<li><p>Suppose <span class="math inline">x \sim y</span> and <span class="math inline">y \sim z</span>. Then <span class="math inline">x \succeq y</span>, <span class="math inline">y \succeq x</span>, <span class="math inline">y \succeq z</span>, and <span class="math inline">z \succeq y</span>. By transitivity of <span class="math inline">\succeq</span>, we have <span class="math inline">x \succeq z</span> and <span class="math inline">z \succeq x</span>, which means <span class="math inline">x \sim z</span>.</p></li>
+<li><p>Suppose <span class="math inline">x \succ y</span> and <span class="math inline">y \succ z</span>. Then <span class="math inline">x \succeq y</span> and not <span class="math inline">y \succeq x</span>, and <span class="math inline">y \succeq z</span> and not <span class="math inline">z \succeq y</span>. By transitivity, <span class="math inline">x \succeq z</span>. Suppose, for contradiction, that <span class="math inline">z \succeq x</span>. Then by transitivity with <span class="math inline">y \succeq z</span>, we get <span class="math inline">y \succeq x</span>, contradicting <span class="math inline">x \succ y</span>. Therefore <span class="math inline">x \succ z</span>.</p></li>
+<li><p>If <span class="math inline">x \succ y</span>, then <span class="math inline">x \succeq y</span> and not <span class="math inline">y \succeq x</span>. By completeness, since not <span class="math inline">y \succeq x</span>, we cannot have <span class="math inline">y \succeq x</span>. Therefore, not <span class="math inline">y \succ x</span>. <span class="qed"></span>∎</p></li>
 </ol>
+</div>
+</section>
+</section>
+<section id="continuity-and-monotonicity" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="continuity-and-monotonicity"><span class="header-section-number">1.3</span> Continuity and Monotonicity</h2>
+<section id="definition-3-continuity" class="level3 definition" data-number="1.3.1">
+<h3 class="definition anchored" data-number="1.3.1" data-anchor-id="definition-3-continuity"><span class="header-section-number">1.3.1</span> Definition 3 (Continuity)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 1.C.1</strong> (Continuity)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> on <span class="math inline">X = \mathbb{R}^L_+</span> is <strong>continuous</strong> if for any sequence of pairs <span class="math inline">\{(x^n, y^n)\}_{n=1}^{\infty}</span> with <span class="math inline">x^n \succeq y^n</span> for all <span class="math inline">n</span>, and with <span class="math inline">x^n \to x</span> and <span class="math inline">y^n \to y</span>, we have <span class="math inline">x \succeq y</span>.</p>
+<p>Equivalently, <span class="math inline">\succeq</span> is continuous if the sets <span class="math inline">\{y \in X : y \succeq x\}</span> and <span class="math inline">\{y \in X : x \succeq y\}</span> are closed for all <span class="math inline">x \in X</span>.</p>
+<p><em>Interpretation</em>: Continuity means small changes in consumption bundles lead to small changes in preference. There are no “jumps” in preferences.</p>
+</div>
+</section>
+<section id="definition-4-monotonicity" class="level3 definition" data-number="1.3.2">
+<h3 class="definition anchored" data-number="1.3.2" data-anchor-id="definition-4-monotonicity"><span class="header-section-number">1.3.2</span> Definition 4 (Monotonicity)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 1.C.2</strong> (Monotonicity)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> on <span class="math inline">X = \mathbb{R}^L_+</span> is:</p>
+<p><strong>Monotonic</strong> if <span class="math inline">x \geq y</span> (meaning <span class="math inline">x_\ell \geq y_\ell</span> for all <span class="math inline">\ell</span>) and <span class="math inline">x \neq y</span> implies <span class="math inline">x \succ y</span>.</p>
+<p><strong>Strongly monotonic</strong> if <span class="math inline">x \geq y</span> and <span class="math inline">x \neq y</span> implies <span class="math inline">x \succ y</span> (more is strictly better).</p>
+<p><strong>Locally nonsatiated</strong> if for every <span class="math inline">x \in X</span> and every <span class="math inline">\varepsilon &gt; 0</span>, there exists <span class="math inline">y \in X</span> with <span class="math inline">\|y - x\| &lt; \varepsilon</span> such that <span class="math inline">y \succ x</span>.</p>
+<p><em>Interpretation</em>: Monotonicity embodies the idea that “more is better.” Local nonsatiation is weaker: in any neighborhood of any bundle, there’s always something better.</p>
+</div>
+</section>
+<section id="proposition-2-monotonicity-relationships" class="level3 proposition" data-number="1.3.3">
+<h3 class="proposition anchored" data-number="1.3.3" data-anchor-id="proposition-2-monotonicity-relationships"><span class="header-section-number">1.3.3</span> Proposition 2 (Monotonicity Relationships)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 1.C.3</strong> (Monotonicity Relationships)</p>
+</div>
+<ol type="i">
+<li>Strong monotonicity implies monotonicity<br>
+</li>
+<li>Strong monotonicity implies local nonsatiation<br>
+</li>
+<li>Monotonicity does not imply local nonsatiation</li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof sketch</em>:</p>
+</div>
+<ol type="i">
+<li>and (ii) are immediate from definitions. For (iii), consider preferences where the consumer is satiated at some point <span class="math inline">x^*</span> and <span class="math inline">x \succeq y</span> if and only if <span class="math inline">\|x - x^*\| \leq \|y - y^*\|</span>. This is monotonic but not locally nonsatiated at <span class="math inline">x^*</span>. <span class="qed"></span>∎</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="convexity" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="convexity"><span class="header-section-number">1.4</span> Convexity</h2>
+<section id="definition-5-convex-preferences" class="level3 definition" data-number="1.4.1">
+<h3 class="definition anchored" data-number="1.4.1" data-anchor-id="definition-5-convex-preferences"><span class="header-section-number">1.4.1</span> Definition 5 (Convex Preferences)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 1.D.1</strong> (Convex Preferences)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> on <span class="math inline">X</span> is <strong>convex</strong> if for all <span class="math inline">x, y, z \in X</span> with <span class="math inline">x \succeq z</span> and <span class="math inline">y \succeq z</span>, and for all <span class="math inline">\alpha \in [0,1]</span>:</p>
+<p><span class="math display">\alpha x + (1-\alpha)y \succeq z</span></p>
+<p>The preference relation is <strong>strictly convex</strong> if for all <span class="math inline">x, y, z \in X</span> with <span class="math inline">x \succeq z</span>, <span class="math inline">y \succeq z</span>, <span class="math inline">x \neq y</span>, and for all <span class="math inline">\alpha \in (0,1)</span>:</p>
+<p><span class="math display">\alpha x + (1-\alpha)y \succ z</span></p>
+<p><em>Interpretation</em>: Convexity means “averages are preferred to extremes” or equivalently, consumers prefer diversity. If you like both bundles <span class="math inline">x</span> and <span class="math inline">y</span> at least as much as <span class="math inline">z</span>, you also like mixtures of <span class="math inline">x</span> and <span class="math inline">y</span> at least as much as <span class="math inline">z</span>.</p>
+</div>
+</section>
+<section id="proposition-3-convexity-and-indifference-sets" class="level3 proposition" data-number="1.4.2">
+<h3 class="proposition anchored" data-number="1.4.2" data-anchor-id="proposition-3-convexity-and-indifference-sets"><span class="header-section-number">1.4.2</span> Proposition 3 (Convexity and Indifference Sets)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 1.D.2</strong> (Convexity and Indifference Sets)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> is convex if and only if for every <span class="math inline">x \in X</span>, the upper contour set <span class="math inline">\{y \in X : y \succeq x\}</span> is convex.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em>:</p>
+</div>
+<p>(<span class="math inline">\Rightarrow</span>) Suppose <span class="math inline">\succeq</span> is convex and let <span class="math inline">y, z \in \{w : w \succeq x\}</span>. Then <span class="math inline">y \succeq x</span> and <span class="math inline">z \succeq x</span>. By convexity, for any <span class="math inline">\alpha \in [0,1]</span>, <span class="math inline">\alpha y + (1-\alpha)z \succeq x</span>. Thus <span class="math inline">\alpha y + (1-\alpha)z</span> is in the upper contour set, proving it’s convex.</p>
+<p>(<span class="math inline">\Leftarrow</span>) Suppose all upper contour sets are convex. Take <span class="math inline">x \succeq z</span> and <span class="math inline">y \succeq z</span>. Then <span class="math inline">x, y \in \{w : w \succeq z\}</span>. Since this set is convex, <span class="math inline">\alpha x + (1-\alpha)y \in \{w : w \succeq z\}</span> for all <span class="math inline">\alpha \in [0,1]</span>, meaning <span class="math inline">\alpha x + (1-\alpha)y \succeq z</span>. <span class="qed"></span>∎</p>
+</div>
+</section>
+</section>
+</section>
+<section id="utility-representation" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Utility Representation</h1>
+<section id="utility-functions" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="utility-functions"><span class="header-section-number">2.1</span> Utility Functions</h2>
+<section id="definition-6-utility-function" class="level3 definition" data-number="2.1.1">
+<h3 class="definition anchored" data-number="2.1.1" data-anchor-id="definition-6-utility-function"><span class="header-section-number">2.1.1</span> Definition 6 (Utility Function)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 2.A.1</strong> (Utility Function)</p>
+</div>
+<p>A function <span class="math inline">u: X \to \mathbb{R}</span> is a <strong>utility function</strong> representing preference relation <span class="math inline">\succeq</span> if for all <span class="math inline">x, y \in X</span>:</p>
+<p><span class="math display">x \succeq y \Longleftrightarrow u(x) \geq u(y)</span></p>
+<p><em>Interpretation</em>: A utility function assigns numbers to bundles such that the ordering of numbers matches the preference ordering. The numbers themselves are ordinal (only rankings matter), not cardinal.</p>
+</div>
+</section>
+<section id="proposition-4-utility-and-derived-relations" class="level3 proposition" data-number="2.1.2">
+<h3 class="proposition anchored" data-number="2.1.2" data-anchor-id="proposition-4-utility-and-derived-relations"><span class="header-section-number">2.1.2</span> Proposition 4 (Utility and Derived Relations)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 2.A.2</strong> (Utility and Derived Relations)</p>
+</div>
+<p>If <span class="math inline">u</span> represents <span class="math inline">\succeq</span>, then:</p>
+<ul>
+<li><span class="math inline">x \succ y</span> if and only if <span class="math inline">u(x) &gt; u(y)</span></li>
+<li><span class="math inline">x \sim y</span> if and only if <span class="math inline">u(x) = u(y)</span></li>
+</ul>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em>:</p>
+</div>
+<p>Direct from the definition of utility representation and the definitions of <span class="math inline">\succ</span> and <span class="math inline">\sim</span>. <span class="qed"></span>∎</p>
+</div>
+</section>
+<section id="proposition-5-positive-monotonic-transformations" class="level3 proposition" data-number="2.1.3">
+<h3 class="proposition anchored" data-number="2.1.3" data-anchor-id="proposition-5-positive-monotonic-transformations"><span class="header-section-number">2.1.3</span> Proposition 5 (Positive Monotonic Transformations)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 2.A.3</strong> (Positive Monotonic Transformations)</p>
+</div>
+<p>If <span class="math inline">u</span> represents <span class="math inline">\succeq</span> and <span class="math inline">f: \mathbb{R} \to \mathbb{R}</span> is strictly increasing, then <span class="math inline">v = f \circ u</span> also represents <span class="math inline">\succeq</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em>:</p>
+</div>
+<p>For any <span class="math inline">x, y \in X</span>:</p>
+<p><span class="math display">x \succeq y \Longleftrightarrow u(x) \geq u(y) \Longleftrightarrow f(u(x)) \geq f(u(y)) \Longleftrightarrow v(x) \geq v(y)</span></p>
+<p>The second equivalence holds because <span class="math inline">f</span> is strictly increasing. <span class="qed"></span>∎</p>
+</div>
+<p><em>Implication</em>: Utility is ordinal. If <span class="math inline">u</span> works, so does <span class="math inline">u^2</span>, <span class="math inline">\sqrt{u}</span>, <span class="math inline">\ln u</span>, etc. (when appropriate). Only the ordering matters.</p>
+</section>
+</section>
+<section id="the-representation-theorem" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-representation-theorem"><span class="header-section-number">2.2</span> The Representation Theorem</h2>
+<section id="theorem-1-existence-of-utility-representation" class="level3 theorem" data-number="2.2.1">
+<h3 class="theorem anchored" data-number="2.2.1" data-anchor-id="theorem-1-existence-of-utility-representation"><span class="header-section-number">2.2.1</span> Theorem 1 (Existence of Utility Representation)</h3>
+<div class="theorem">
+<div class="theorem-title">
+<p><strong>Theorem 2.B.1</strong> (Existence of Utility Representation)</p>
+</div>
+<p>If <span class="math inline">X = \mathbb{R}^L_+</span> and <span class="math inline">\succeq</span> is rational and continuous, then there exists a continuous utility function <span class="math inline">u: X \to \mathbb{R}</span> representing <span class="math inline">\succeq</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Sketch of Proof</em>:</p>
+</div>
+<p>The proof constructs <span class="math inline">u</span> explicitly. For <span class="math inline">X = \mathbb{R}^L_+</span>, define:</p>
+<p><span class="math display">u(x) = \min\{\alpha \in \mathbb{R} : \alpha e \succeq x\}</span></p>
+<p>where <span class="math inline">e = (1,1,\ldots,1)</span>. Continuity of <span class="math inline">\succeq</span> ensures this minimum exists and that <span class="math inline">u</span> is continuous. Rationality ensures <span class="math inline">u</span> represents <span class="math inline">\succeq</span>. <span class="qed"></span>∎</p>
+</div>
+<p><em>Importance</em>: This theorem justifies the common practice of working with utility functions rather than preference relations. Under weak assumptions, the two approaches are equivalent.</p>
+</section>
+<section id="proposition-6-uniqueness-up-to-monotonic-transformation" class="level3 proposition" data-number="2.2.2">
+<h3 class="proposition anchored" data-number="2.2.2" data-anchor-id="proposition-6-uniqueness-up-to-monotonic-transformation"><span class="header-section-number">2.2.2</span> Proposition 6 (Uniqueness Up to Monotonic Transformation)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 2.B.2</strong> (Uniqueness Up to Monotonic Transformation)</p>
+</div>
+<p>If both <span class="math inline">u</span> and <span class="math inline">v</span> represent <span class="math inline">\succeq</span>, then there exists a strictly increasing function <span class="math inline">f</span> such that <span class="math inline">v = f \circ u</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em>:</p>
+</div>
+<p>Define <span class="math inline">f: u(X) \to \mathbb{R}</span> by <span class="math inline">f(u(x)) = v(x)</span>. This is well-defined because if <span class="math inline">u(x) = u(y)</span>, then <span class="math inline">x \sim y</span>, so <span class="math inline">v(x) = v(y)</span>. The function <span class="math inline">f</span> is strictly increasing: if <span class="math inline">u(x) &gt; u(y)</span>, then <span class="math inline">x \succ y</span>, so <span class="math inline">v(x) &gt; v(y)</span>. <span class="qed"></span>∎</p>
+</div>
+</section>
+</section>
+<section id="properties-of-utility-functions" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="properties-of-utility-functions"><span class="header-section-number">2.3</span> Properties of Utility Functions</h2>
+<section id="definition-7-quasi-concavity" class="level3 definition" data-number="2.3.1">
+<h3 class="definition anchored" data-number="2.3.1" data-anchor-id="definition-7-quasi-concavity"><span class="header-section-number">2.3.1</span> Definition 7 (Quasi-concavity)</h3>
+<div class="definition">
+<div class="definition-title">
+<p><strong>Definition 2.C.1</strong> (Quasi-concavity)</p>
+</div>
+<p>A function <span class="math inline">u: X \to \mathbb{R}</span> is <strong>quasi-concave</strong> if for all <span class="math inline">x, y \in X</span> and <span class="math inline">\alpha \in [0,1]</span>:</p>
+<p><span class="math display">u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\}</span></p>
+<p>It is <strong>strictly quasi-concave</strong> if for <span class="math inline">x \neq y</span> and <span class="math inline">\alpha \in (0,1)</span>:</p>
+<p><span class="math display">u(\alpha x + (1-\alpha)y) &gt; \min\{u(x), u(y)\}</span></p>
+</div>
+</section>
+<section id="proposition-7-quasi-concavity-and-convex-preferences" class="level3 proposition" data-number="2.3.2">
+<h3 class="proposition anchored" data-number="2.3.2" data-anchor-id="proposition-7-quasi-concavity-and-convex-preferences"><span class="header-section-number">2.3.2</span> Proposition 7 (Quasi-concavity and Convex Preferences)</h3>
+<div class="proposition">
+<div class="proposition-title">
+<p><strong>Proposition 2.C.2</strong> (Quasi-concavity and Convex Preferences)</p>
+</div>
+<p>A preference relation <span class="math inline">\succeq</span> is convex if and only if any utility function representing it is quasi-concave. It is strictly convex if and only if any utility function representing it is strictly quasi-concave.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div class="proof-title">
+<p><em>Proof</em> (convexity <span class="math inline">\Leftrightarrow</span> quasi-concavity):</p>
+</div>
+<p>(<span class="math inline">\Rightarrow</span>) Suppose <span class="math inline">\succeq</span> is convex and <span class="math inline">u</span> represents it. Let <span class="math inline">u(x) \geq u(z)</span> and <span class="math inline">u(y) \geq u(z)</span>. Then <span class="math inline">x \succeq z</span> and <span class="math inline">y \succeq z</span>. By convexity, <span class="math inline">\alpha x + (1-\alpha)y \succeq z</span>, so <span class="math inline">u(\alpha x + (1-\alpha)y) \geq u(z) = \min\{u(x), u(y), u(z)\} \geq \min\{u(x), u(y)\}</span>.</p>
+<p>(<span class="math inline">\Leftarrow</span>) Suppose <span class="math inline">u</span> is quasi-concave. If <span class="math inline">x \succeq z</span> and <span class="math inline">y \succeq z</span>, then <span class="math inline">u(x) \geq u(z)</span> and <span class="math inline">u(y) \geq u(z)</span>. By quasi-concavity, <span class="math inline">u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\} \geq u(z)</span>, so <span class="math inline">\alpha x + (1-\alpha)y \succeq z</span>. <span class="qed"></span>∎</p>
+</div>
+</section>
+</section>
+</section>
+<section id="exercises" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exercises</h1>
+<section id="exercise-set-1.b" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="exercise-set-1.b"><span class="header-section-number">3.1</span> Exercise Set 1.B</h2>
+<section id="exercise-1.b.1-verifying-rationality" class="level3 exercise" data-number="3.1.1">
+<h3 class="exercise anchored" data-number="3.1.1" data-anchor-id="exercise-1.b.1-verifying-rationality"><span class="header-section-number">3.1.1</span> Exercise 1.B.1 (Verifying Rationality)</h3>
+<div class="exercise">
+<div class="exercise-title">
+<p><strong>Exercise 1.B.1</strong> (Verifying Rationality)</p>
+</div>
+<p>Consider the consumption set <span class="math inline">X = \mathbb{R}^2_+</span>. For each preference relation below, determine whether it is rational (complete and transitive):</p>
+<ol type="a">
+<li><p><span class="math inline">x \succeq y</span> if and only if <span class="math inline">x_1 + x_2 \geq y_1 + y_2</span></p></li>
+<li><p><span class="math inline">x \succeq y</span> if and only if <span class="math inline">x_1 \geq y_1</span> or <span class="math inline">x_2 \geq y_2</span></p></li>
+<li><p><span class="math inline">x \succeq y</span> if and only if <span class="math inline">\min\{x_1, x_2\} \geq \min\{y_1, y_2\}</span></p></li>
+</ol>
+<p><strong>Solutions</strong>:</p>
+<ol type="a">
+<li><p><strong>Rational</strong>. <em>Completeness</em>: For any <span class="math inline">x, y</span>, either <span class="math inline">x_1 + x_2 \geq y_1 + y_2</span> or <span class="math inline">y_1 + y_2 \geq x_1 + x_2</span>. <em>Transitivity</em>: If <span class="math inline">x_1 + x_2 \geq y_1 + y_2</span> and <span class="math inline">y_1 + y_2 \geq z_1 + z_2</span>, then <span class="math inline">x_1 + x_2 \geq z_1 + z_2</span>.</p></li>
+<li><p><strong>Rational</strong>. One can verify both completeness and transitivity hold using the definition of “or” in logic.</p></li>
+<li><p><strong>Rational</strong>. Similar argument to (a), treating <span class="math inline">\min\{x_1, x_2\}</span> as a single aggregate.</p></li>
+</ol>
+</div>
+</section>
+<section id="exercise-1.b.2-lexicographic-preferences" class="level3 exercise" data-number="3.1.2">
+<h3 class="exercise anchored" data-number="3.1.2" data-anchor-id="exercise-1.b.2-lexicographic-preferences"><span class="header-section-number">3.1.2</span> Exercise 1.B.2 (Lexicographic Preferences)</h3>
+<div class="exercise">
+<div class="exercise-title">
+<p><strong>Exercise 1.B.2</strong> (Lexicographic Preferences)</p>
+</div>
+<p>Consider <strong>lexicographic preferences</strong> on <span class="math inline">\mathbb{R}^2_+</span>: <span class="math inline">x \succeq y</span> if and only if <span class="math inline">[x_1 &gt; y_1]</span> or <span class="math inline">[x_1 = y_1</span> and <span class="math inline">x_2 \geq y_2]</span>.</p>
+<ol type="a">
+<li>Show that <span class="math inline">\succeq</span> is rational.<br>
+</li>
+<li>Show that <span class="math inline">\succeq</span> cannot be represented by a utility function.</li>
+</ol>
+<p><strong>Solutions</strong>:</p>
+<ol type="a">
+<li><em>Completeness</em>: For any <span class="math inline">x, y</span>, either <span class="math inline">x_1 &gt; y_1</span>, or <span class="math inline">y_1 &gt; x_1</span>, or <span class="math inline">x_1 = y_1</span>. In the last case, either <span class="math inline">x_2 \geq y_2</span> or <span class="math inline">y_2 \geq x_2</span>. Thus either <span class="math inline">x \succeq y</span> or <span class="math inline">y \succeq x</span>.</li>
+</ol>
+<p><em>Transitivity</em>: Suppose <span class="math inline">x \succeq y</span> and <span class="math inline">y \succeq z</span>.</p>
+<p>Case 1: <span class="math inline">x_1 &gt; y_1</span>. Then <span class="math inline">x_1 &gt; y_1 \geq z_1</span> (where if <span class="math inline">y_1 &gt; z_1</span> we’re done, and if <span class="math inline">y_1 = z_1</span> then <span class="math inline">y_1 \geq z_1</span>), so <span class="math inline">x \succeq z</span>.</p>
+<p>Case 2: <span class="math inline">x_1 = y_1</span> and <span class="math inline">x_2 \geq y_2</span>. If <span class="math inline">y_1 &gt; z_1</span>, then <span class="math inline">x_1 = y_1 &gt; z_1</span>, so <span class="math inline">x \succeq z</span>. If <span class="math inline">y_1 = z_1</span>, then <span class="math inline">x_1 = y_1 = z_1</span>, and from <span class="math inline">y \succeq z</span> we have <span class="math inline">y_2 \geq z_2</span>, so <span class="math inline">x_2 \geq y_2 \geq z_2</span>, giving <span class="math inline">x \succeq z</span>.</p>
+<ol start="2" type="a">
+<li>Suppose <span class="math inline">u</span> represents <span class="math inline">\succeq</span>. For each <span class="math inline">x_1 \in [0,1]</span>, consider the interval <span class="math inline">I(x_1) = u(\{x_1\} \times \mathbb{R}_+)</span>. Since <span class="math inline">(x_1, a) \succ (x_1, b)</span> whenever <span class="math inline">a &gt; b</span>, <span class="math inline">u</span> must map each vertical line to an interval of real numbers. For <span class="math inline">x_1 &gt; y_1</span>, we need <span class="math inline">(x_1, 0) \succ (y_1, a)</span> for all <span class="math inline">a</span>, so <span class="math inline">\inf I(x_1) &gt; \sup I(y_1)</span>. Thus the intervals must be disjoint. But we have uncountably many disjoint intervals in <span class="math inline">\mathbb{R}</span>, which is impossible since <span class="math inline">\mathbb{R}</span> contains only countably many disjoint intervals (each must contain a distinct rational). Contradiction.</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="exercise-set-2.a" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="exercise-set-2.a"><span class="header-section-number">3.2</span> Exercise Set 2.A</h2>
+<section id="exercise-2.a.1-computing-utility-functions" class="level3 exercise" data-number="3.2.1">
+<h3 class="exercise anchored" data-number="3.2.1" data-anchor-id="exercise-2.a.1-computing-utility-functions"><span class="header-section-number">3.2.1</span> Exercise 2.A.1 (Computing Utility Functions)</h3>
+<div class="exercise">
+<div class="exercise-title">
+<p><strong>Exercise 2.A.1</strong> (Computing Utility Functions)</p>
+</div>
+<p>For each preference relation, find a utility function that represents it:</p>
+<ol type="a">
+<li><p><span class="math inline">x \succeq y</span> if <span class="math inline">x_1x_2 \geq y_1y_2</span> (Cobb-Douglas)</p></li>
+<li><p><span class="math inline">x \succeq y</span> if <span class="math inline">\min\{x_1, x_2\} \geq \min\{y_1, y_2\}</span> (Leontief)</p></li>
+<li><p><span class="math inline">x \succeq y</span> if <span class="math inline">ax_1 + bx_2 \geq ay_1 + by_2</span> where <span class="math inline">a, b &gt; 0</span> (Linear)</p></li>
+</ol>
+<p><strong>Solutions</strong>:</p>
+<ol type="a">
+<li><p><span class="math inline">u(x) = x_1x_2</span></p></li>
+<li><p><span class="math inline">u(x) = \min\{x_1, x_2\}</span></p></li>
+<li><p><span class="math inline">u(x) = ax_1 + bx_2</span></p></li>
+</ol>
+</div>
+</section>
+<section id="exercise-2.a.2-monotonic-transformations" class="level3 exercise" data-number="3.2.2">
+<h3 class="exercise anchored" data-number="3.2.2" data-anchor-id="exercise-2.a.2-monotonic-transformations"><span class="header-section-number">3.2.2</span> Exercise 2.A.2 (Monotonic Transformations)</h3>
+<div class="exercise">
+<div class="exercise-title">
+<p><strong>Exercise 2.A.2</strong> (Monotonic Transformations)</p>
+</div>
+<p>Let <span class="math inline">u(x_1, x_2) = x_1x_2</span> represent some preferences <span class="math inline">\succeq</span>.</p>
+<ol type="a">
+<li><p>Show that <span class="math inline">v(x_1, x_2) = \ln(x_1) + \ln(x_2)</span> represents the same preferences.</p></li>
+<li><p>Do <span class="math inline">u</span> and <span class="math inline">v</span> have the same indifference curves? Explain.</p></li>
+<li><p>Find another utility function representing <span class="math inline">\succeq</span>.</p></li>
+</ol>
+<p><strong>Solutions</strong>:</p>
+<ol type="a">
+<li><p>Note that <span class="math inline">v(x) = \ln(u(x))</span>. Since <span class="math inline">\ln</span> is strictly increasing on <span class="math inline">\mathbb{R}_{++}</span>, by Proposition 2.A.3, <span class="math inline">v</span> represents <span class="math inline">\succeq</span>.</p></li>
+<li><p>Yes. Indifference curves are level sets of the utility function. For any <span class="math inline">\bar{u}</span>, the set <span class="math inline">\{x : u(x) = \bar{u}\}</span> equals <span class="math inline">\{x : \ln(u(x)) = \ln(\bar{u})\} = \{x : v(x) = \ln(\bar{u})\}</span>, so they define the same sets.</p></li>
+<li><p><span class="math inline">w(x_1, x_2) = (x_1x_2)^2</span> or <span class="math inline">w(x_1, x_2) = \sqrt{x_1x_2}</span> or infinitely many others.</p></li>
+</ol>
+</div>
 <hr>
-<p><em>This Part I summary is suitable for upper-level undergraduate and first-year graduate microeconomics and aligns closely with Mas-Colell Chapters 1–4.</em></p>
+<p><em>These notes provide a rigorous foundation for consumer theory. The axiomatic approach ensures logical consistency while the representation theorems connect abstract preferences to concrete utility functions used in applications.</em></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

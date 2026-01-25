@@ -1,274 +1,537 @@
 ---
-title: "Mas-Colell Microeconomic Theory — Part I (Chapters 1–4)"
-sidebar: micro
-format: html
-editor:
-  markdown:
-    wrap: 72
+title: "Microeconomic Theory: Foundations"
+subtitle: "Consumer Preference and Choice"
+author: "Advanced Microeconomics Notes"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: 
+      light: [cosmo, custom.scss]
+    css: styles.css
+    html-math-method: katex
 ---
 
-## Overview of Part I
+```{=html}
+<style>
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #2c3e50;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  color: #1a1a1a;
+  font-size: 1.8em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  border-bottom: 2px solid #34495e;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.4em;
+  margin-top: 1.3em;
+  margin-bottom: 0.6em;
+}
+
+h3 {
+  color: #34495e;
+  font-size: 1.15em;
+  margin-top: 1.1em;
+  margin-bottom: 0.5em;
+  font-style: italic;
+}
+
+.definition {
+  background-color: #f8f9fa;
+  border-left: 4px solid #5d6d7e;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.theorem, .proposition {
+  background-color: #fef9f5;
+  border-left: 4px solid #b8860b;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.proof {
+  background-color: #fafafa;
+  border-left: 3px solid #95a5a6;
+  padding: 0.8em 1.2em;
+  margin: 1em 0;
+  font-size: 0.97em;
+}
+
+.exercise {
+  background-color: #f0f4f8;
+  border-left: 4px solid #3498db;
+  padding: 1em 1.2em;
+  margin: 1.2em 0;
+}
+
+.definition-title, .theorem-title, .proposition-title, .exercise-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.proof-title {
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+em {
+  font-style: italic;
+  color: #34495e;
+}
+
+strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.qed {
+  float: right;
+  font-size: 1.2em;
+}
+
+code {
+  background-color: #f4f4f4;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+}
+</style>
+```
+
+# Preference and Choice
 
-Part I of *Mas-Colell, Whinston, and Green* lays the **foundations of
-microeconomic theory**. The goal is to build a rigorous framework for
-individual choice that can later be aggregated into market behavior.
+## Introduction
 
-The key idea is **duality**: - choices ↔ preferences - preferences ↔
-utility - utility maximization ↔ expenditure minimization
+The theory of consumer choice forms the foundation of microeconomic analysis. We begin by studying how individuals make decisions when faced with alternatives. The approach is axiomatic: we start with primitive concepts (preferences) and build toward observable behavior (choice and demand).
 
-------------------------------------------------------------------------
+The central questions we address are:
 
-# Chapter 1 Introduction
+- How do we formally represent an individual's tastes or preferences?
+- Under what conditions can preferences be represented by a utility function?
+- How does a rational consumer choose when constrained by limited resources?
 
-**Core question:** How do we model economic decision-making in a
-logically consistent way?
+This chapter develops the preference-based approach to consumer theory, which proceeds in three stages: (1) axioms on preference relations, (2) representation by utility functions, and (3) choice under budget constraints.
 
-Microeconomics begins with **choice under scarcity**. Rather than
-starting with prices or markets, Mas-Colell starts with the **economic
-agent**.
+## Preference Relations
 
-------------------------------------------------------------------------
+### Definition 1 (Preference Relation) {.definition}
 
-## 1.1 Economic Agents and Choice
+::: {.definition}
+::: {.definition-title}
+**Definition 1.B.1** (Preference Relation)
+:::
 
-An economic agent faces a set of feasible alternatives ( A \subset X )
-and must select among them.
+Let $X$ be the consumption set, representing all possible alternatives available to the consumer. A **preference relation** $\succeq$ on $X$ is a binary relation where, for any $x, y \in X$, we write:
 
-### Preference Relations
+- $x \succeq y$ meaning "x is at least as good as y" (weak preference)
 
-Preferences are represented by a binary relation ( \succeq ) on ( X ).
+From the weak preference relation $\succeq$, we derive two additional relations:
 
-**Rationality assumptions:**
+- $x \succ y$ if and only if $x \succeq y$ and not $y \succeq x$ (strict preference: "x is strictly preferred to y")
+- $x \sim y$ if and only if $x \succeq y$ and $y \succeq x$ (indifference: "x is indifferent to y")
 
--   **Completeness**:\
-    For any ( x,y \in X ), either ( x \succeq y ) or ( y \succeq x ).
--   **Transitivity**:\
-    If ( x \succeq y ) and ( y \succeq z ), then ( x \succeq z ).
+The consumption set $X$ is typically assumed to be $X = \mathbb{R}^L_+$, the non-negative orthant of $L$-dimensional Euclidean space, where $L$ is the number of commodities.
+:::
 
-These assumptions ensure internally consistent choices.
+### Definition 2 (Rationality Axioms) {.definition}
 
-------------------------------------------------------------------------
+::: {.definition}
+::: {.definition-title}
+**Definition 1.B.2** (Rationality Axioms)
+:::
 
-## 1.2 Choice Correspondence
+A preference relation $\succeq$ on $X$ is **rational** if it satisfies:
 
-A **choice correspondence** ( C(A) \subseteq A ) selects the most
-preferred elements of a feasible set ( A ).
+**Axiom 1 (Completeness)**: For all $x, y \in X$, either $x \succeq y$ or $y \succeq x$ (or both).
 
-> If preferences are rational, choice behavior can be explained by
-> preference maximization.
+**Axiom 2 (Transitivity)**: For all $x, y, z \in X$, if $x \succeq y$ and $y \succeq z$, then $x \succeq z$.
 
-Mas-Colell emphasizes that **observed choice** is the primitive object;
-preferences are inferred.
+*Interpretation*: Completeness means the consumer can always compare any two bundles. Transitivity ensures consistency: if you prefer apples to oranges and oranges to bananas, you must prefer apples to bananas.
+:::
 
-------------------------------------------------------------------------
+### Proposition 1 (Properties of Rational Preferences) {.proposition}
 
-## 1.3 Optimization as a Modeling Tool
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 1.B.3** (Properties of Rational Preferences)
+:::
 
-Economic behavior is modeled as solving:
+If $\succeq$ is a rational preference relation on $X$, then:
 
-\[ x\^\* \in \arg\max\_{x \in X} u(x) \]
+(i) The indifference relation $\sim$ is transitive  
+(ii) The strict preference relation $\succ$ is transitive  
+(iii) The strict preference relation $\succ$ is asymmetric: if $x \succ y$, then not $y \succ x$
+:::
 
-subject to feasibility constraints.
+::: {.proof}
+::: {.proof-title}
+*Proof*:
+:::
 
-Optimization is not psychological—it is a **consistency device**.
+(i) Suppose $x \sim y$ and $y \sim z$. Then $x \succeq y$, $y \succeq x$, $y \succeq z$, and $z \succeq y$. By transitivity of $\succeq$, we have $x \succeq z$ and $z \succeq x$, which means $x \sim z$.
 
-------------------------------------------------------------------------
+(ii) Suppose $x \succ y$ and $y \succ z$. Then $x \succeq y$ and not $y \succeq x$, and $y \succeq z$ and not $z \succeq y$. By transitivity, $x \succeq z$. Suppose, for contradiction, that $z \succeq x$. Then by transitivity with $y \succeq z$, we get $y \succeq x$, contradicting $x \succ y$. Therefore $x \succ z$.
 
-# Chapter 2 Preferences and Utility
+(iii) If $x \succ y$, then $x \succeq y$ and not $y \succeq x$. By completeness, since not $y \succeq x$, we cannot have $y \succeq x$. Therefore, not $y \succ x$. []{.qed}∎
+:::
 
-This chapter connects **preferences** to **utility functions**.
+## Continuity and Monotonicity
 
-------------------------------------------------------------------------
+### Definition 3 (Continuity) {.definition}
 
-## 2.1 Properties of Preferences
+::: {.definition}
+::: {.definition-title}
+**Definition 1.C.1** (Continuity)
+:::
 
-A preference relation ( \succeq ) is:
+A preference relation $\succeq$ on $X = \mathbb{R}^L_+$ is **continuous** if for any sequence of pairs $\{(x^n, y^n)\}_{n=1}^{\infty}$ with $x^n \succeq y^n$ for all $n$, and with $x^n \to x$ and $y^n \to y$, we have $x \succeq y$.
 
--   **Reflexive**: ( x \succeq x )
--   **Complete**
--   **Transitive**
+Equivalently, $\succeq$ is continuous if the sets $\{y \in X : y \succeq x\}$ and $\{y \in X : x \succeq y\}$ are closed for all $x \in X$.
 
-These define a **rational preference relation**.
+*Interpretation*: Continuity means small changes in consumption bundles lead to small changes in preference. There are no "jumps" in preferences.
+:::
 
-------------------------------------------------------------------------
+### Definition 4 (Monotonicity) {.definition}
 
-## 2.2 Utility Representation
+::: {.definition}
+::: {.definition-title}
+**Definition 1.C.2** (Monotonicity)
+:::
 
-A utility function ( u: X \to \mathbb{R} ) represents ( \succeq ) if:
+A preference relation $\succeq$ on $X = \mathbb{R}^L_+$ is:
 
-\[ x \succeq y \iff u(x) \ge u(y) \]
+**Monotonic** if $x \geq y$ (meaning $x_\ell \geq y_\ell$ for all $\ell$) and $x \neq y$ implies $x \succ y$.
 
-### Utility Representation Theorem (Informal)
+**Strongly monotonic** if $x \geq y$ and $x \neq y$ implies $x \succ y$ (more is strictly better).
 
-If preferences are: - complete - transitive - continuous\
-(on a suitable topological space),
+**Locally nonsatiated** if for every $x \in X$ and every $\varepsilon > 0$, there exists $y \in X$ with $\|y - x\| < \varepsilon$ such that $y \succ x$.
 
-then a **continuous utility function exists**.
+*Interpretation*: Monotonicity embodies the idea that "more is better." Local nonsatiation is weaker: in any neighborhood of any bundle, there's always something better.
+:::
 
-This is foundational: utility is *derived*, not assumed.
+### Proposition 2 (Monotonicity Relationships) {.proposition}
 
-------------------------------------------------------------------------
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 1.C.3** (Monotonicity Relationships)
+:::
 
-## 2.3 Ordinal Nature of Utility
+(i) Strong monotonicity implies monotonicity  
+(ii) Strong monotonicity implies local nonsatiation  
+(iii) Monotonicity does not imply local nonsatiation
+:::
 
-Utility is **ordinal**: - Only rankings matter - Any monotonic
-transformation represents the same preferences
+::: {.proof}
+::: {.proof-title}
+*Proof sketch*:
+:::
 
-Cardinal comparisons are meaningless at this stage.
+(i) and (ii) are immediate from definitions. For (iii), consider preferences where the consumer is satiated at some point $x^*$ and $x \succeq y$ if and only if $\|x - x^*\| \leq \|y - y^*\|$. This is monotonic but not locally nonsatiated at $x^*$. []{.qed}∎
+:::
 
-------------------------------------------------------------------------
+## Convexity
 
-## 2.4 Monotonicity and Convexity
+### Definition 5 (Convex Preferences) {.definition}
 
-### Monotonicity
+::: {.definition}
+::: {.definition-title}
+**Definition 1.D.1** (Convex Preferences)
+:::
 
-More is better:
+A preference relation $\succeq$ on $X$ is **convex** if for all $x, y, z \in X$ with $x \succeq z$ and $y \succeq z$, and for all $\alpha \in [0,1]$:
 
-\[ x \ge y \Rightarrow x \succeq y \]
+$$\alpha x + (1-\alpha)y \succeq z$$
 
-This ensures no satiation.
+The preference relation is **strictly convex** if for all $x, y, z \in X$ with $x \succeq z$, $y \succeq z$, $x \neq y$, and for all $\alpha \in (0,1)$:
 
-### Convex Preferences
+$$\alpha x + (1-\alpha)y \succ z$$
 
-For any ( x \succeq y ) and ( \alpha \in [0,1] ):
+*Interpretation*: Convexity means "averages are preferred to extremes" or equivalently, consumers prefer diversity. If you like both bundles $x$ and $y$ at least as much as $z$, you also like mixtures of $x$ and $y$ at least as much as $z$.
+:::
 
-\[ \alpha x + (1-\alpha)y \succeq y \]
+### Proposition 3 (Convexity and Indifference Sets) {.proposition}
 
-Convexity captures **preference for diversification** and implies unique
-optimal choices under standard conditions.
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 1.D.2** (Convexity and Indifference Sets)
+:::
 
-------------------------------------------------------------------------
+A preference relation $\succeq$ is convex if and only if for every $x \in X$, the upper contour set $\{y \in X : y \succeq x\}$ is convex.
+:::
 
-# Chapter 3 Utility Maximization
+::: {.proof}
+::: {.proof-title}
+*Proof*:
+:::
 
-Now preferences meet **prices and income**.
+($\Rightarrow$) Suppose $\succeq$ is convex and let $y, z \in \{w : w \succeq x\}$. Then $y \succeq x$ and $z \succeq x$. By convexity, for any $\alpha \in [0,1]$, $\alpha y + (1-\alpha)z \succeq x$. Thus $\alpha y + (1-\alpha)z$ is in the upper contour set, proving it's convex.
 
-------------------------------------------------------------------------
+($\Leftarrow$) Suppose all upper contour sets are convex. Take $x \succeq z$ and $y \succeq z$. Then $x, y \in \{w : w \succeq z\}$. Since this set is convex, $\alpha x + (1-\alpha)y \in \{w : w \succeq z\}$ for all $\alpha \in [0,1]$, meaning $\alpha x + (1-\alpha)y \succeq z$. []{.qed}∎
+:::
 
-## 3.1 Consumer Problem
+# Utility Representation
 
-Given: - Prices ( p \in \mathbb{R}\^n\_{++} ) - Income ( m \> 0 )
+## Utility Functions
 
-The consumer solves:
+### Definition 6 (Utility Function) {.definition}
 
-\[ \max\_{x \ge 0} u(x) \quad \text{s.t.} \quad p \cdot x \le m \]
+::: {.definition}
+::: {.definition-title}
+**Definition 2.A.1** (Utility Function)
+:::
 
-------------------------------------------------------------------------
+A function $u: X \to \mathbb{R}$ is a **utility function** representing preference relation $\succeq$ if for all $x, y \in X$:
 
-## 3.2 Budget Set
+$$x \succeq y \Longleftrightarrow u(x) \geq u(y)$$
 
-\[ B(p,m) = { x \ge 0 : p \cdot x \le m } \]
+*Interpretation*: A utility function assigns numbers to bundles such that the ordering of numbers matches the preference ordering. The numbers themselves are ordinal (only rankings matter), not cardinal.
+:::
 
-Key properties: - Closed - Convex - Compact (if prices are strictly
-positive)
+### Proposition 4 (Utility and Derived Relations) {.proposition}
 
-Compactness guarantees existence of a solution.
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 2.A.2** (Utility and Derived Relations)
+:::
 
-------------------------------------------------------------------------
+If $u$ represents $\succeq$, then:
 
-## 3.3 Marshallian Demand
+- $x \succ y$ if and only if $u(x) > u(y)$
+- $x \sim y$ if and only if $u(x) = u(y)$
+:::
 
-The solution defines **Marshallian (uncompensated) demand**:
+::: {.proof}
+::: {.proof-title}
+*Proof*:
+:::
 
-\[ x(p,m) \]
+Direct from the definition of utility representation and the definitions of $\succ$ and $\sim$. []{.qed}∎
+:::
 
-If utility is differentiable and the solution is interior:
+### Proposition 5 (Positive Monotonic Transformations) {.proposition}
 
-\[ \frac{\partial u / \partial x_i}{\partial u / \partial x_j} =
-\frac{p_i}{p_j} \]
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 2.A.3** (Positive Monotonic Transformations)
+:::
 
-This is the **tangency condition**.
+If $u$ represents $\succeq$ and $f: \mathbb{R} \to \mathbb{R}$ is strictly increasing, then $v = f \circ u$ also represents $\succeq$.
+:::
 
-------------------------------------------------------------------------
+::: {.proof}
+::: {.proof-title}
+*Proof*:
+:::
 
-## 3.4 Indirect Utility
+For any $x, y \in X$:
 
-Define:
+$$x \succeq y \Longleftrightarrow u(x) \geq u(y) \Longleftrightarrow f(u(x)) \geq f(u(y)) \Longleftrightarrow v(x) \geq v(y)$$
 
-\[ v(p,m) = \max\_{x \in B(p,m)} u(x) \]
+The second equivalence holds because $f$ is strictly increasing. []{.qed}∎
+:::
 
-Properties: - Homogeneous of degree 0 in ( (p,m) ) - Non-increasing in
-prices - Non-decreasing in income
+*Implication*: Utility is ordinal. If $u$ works, so does $u^2$, $\sqrt{u}$, $\ln u$, etc. (when appropriate). Only the ordering matters.
 
-Indirect utility summarizes consumer welfare.
+## The Representation Theorem
 
-------------------------------------------------------------------------
+### Theorem 1 (Existence of Utility Representation) {.theorem}
 
-# Chapter 4 Expenditure Minimization and Duality
+::: {.theorem}
+::: {.theorem-title}
+**Theorem 2.B.1** (Existence of Utility Representation)
+:::
 
-Mas-Colell emphasizes **duality** as the organizing principle.
+If $X = \mathbb{R}^L_+$ and $\succeq$ is rational and continuous, then there exists a continuous utility function $u: X \to \mathbb{R}$ representing $\succeq$.
+:::
 
-------------------------------------------------------------------------
+::: {.proof}
+::: {.proof-title}
+*Sketch of Proof*:
+:::
 
-## 4.1 Expenditure Minimization
+The proof constructs $u$ explicitly. For $X = \mathbb{R}^L_+$, define:
 
-The dual problem:
+$$u(x) = \min\{\alpha \in \mathbb{R} : \alpha e \succeq x\}$$
 
-\[ e(p,u_0) = \min\_{x \ge 0} p \cdot x \quad \text{s.t.} \quad u(x)
-\ge u_0 \]
+where $e = (1,1,\ldots,1)$. Continuity of $\succeq$ ensures this minimum exists and that $u$ is continuous. Rationality ensures $u$ represents $\succeq$. []{.qed}∎
+:::
 
-This asks: *What is the cheapest way to reach a given utility level?*
+*Importance*: This theorem justifies the common practice of working with utility functions rather than preference relations. Under weak assumptions, the two approaches are equivalent.
 
-------------------------------------------------------------------------
+### Proposition 6 (Uniqueness Up to Monotonic Transformation) {.proposition}
 
-## 4.2 Hicksian Demand
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 2.B.2** (Uniqueness Up to Monotonic Transformation)
+:::
 
-The solution ( h(p,u_0) ) is **Hicksian (compensated) demand**.
+If both $u$ and $v$ represent $\succeq$, then there exists a strictly increasing function $f$ such that $v = f \circ u$.
+:::
 
--   Depends on prices and utility
--   Holds utility constant
+::: {.proof}
+::: {.proof-title}
+*Proof*:
+:::
 
-Used for welfare analysis.
+Define $f: u(X) \to \mathbb{R}$ by $f(u(x)) = v(x)$. This is well-defined because if $u(x) = u(y)$, then $x \sim y$, so $v(x) = v(y)$. The function $f$ is strictly increasing: if $u(x) > u(y)$, then $x \succ y$, so $v(x) > v(y)$. []{.qed}∎
+:::
 
-------------------------------------------------------------------------
+## Properties of Utility Functions
 
-## 4.3 Expenditure Function Properties
+### Definition 7 (Quasi-concavity) {.definition}
 
-1.  Homogeneous of degree 1 in prices\
-2.  Non-decreasing in prices\
-3.  Concave in prices\
-4.  Continuous
+::: {.definition}
+::: {.definition-title}
+**Definition 2.C.1** (Quasi-concavity)
+:::
 
-------------------------------------------------------------------------
+A function $u: X \to \mathbb{R}$ is **quasi-concave** if for all $x, y \in X$ and $\alpha \in [0,1]$:
 
-## 4.4 Duality Results
+$$u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\}$$
 
-### Shephard’s Lemma
+It is **strictly quasi-concave** if for $x \neq y$ and $\alpha \in (0,1)$:
 
-\[ \frac{\partial e(p,u)}{\partial p_i} = h_i(p,u) \]
+$$u(\alpha x + (1-\alpha)y) > \min\{u(x), u(y)\}$$
+:::
 
-### Roy’s Identity
+### Proposition 7 (Quasi-concavity and Convex Preferences) {.proposition}
 
-\[ x_i(p,m) = -\frac{\partial v(p,m)/\partial p_i}
-{\partial v(p,m)/\partial m} \]
+::: {.proposition}
+::: {.proposition-title}
+**Proposition 2.C.2** (Quasi-concavity and Convex Preferences)
+:::
 
-These identities link **observable demand** to **value functions**.
+A preference relation $\succeq$ is convex if and only if any utility function representing it is quasi-concave. It is strictly convex if and only if any utility function representing it is strictly quasi-concave.
+:::
 
-------------------------------------------------------------------------
+::: {.proof}
+::: {.proof-title}
+*Proof* (convexity $\Leftrightarrow$ quasi-concavity):
+:::
 
-# Summary Table
+($\Rightarrow$) Suppose $\succeq$ is convex and $u$ represents it. Let $u(x) \geq u(z)$ and $u(y) \geq u(z)$. Then $x \succeq z$ and $y \succeq z$. By convexity, $\alpha x + (1-\alpha)y \succeq z$, so $u(\alpha x + (1-\alpha)y) \geq u(z) = \min\{u(x), u(y), u(z)\} \geq \min\{u(x), u(y)\}$.
 
-| Concept              | Object      |
-|----------------------|-------------|
-| Preferences          | ( \succeq ) |
-| Utility              | ( u(x) )    |
-| Budget Set           | ( B(p,m) )  |
-| Marshallian Demand   | ( x(p,m) )  |
-| Indirect Utility     | ( v(p,m) )  |
-| Expenditure Function | ( e(p,u) )  |
-| Hicksian Demand      | ( h(p,u) )  |
+($\Leftarrow$) Suppose $u$ is quasi-concave. If $x \succeq z$ and $y \succeq z$, then $u(x) \geq u(z)$ and $u(y) \geq u(z)$. By quasi-concavity, $u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\} \geq u(z)$, so $\alpha x + (1-\alpha)y \succeq z$. []{.qed}∎
+:::
 
-------------------------------------------------------------------------
+# Exercises
 
-# What You Should Master After Part I
+## Exercise Set 1.B
 
-1.  Preferences → utility → choice
-2.  Utility maximization ↔ expenditure minimization
-3.  Marshallian vs Hicksian demand
-4.  Role of duality in welfare analysis
+### Exercise 1.B.1 (Verifying Rationality) {.exercise}
 
-------------------------------------------------------------------------
+::: {.exercise}
+::: {.exercise-title}
+**Exercise 1.B.1** (Verifying Rationality)
+:::
 
-*This Part I summary is suitable for upper-level undergraduate and
-first-year graduate microeconomics and aligns closely with Mas-Colell
-Chapters 1–4.*
+Consider the consumption set $X = \mathbb{R}^2_+$. For each preference relation below, determine whether it is rational (complete and transitive):
+
+(a) $x \succeq y$ if and only if $x_1 + x_2 \geq y_1 + y_2$
+
+(b) $x \succeq y$ if and only if $x_1 \geq y_1$ or $x_2 \geq y_2$
+
+(c) $x \succeq y$ if and only if $\min\{x_1, x_2\} \geq \min\{y_1, y_2\}$
+
+**Solutions**:
+
+(a) **Rational**. *Completeness*: For any $x, y$, either $x_1 + x_2 \geq y_1 + y_2$ or $y_1 + y_2 \geq x_1 + x_2$. *Transitivity*: If $x_1 + x_2 \geq y_1 + y_2$ and $y_1 + y_2 \geq z_1 + z_2$, then $x_1 + x_2 \geq z_1 + z_2$.
+
+(b) **Rational**. One can verify both completeness and transitivity hold using the definition of "or" in logic.
+
+(c) **Rational**. Similar argument to (a), treating $\min\{x_1, x_2\}$ as a single aggregate.
+:::
+
+### Exercise 1.B.2 (Lexicographic Preferences) {.exercise}
+
+::: {.exercise}
+::: {.exercise-title}
+**Exercise 1.B.2** (Lexicographic Preferences)
+:::
+
+Consider **lexicographic preferences** on $\mathbb{R}^2_+$: $x \succeq y$ if and only if $[x_1 > y_1]$ or $[x_1 = y_1$ and $x_2 \geq y_2]$.
+
+(a) Show that $\succeq$ is rational.  
+(b) Show that $\succeq$ cannot be represented by a utility function.
+
+**Solutions**:
+
+(a) *Completeness*: For any $x, y$, either $x_1 > y_1$, or $y_1 > x_1$, or $x_1 = y_1$. In the last case, either $x_2 \geq y_2$ or $y_2 \geq x_2$. Thus either $x \succeq y$ or $y \succeq x$.
+
+*Transitivity*: Suppose $x \succeq y$ and $y \succeq z$. 
+
+Case 1: $x_1 > y_1$. Then $x_1 > y_1 \geq z_1$ (where if $y_1 > z_1$ we're done, and if $y_1 = z_1$ then $y_1 \geq z_1$), so $x \succeq z$. 
+
+Case 2: $x_1 = y_1$ and $x_2 \geq y_2$. If $y_1 > z_1$, then $x_1 = y_1 > z_1$, so $x \succeq z$. If $y_1 = z_1$, then $x_1 = y_1 = z_1$, and from $y \succeq z$ we have $y_2 \geq z_2$, so $x_2 \geq y_2 \geq z_2$, giving $x \succeq z$.
+
+(b) Suppose $u$ represents $\succeq$. For each $x_1 \in [0,1]$, consider the interval $I(x_1) = u(\{x_1\} \times \mathbb{R}_+)$. Since $(x_1, a) \succ (x_1, b)$ whenever $a > b$, $u$ must map each vertical line to an interval of real numbers. For $x_1 > y_1$, we need $(x_1, 0) \succ (y_1, a)$ for all $a$, so $\inf I(x_1) > \sup I(y_1)$. Thus the intervals must be disjoint. But we have uncountably many disjoint intervals in $\mathbb{R}$, which is impossible since $\mathbb{R}$ contains only countably many disjoint intervals (each must contain a distinct rational). Contradiction.
+:::
+
+## Exercise Set 2.A
+
+### Exercise 2.A.1 (Computing Utility Functions) {.exercise}
+
+::: {.exercise}
+::: {.exercise-title}
+**Exercise 2.A.1** (Computing Utility Functions)
+:::
+
+For each preference relation, find a utility function that represents it:
+
+(a) $x \succeq y$ if $x_1x_2 \geq y_1y_2$ (Cobb-Douglas)
+
+(b) $x \succeq y$ if $\min\{x_1, x_2\} \geq \min\{y_1, y_2\}$ (Leontief)
+
+(c) $x \succeq y$ if $ax_1 + bx_2 \geq ay_1 + by_2$ where $a, b > 0$ (Linear)
+
+**Solutions**:
+
+(a) $u(x) = x_1x_2$
+
+(b) $u(x) = \min\{x_1, x_2\}$
+
+(c) $u(x) = ax_1 + bx_2$
+:::
+
+### Exercise 2.A.2 (Monotonic Transformations) {.exercise}
+
+::: {.exercise}
+::: {.exercise-title}
+**Exercise 2.A.2** (Monotonic Transformations)
+:::
+
+Let $u(x_1, x_2) = x_1x_2$ represent some preferences $\succeq$.
+
+(a) Show that $v(x_1, x_2) = \ln(x_1) + \ln(x_2)$ represents the same preferences.
+
+(b) Do $u$ and $v$ have the same indifference curves? Explain.
+
+(c) Find another utility function representing $\succeq$.
+
+**Solutions**:
+
+(a) Note that $v(x) = \ln(u(x))$. Since $\ln$ is strictly increasing on $\mathbb{R}_{++}$, by Proposition 2.A.3, $v$ represents $\succeq$.
+
+(b) Yes. Indifference curves are level sets of the utility function. For any $\bar{u}$, the set $\{x : u(x) = \bar{u}\}$ equals $\{x : \ln(u(x)) = \ln(\bar{u})\} = \{x : v(x) = \ln(\bar{u})\}$, so they define the same sets.
+
+(c) $w(x_1, x_2) = (x_1x_2)^2$ or $w(x_1, x_2) = \sqrt{x_1x_2}$ or infinitely many others.
+:::
+
+---
+
+*Genrated using Claude*
