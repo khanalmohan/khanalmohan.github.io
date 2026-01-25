@@ -9,8 +9,16 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: r-tutorial/RBasics.qmd
-        text: R Tutorials
+      - text: "R Tutorials"
+        menu:
+          - href: r-tutorial/RBasics.qmd
+            text: "Day 1: R Basics"
+          - href: r-tutorial/DataImportandDatawrangling.qmd
+            text: "Day 2: Data Import & Wrangling"
+          - href: r-tutorial/ExploratoryDataAnalysis.qmd
+            text: "Day 3: Exploratory Data Analysis"
+          - href: r-tutorial/StatisticalAnalysis.qmd
+            text: "Day 4: Statistical Analysis"
       - href: mascollelmicroeconomics/Part1.qmd
         text: Microeconomics
 
@@ -19,6 +27,9 @@ website:
       title: "R Tutorial for Data Science"
       contents:
         - r-tutorial/RBasics.qmd
+        - r-tutorial/DataImportandDatawrangling.qmd
+        - r-tutorial/ExploratoryDataAnalysis.qmd
+        - r-tutorial/StatisticalAnalysis.qmd
 
     - id: micro
       title: "Mas-Colell Microeconomics"
@@ -26,4 +37,3 @@ website:
         - mascollelmicroeconomics/Part1.qmd
 
   page-navigation: true
-
