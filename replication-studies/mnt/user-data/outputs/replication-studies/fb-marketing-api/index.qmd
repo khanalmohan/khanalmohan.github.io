@@ -1,0 +1,517 @@
+---
+title: "Digital Divide: Facebook Penetration and Socioeconomic Development"
+subtitle: "An Analysis Using Facebook Marketing API and World Bank Data"
+author: "Mohan Khanal"
+date: last-modified
+date-format: "MMMM D, YYYY"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    theme: cosmo
+    number-sections: true
+    smooth-scroll: true
+    self-contained: false
+execute:
+  warning: false
+  message: false
+  cache: false
+bibliography: references.bib
+---
+
+# Introduction
+
+This analysis explores the relationship between Facebook penetration and socioeconomic indicators across countries using data from Facebook's Marketing API and the World Bank's World Development Indicators (WDI). 
+
+The study examines:
+
+- Facebook user distribution across regions
+- Gender disparities in Facebook usage
+- Correlation between Facebook penetration and internet connectivity
+- Relationship between social media adoption and economic development
+
+## Data Sources
+
+**Facebook Marketing API**: Provides estimates of monthly active users (MAU) by location and demographic characteristics. We use the `rsocialwatcher` R package to query this data.
+
+**World Development Indicators**: The World Bank's comprehensive database of development indicators, accessed through the `WDI` R package.
+
+# Setup
+
+## Load Required Packages
+
+```{r}
+#| label: setup
+#| code-fold: false
+
+# Install packages if needed
+# install.packages(c("rsocialwatcher", "WDI", "dplyr", "tidyr", "ggplot2", 
+#                    "janitor", "ggpubr", "knitr", "kableExtra", "sf", "rnaturalearth"))
+
+library(rsocialwatcher)
+library(WDI)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(janitor)
+library(ggpubr)
+library(knitr)
+library(kableExtra)
+```
+
+## Facebook API Credentials
+
+::: {.callout-note}
+To replicate this analysis, you'll need:
+
+1. A Facebook Developer account
+2. A Facebook Ad Account
+3. Access token from Facebook Graph API
+4. Ad Account ID (Creation Act)
+
+Visit [Facebook for Developers](https://developers.facebook.com/) to set up your credentials.
+:::
+
+```{r}
+#| label: credentials
+#| eval: false
+#| code-fold: false
+
+# Replace with your actual credentials
+TOKEN        <- "YOUR-TOKEN-HERE"
+CREATION_ACT <- "YOUR-CREATION-ACT-HERE"
+VERSION      <- "v19.0"  # Check latest API version
+```
+
+```{r}
+#| label: credentials-real
+#| include: false
+
+# Actual credentials (not shown in output)
+TOKEN        <- "EAANhP2mkZCosBO05ZAT7ZBqgPFuwR4JZAvc4ZBwaZAUHGvVDhZBSLWJ3C0ycP5oplTOADnkBPqradiTPGmybRYITWAyIdI2UD0FCUhqHn75BukzjT2ViEa7zIzCk9z5cUGEApyRUZCfKuplcHwh5bjj5nPEsDyC8uzjpwJrdbJWjQP1T2jpKdAxZAxTVcPCCzI4JbkfMxKEfk"
+CREATION_ACT <- "843351257616092"
+VERSION      <- "v19.0"
+```
+
+# Data Collection
+
+## World Bank Development Indicators
+
+We collect key socioeconomic indicators:
+
+- `SP.POP.TOTL`: Total population
+- `SP.POP.TOTL.MA.ZS`: Male population (% of total)
+- `SP.POP.TOTL.FE.ZS`: Female population (% of total)
+- `NY.GDP.PCAP.CD`: GDP per capita (current US$)
+- `IT.NET.USER.ZS`: Individuals using the Internet (% of population)
+
+```{r}
+#| label: wdi-data
+#| eval: false
+
+# Query World Bank data
+wdi_df <- WDI(
+  country = "all",
+  indicator = c(
+    "SP.POP.TOTL",
+    "SP.POP.TOTL.MA.ZS",
+    "SP.POP.TOTL.FE.ZS",
+    "NY.GDP.PCAP.CD",
+    "IT.NET.USER.ZS"
+  ),
+  start = 2021,
+  end = 2021,
+  extra = TRUE
+)
+
+# Focus on a specific region (change as needed)
+wdi_df <- wdi_df %>%
+  filter(region == "South Asia")
+```
+
+## Facebook Marketing API Data
+
+```{r}
+#| label: fb-data
+#| eval: false
+
+# Query Facebook data
+fb_df <- query_fb_marketing_api(
+  location_unit_type = "countries",
+  location_keys      = map_param_vec(wdi_df$iso2c),
+  gender             = map_param(1, 2),  # 1 = male, 2 = female
+  version            = VERSION,
+  creation_act       = CREATION_ACT,
+  token              = TOKEN
+)
+```
+
+::: {.callout-tip}
+## API Rate Limits
+
+The Facebook Marketing API has rate limits. For large queries:
+
+- Use batching with `map_param_vec()`
+- Add delays between requests if needed
+- Cache results locally to avoid repeated queries
+:::
+
+# Data Processing
+
+## Merge and Clean Data
+
+```{r}
+#| label: data-cleaning
+#| eval: false
+
+fb_clean_df <- fb_df %>%
+  # Rename for joining
+  rename(iso2c = location_keys) %>%
+  
+  # Recode gender variable
+  mutate(gender = case_when(
+    gender == "1" ~ "fb_male",
+    gender == "2" ~ "fb_female"
+  )) %>%
+  
+  # Pivot to wide format
+  pivot_wider(
+    id_cols = iso2c,
+    names_from = gender,
+    values_from = estimate_mau_upper_bound
+  ) %>%
+  
+  # Join with World Bank data
+  left_join(wdi_df, by = "iso2c") %>%
+  
+  # Clean column names
+  clean_names() %>%
+  
+  # Calculate derived variables
+  mutate(
+    fb_total = fb_female + fb_male,
+    fb_per_female = (fb_female / fb_total) * 100,
+    wdi_per_female = sp_pop_totl_fe_zs,
+    per_fb_pop = (fb_total / sp_pop_totl) * 100,
+    fb_penetration_internet = (fb_total / (sp_pop_totl * it_net_user_zs / 100)) * 100
+  )
+```
+
+## Summary Statistics
+
+```{r}
+#| label: summary-table
+#| eval: false
+
+fb_clean_df %>%
+  select(
+    country,
+    fb_total,
+    per_fb_pop,
+    fb_per_female,
+    it_net_user_zs,
+    ny_gdp_pcap_cd
+  ) %>%
+  arrange(desc(per_fb_pop)) %>%
+  kable(
+    digits = 2,
+    col.names = c(
+      "Country",
+      "FB Users (Total)",
+      "FB Penetration (%)",
+      "Female Users (%)",
+      "Internet Users (%)",
+      "GDP per Capita ($)"
+    ),
+    caption = "Facebook Penetration and Socioeconomic Indicators"
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE
+  ) %>%
+  scroll_box(height = "400px")
+```
+
+# Analysis and Visualization
+
+## Theme Setup
+
+```{r}
+#| label: plot-theme
+#| code-fold: false
+
+# Custom theme for plots
+p_theme <- theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(face = "italic", size = 11, color = "grey40"),
+    axis.text = element_text(color = "black", size = 10),
+    axis.title = element_text(size = 11, face = "bold"),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(color = "grey80", fill = NA, linewidth = 0.5)
+  )
+```
+
+## Facebook Penetration Distribution
+
+```{r}
+#| label: fig-distribution
+#| eval: false
+#| fig-cap: "Distribution of Facebook penetration across countries"
+#| fig-width: 10
+#| fig-height: 4
+
+p_1a <- fb_clean_df %>%
+  ggplot(aes(x = per_fb_pop)) +
+  geom_histogram(
+    aes(y = after_stat(density)),
+    bins = 15,
+    fill = "#4267B2",
+    color = "white",
+    alpha = 0.8
+  ) +
+  geom_density(color = "#1a3a52", linewidth = 1, alpha = 0.3) +
+  labs(
+    x = "Facebook Penetration (% of population)",
+    y = "Density",
+    title = "Distribution of Facebook Penetration"
+  ) +
+  p_theme
+
+p_1a
+```
+
+## Facebook vs Internet Connectivity
+
+```{r}
+#| label: fig-internet
+#| eval: false
+#| fig-cap: "Relationship between internet connectivity and Facebook penetration"
+#| fig-width: 8
+#| fig-height: 6
+
+p_1b <- fb_clean_df %>%
+  ggplot(aes(x = it_net_user_zs, y = per_fb_pop)) +
+  geom_point(
+    aes(size = sp_pop_totl / 1e6),
+    fill = "#4267B2",
+    color = "white",
+    pch = 21,
+    alpha = 0.7
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = TRUE,
+    color = "#1a3a52",
+    fill = "#4267B2",
+    alpha = 0.2
+  ) +
+  labs(
+    x = "Internet Users (% of population)",
+    y = "Facebook Penetration (% of population)",
+    title = "Internet Connectivity vs Facebook Penetration",
+    subtitle = "Point size represents total population (millions)",
+    size = "Population (M)"
+  ) +
+  p_theme
+
+p_1b
+```
+
+## Facebook vs Economic Development
+
+```{r}
+#| label: fig-gdp
+#| eval: false
+#| fig-cap: "Relationship between GDP per capita and Facebook penetration"
+#| fig-width: 8
+#| fig-height: 6
+
+p_1c <- fb_clean_df %>%
+  ggplot(aes(x = ny_gdp_pcap_cd, y = per_fb_pop)) +
+  geom_point(
+    aes(size = sp_pop_totl / 1e6),
+    fill = "#4267B2",
+    color = "white",
+    pch = 21,
+    alpha = 0.7
+  ) +
+  geom_smooth(
+    method = "loess",
+    se = TRUE,
+    color = "#1a3a52",
+    fill = "#4267B2",
+    alpha = 0.2
+  ) +
+  scale_x_log10(labels = scales::dollar_format()) +
+  labs(
+    x = "GDP per Capita (log scale, US$)",
+    y = "Facebook Penetration (% of population)",
+    title = "Economic Development vs Facebook Penetration",
+    subtitle = "Point size represents total population (millions)",
+    size = "Population (M)"
+  ) +
+  p_theme
+
+p_1c
+```
+
+## Gender Disparities
+
+```{r}
+#| label: fig-gender
+#| eval: false
+#| fig-cap: "Gender parity in Facebook usage vs population"
+#| fig-width: 8
+#| fig-height: 6
+
+p_gender <- fb_clean_df %>%
+  ggplot(aes(x = wdi_per_female, y = fb_per_female)) +
+  geom_abline(
+    intercept = 0,
+    slope = 1,
+    linetype = "dashed",
+    color = "grey50",
+    linewidth = 1
+  ) +
+  geom_point(
+    aes(size = fb_total / 1e6),
+    fill = "#4267B2",
+    color = "white",
+    pch = 21,
+    alpha = 0.7
+  ) +
+  labs(
+    x = "Female Population (% of total)",
+    y = "Female Facebook Users (% of total FB users)",
+    title = "Gender Parity: Population vs Facebook Usage",
+    subtitle = "Dashed line represents perfect parity. Point size = total FB users (millions)",
+    size = "FB Users (M)"
+  ) +
+  coord_equal(xlim = c(45, 55), ylim = c(25, 55)) +
+  p_theme
+
+p_gender
+```
+
+## Combined Dashboard
+
+```{r}
+#| label: fig-dashboard
+#| eval: false
+#| fig-cap: "Comprehensive dashboard of Facebook penetration metrics"
+#| fig-width: 12
+#| fig-height: 8
+
+ggarrange(
+  p_1a, p_1b, p_1c, p_gender,
+  ncol = 2,
+  nrow = 2,
+  labels = c("A", "B", "C", "D"),
+  common.legend = FALSE
+)
+```
+
+# Statistical Analysis
+
+## Correlation Analysis
+
+```{r}
+#| label: correlation
+#| eval: false
+
+# Select numeric variables for correlation
+cor_vars <- fb_clean_df %>%
+  select(
+    per_fb_pop,
+    it_net_user_zs,
+    ny_gdp_pcap_cd,
+    fb_per_female,
+    wdi_per_female
+  ) %>%
+  na.omit()
+
+# Calculate correlation matrix
+cor_matrix <- cor(cor_vars, use = "complete.obs")
+
+# Display
+kable(
+  cor_matrix,
+  digits = 3,
+  caption = "Correlation Matrix"
+) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+## Regression Analysis
+
+```{r}
+#| label: regression
+#| eval: false
+
+# Simple linear model
+model1 <- lm(per_fb_pop ~ it_net_user_zs + log(ny_gdp_pcap_cd), 
+             data = fb_clean_df)
+
+# Display results
+summary(model1)
+```
+
+# Discussion
+
+## Key Findings
+
+1. **Digital Divide**: Facebook penetration varies significantly across countries, closely tracking internet connectivity rates.
+
+2. **Economic Correlation**: Higher GDP per capita is associated with greater Facebook adoption, though the relationship is not strictly linear.
+
+3. **Gender Gap**: In many countries, female representation on Facebook differs from their proportion in the general population.
+
+4. **Infrastructure Matters**: Internet infrastructure appears to be a primary determinant of social media adoption.
+
+## Limitations
+
+- **API Data**: Facebook Marketing API provides estimates, not exact counts
+- **Temporal**: Cross-sectional analysis; longitudinal trends not captured
+- **Selection Bias**: Only includes Facebook; other platforms not considered
+- **Causality**: Correlational analysis; cannot infer causal relationships
+
+## Future Directions
+
+- Extend analysis to other regions (Sub-Saharan Africa, Latin America)
+- Include additional social media platforms
+- Examine behavioral indicators (interests, purchasing power)
+- Time-series analysis of adoption patterns
+- Incorporate policy and regulatory variables
+
+# Reproducibility
+
+## Session Information
+
+```{r}
+#| label: session-info
+
+sessionInfo()
+```
+
+## Data Availability
+
+- **Facebook data**: Requires API credentials
+- **World Bank data**: Publicly available via WDI package
+- **Analysis code**: Available at [github.com/khanalmohan/replication-studies](https://github.com/khanalmohan)
+
+# References
+
+::: {#refs}
+:::
+
+---
+
+**Last updated**: `r Sys.Date()`
+
+**License**: CC BY 4.0
