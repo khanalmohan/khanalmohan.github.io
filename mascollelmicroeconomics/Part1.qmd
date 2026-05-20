@@ -121,9 +121,9 @@ The theory of consumer choice forms the foundation of microeconomic analysis. We
 
 The central questions we address are:
 
-- How do we formally represent an individual's tastes or preferences?
-- Under what conditions can preferences be represented by a utility function?
-- How does a rational consumer choose when constrained by limited resources?
+-   How do we formally represent an individual's tastes or preferences?
+-   Under what conditions can preferences be represented by a utility function?
+-   How does a rational consumer choose when constrained by limited resources?
 
 This chapter develops the preference-based approach to consumer theory, which proceeds in three stages: (1) axioms on preference relations, (2) representation by utility functions, and (3) choice under budget constraints.
 
@@ -131,27 +131,27 @@ This chapter develops the preference-based approach to consumer theory, which pr
 
 ### Definition 1 (Preference Relation) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 1.B.1** (Preference Relation)
 :::
 
 Let $X$ be the consumption set, representing all possible alternatives available to the consumer. A **preference relation** $\succeq$ on $X$ is a binary relation where, for any $x, y \in X$, we write:
 
-- $x \succeq y$ meaning "x is at least as good as y" (weak preference)
+-   $x \succeq y$ meaning "x is at least as good as y" (weak preference)
 
 From the weak preference relation $\succeq$, we derive two additional relations:
 
-- $x \succ y$ if and only if $x \succeq y$ and not $y \succeq x$ (strict preference: "x is strictly preferred to y")
-- $x \sim y$ if and only if $x \succeq y$ and $y \succeq x$ (indifference: "x is indifferent to y")
+-   $x \succ y$ if and only if $x \succeq y$ and not $y \succeq x$ (strict preference: "x is strictly preferred to y")
+-   $x \sim y$ if and only if $x \succeq y$ and $y \succeq x$ (indifference: "x is indifferent to y")
 
 The consumption set $X$ is typically assumed to be $X = \mathbb{R}^L_+$, the non-negative orthant of $L$-dimensional Euclidean space, where $L$ is the number of commodities.
-:::
+::::
 
 ### Definition 2 (Rationality Axioms) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 1.B.2** (Rationality Axioms)
 :::
 
@@ -162,24 +162,24 @@ A preference relation $\succeq$ on $X$ is **rational** if it satisfies:
 **Axiom 2 (Transitivity)**: For all $x, y, z \in X$, if $x \succeq y$ and $y \succeq z$, then $x \succeq z$.
 
 *Interpretation*: Completeness means the consumer can always compare any two bundles. Transitivity ensures consistency: if you prefer apples to oranges and oranges to bananas, you must prefer apples to bananas.
-:::
+::::
 
 ### Proposition 1 (Properties of Rational Preferences) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 1.B.3** (Properties of Rational Preferences)
 :::
 
 If $\succeq$ is a rational preference relation on $X$, then:
 
-(i) The indifference relation $\sim$ is transitive  
-(ii) The strict preference relation $\succ$ is transitive  
+(i) The indifference relation $\sim$ is transitive\
+(ii) The strict preference relation $\succ$ is transitive\
 (iii) The strict preference relation $\succ$ is asymmetric: if $x \succ y$, then not $y \succ x$
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof*:
 :::
 
@@ -187,15 +187,15 @@ If $\succeq$ is a rational preference relation on $X$, then:
 
 (ii) Suppose $x \succ y$ and $y \succ z$. Then $x \succeq y$ and not $y \succeq x$, and $y \succeq z$ and not $z \succeq y$. By transitivity, $x \succeq z$. Suppose, for contradiction, that $z \succeq x$. Then by transitivity with $y \succeq z$, we get $y \succeq x$, contradicting $x \succ y$. Therefore $x \succ z$.
 
-(iii) If $x \succ y$, then $x \succeq y$ and not $y \succeq x$. By completeness, since not $y \succeq x$, we cannot have $y \succeq x$. Therefore, not $y \succ x$. []{.qed}∎
-:::
+(iii) If $x \succ y$, then $x \succeq y$ and not $y \succeq x$. By completeness, since not $y \succeq x$, we cannot have $y \succeq x$. Therefore, not $y \succ x$. ∎
+::::
 
 ## Continuity and Monotonicity
 
 ### Definition 3 (Continuity) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 1.C.1** (Continuity)
 :::
 
@@ -204,12 +204,12 @@ A preference relation $\succeq$ on $X = \mathbb{R}^L_+$ is **continuous** if for
 Equivalently, $\succeq$ is continuous if the sets $\{y \in X : y \succeq x\}$ and $\{y \in X : x \succeq y\}$ are closed for all $x \in X$.
 
 *Interpretation*: Continuity means small changes in consumption bundles lead to small changes in preference. There are no "jumps" in preferences.
-:::
+::::
 
 ### Definition 4 (Monotonicity) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 1.C.2** (Monotonicity)
 :::
 
@@ -222,34 +222,34 @@ A preference relation $\succeq$ on $X = \mathbb{R}^L_+$ is:
 **Locally nonsatiated** if for every $x \in X$ and every $\varepsilon > 0$, there exists $y \in X$ with $\|y - x\| < \varepsilon$ such that $y \succ x$.
 
 *Interpretation*: Monotonicity embodies the idea that "more is better." Local nonsatiation is weaker: in any neighborhood of any bundle, there's always something better.
-:::
+::::
 
 ### Proposition 2 (Monotonicity Relationships) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 1.C.3** (Monotonicity Relationships)
 :::
 
-(i) Strong monotonicity implies monotonicity  
-(ii) Strong monotonicity implies local nonsatiation  
+(i) Strong monotonicity implies monotonicity\
+(ii) Strong monotonicity implies local nonsatiation\
 (iii) Monotonicity does not imply local nonsatiation
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof sketch*:
 :::
 
-(i) and (ii) are immediate from definitions. For (iii), consider preferences where the consumer is satiated at some point $x^*$ and $x \succeq y$ if and only if $\|x - x^*\| \leq \|y - y^*\|$. This is monotonic but not locally nonsatiated at $x^*$. []{.qed}∎
-:::
+(i) and (ii) are immediate from definitions. For (iii), consider preferences where the consumer is satiated at some point $x^*$ and $x \succeq y$ if and only if $\|x - x^*\| \leq \|y - y^*\|$. This is monotonic but not locally nonsatiated at $x^*$. ∎
+::::
 
 ## Convexity
 
 ### Definition 5 (Convex Preferences) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 1.D.1** (Convex Preferences)
 :::
 
@@ -262,27 +262,27 @@ The preference relation is **strictly convex** if for all $x, y, z \in X$ with $
 $$\alpha x + (1-\alpha)y \succ z$$
 
 *Interpretation*: Convexity means "averages are preferred to extremes" or equivalently, consumers prefer diversity. If you like both bundles $x$ and $y$ at least as much as $z$, you also like mixtures of $x$ and $y$ at least as much as $z$.
-:::
+::::
 
 ### Proposition 3 (Convexity and Indifference Sets) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 1.D.2** (Convexity and Indifference Sets)
 :::
 
 A preference relation $\succeq$ is convex if and only if for every $x \in X$, the upper contour set $\{y \in X : y \succeq x\}$ is convex.
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof*:
 :::
 
 ($\Rightarrow$) Suppose $\succeq$ is convex and let $y, z \in \{w : w \succeq x\}$. Then $y \succeq x$ and $z \succeq x$. By convexity, for any $\alpha \in [0,1]$, $\alpha y + (1-\alpha)z \succeq x$. Thus $\alpha y + (1-\alpha)z$ is in the upper contour set, proving it's convex.
 
-($\Leftarrow$) Suppose all upper contour sets are convex. Take $x \succeq z$ and $y \succeq z$. Then $x, y \in \{w : w \succeq z\}$. Since this set is convex, $\alpha x + (1-\alpha)y \in \{w : w \succeq z\}$ for all $\alpha \in [0,1]$, meaning $\alpha x + (1-\alpha)y \succeq z$. []{.qed}∎
-:::
+($\Leftarrow$) Suppose all upper contour sets are convex. Take $x \succeq z$ and $y \succeq z$. Then $x, y \in \{w : w \succeq z\}$. Since this set is convex, $\alpha x + (1-\alpha)y \in \{w : w \succeq z\}$ for all $\alpha \in [0,1]$, meaning $\alpha x + (1-\alpha)y \succeq z$. ∎
+::::
 
 # Utility Representation
 
@@ -290,8 +290,8 @@ A preference relation $\succeq$ is convex if and only if for every $x \in X$, th
 
 ### Definition 6 (Utility Function) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 2.A.1** (Utility Function)
 :::
 
@@ -300,41 +300,41 @@ A function $u: X \to \mathbb{R}$ is a **utility function** representing preferen
 $$x \succeq y \Longleftrightarrow u(x) \geq u(y)$$
 
 *Interpretation*: A utility function assigns numbers to bundles such that the ordering of numbers matches the preference ordering. The numbers themselves are ordinal (only rankings matter), not cardinal.
-:::
+::::
 
 ### Proposition 4 (Utility and Derived Relations) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 2.A.2** (Utility and Derived Relations)
 :::
 
 If $u$ represents $\succeq$, then:
 
-- $x \succ y$ if and only if $u(x) > u(y)$
-- $x \sim y$ if and only if $u(x) = u(y)$
-:::
+-   $x \succ y$ if and only if $u(x) > u(y)$
+-   $x \sim y$ if and only if $u(x) = u(y)$
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof*:
 :::
 
-Direct from the definition of utility representation and the definitions of $\succ$ and $\sim$. []{.qed}∎
-:::
+Direct from the definition of utility representation and the definitions of $\succ$ and $\sim$. ∎
+::::
 
 ### Proposition 5 (Positive Monotonic Transformations) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 2.A.3** (Positive Monotonic Transformations)
 :::
 
 If $u$ represents $\succeq$ and $f: \mathbb{R} \to \mathbb{R}$ is strictly increasing, then $v = f \circ u$ also represents $\succeq$.
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof*:
 :::
 
@@ -342,8 +342,8 @@ For any $x, y \in X$:
 
 $$x \succeq y \Longleftrightarrow u(x) \geq u(y) \Longleftrightarrow f(u(x)) \geq f(u(y)) \Longleftrightarrow v(x) \geq v(y)$$
 
-The second equivalence holds because $f$ is strictly increasing. []{.qed}∎
-:::
+The second equivalence holds because $f$ is strictly increasing. ∎
+::::
 
 *Implication*: Utility is ordinal. If $u$ works, so does $u^2$, $\sqrt{u}$, $\ln u$, etc. (when appropriate). Only the ordering matters.
 
@@ -351,16 +351,16 @@ The second equivalence holds because $f$ is strictly increasing. []{.qed}∎
 
 ### Theorem 1 (Existence of Utility Representation) {.theorem}
 
-::: {.theorem}
-::: {.theorem-title}
+:::: theorem
+::: theorem-title
 **Theorem 2.B.1** (Existence of Utility Representation)
 :::
 
 If $X = \mathbb{R}^L_+$ and $\succeq$ is rational and continuous, then there exists a continuous utility function $u: X \to \mathbb{R}$ representing $\succeq$.
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Sketch of Proof*:
 :::
 
@@ -368,35 +368,35 @@ The proof constructs $u$ explicitly. For $X = \mathbb{R}^L_+$, define:
 
 $$u(x) = \min\{\alpha \in \mathbb{R} : \alpha e \succeq x\}$$
 
-where $e = (1,1,\ldots,1)$. Continuity of $\succeq$ ensures this minimum exists and that $u$ is continuous. Rationality ensures $u$ represents $\succeq$. []{.qed}∎
-:::
+where $e = (1,1,\ldots,1)$. Continuity of $\succeq$ ensures this minimum exists and that $u$ is continuous. Rationality ensures $u$ represents $\succeq$. ∎
+::::
 
 *Importance*: This theorem justifies the common practice of working with utility functions rather than preference relations. Under weak assumptions, the two approaches are equivalent.
 
 ### Proposition 6 (Uniqueness Up to Monotonic Transformation) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 2.B.2** (Uniqueness Up to Monotonic Transformation)
 :::
 
 If both $u$ and $v$ represent $\succeq$, then there exists a strictly increasing function $f$ such that $v = f \circ u$.
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof*:
 :::
 
-Define $f: u(X) \to \mathbb{R}$ by $f(u(x)) = v(x)$. This is well-defined because if $u(x) = u(y)$, then $x \sim y$, so $v(x) = v(y)$. The function $f$ is strictly increasing: if $u(x) > u(y)$, then $x \succ y$, so $v(x) > v(y)$. []{.qed}∎
-:::
+Define $f: u(X) \to \mathbb{R}$ by $f(u(x)) = v(x)$. This is well-defined because if $u(x) = u(y)$, then $x \sim y$, so $v(x) = v(y)$. The function $f$ is strictly increasing: if $u(x) > u(y)$, then $x \succ y$, so $v(x) > v(y)$. ∎
+::::
 
 ## Properties of Utility Functions
 
 ### Definition 7 (Quasi-concavity) {.definition}
 
-::: {.definition}
-::: {.definition-title}
+:::: definition
+::: definition-title
 **Definition 2.C.1** (Quasi-concavity)
 :::
 
@@ -407,27 +407,27 @@ $$u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\}$$
 It is **strictly quasi-concave** if for $x \neq y$ and $\alpha \in (0,1)$:
 
 $$u(\alpha x + (1-\alpha)y) > \min\{u(x), u(y)\}$$
-:::
+::::
 
 ### Proposition 7 (Quasi-concavity and Convex Preferences) {.proposition}
 
-::: {.proposition}
-::: {.proposition-title}
+:::: proposition
+::: proposition-title
 **Proposition 2.C.2** (Quasi-concavity and Convex Preferences)
 :::
 
 A preference relation $\succeq$ is convex if and only if any utility function representing it is quasi-concave. It is strictly convex if and only if any utility function representing it is strictly quasi-concave.
-:::
+::::
 
-::: {.proof}
-::: {.proof-title}
+:::: proof
+::: proof-title
 *Proof* (convexity $\Leftrightarrow$ quasi-concavity):
 :::
 
 ($\Rightarrow$) Suppose $\succeq$ is convex and $u$ represents it. Let $u(x) \geq u(z)$ and $u(y) \geq u(z)$. Then $x \succeq z$ and $y \succeq z$. By convexity, $\alpha x + (1-\alpha)y \succeq z$, so $u(\alpha x + (1-\alpha)y) \geq u(z) = \min\{u(x), u(y), u(z)\} \geq \min\{u(x), u(y)\}$.
 
-($\Leftarrow$) Suppose $u$ is quasi-concave. If $x \succeq z$ and $y \succeq z$, then $u(x) \geq u(z)$ and $u(y) \geq u(z)$. By quasi-concavity, $u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\} \geq u(z)$, so $\alpha x + (1-\alpha)y \succeq z$. []{.qed}∎
-:::
+($\Leftarrow$) Suppose $u$ is quasi-concave. If $x \succeq z$ and $y \succeq z$, then $u(x) \geq u(z)$ and $u(y) \geq u(z)$. By quasi-concavity, $u(\alpha x + (1-\alpha)y) \geq \min\{u(x), u(y)\} \geq u(z)$, so $\alpha x + (1-\alpha)y \succeq z$. ∎
+::::
 
 # Exercises
 
@@ -435,8 +435,8 @@ A preference relation $\succeq$ is convex if and only if any utility function re
 
 ### Exercise 1.B.1 (Verifying Rationality) {.exercise}
 
-::: {.exercise}
-::: {.exercise-title}
+:::: exercise
+::: exercise-title
 **Exercise 1.B.1** (Verifying Rationality)
 :::
 
@@ -455,39 +455,39 @@ Consider the consumption set $X = \mathbb{R}^2_+$. For each preference relation 
 (b) **Rational**. One can verify both completeness and transitivity hold using the definition of "or" in logic.
 
 (c) **Rational**. Similar argument to (a), treating $\min\{x_1, x_2\}$ as a single aggregate.
-:::
+::::
 
 ### Exercise 1.B.2 (Lexicographic Preferences) {.exercise}
 
-::: {.exercise}
-::: {.exercise-title}
+:::: exercise
+::: exercise-title
 **Exercise 1.B.2** (Lexicographic Preferences)
 :::
 
 Consider **lexicographic preferences** on $\mathbb{R}^2_+$: $x \succeq y$ if and only if $[x_1 > y_1]$ or $[x_1 = y_1$ and $x_2 \geq y_2]$.
 
-(a) Show that $\succeq$ is rational.  
+(a) Show that $\succeq$ is rational.\
 (b) Show that $\succeq$ cannot be represented by a utility function.
 
 **Solutions**:
 
 (a) *Completeness*: For any $x, y$, either $x_1 > y_1$, or $y_1 > x_1$, or $x_1 = y_1$. In the last case, either $x_2 \geq y_2$ or $y_2 \geq x_2$. Thus either $x \succeq y$ or $y \succeq x$.
 
-*Transitivity*: Suppose $x \succeq y$ and $y \succeq z$. 
+*Transitivity*: Suppose $x \succeq y$ and $y \succeq z$.
 
-Case 1: $x_1 > y_1$. Then $x_1 > y_1 \geq z_1$ (where if $y_1 > z_1$ we're done, and if $y_1 = z_1$ then $y_1 \geq z_1$), so $x \succeq z$. 
+Case 1: $x_1 > y_1$. Then $x_1 > y_1 \geq z_1$ (where if $y_1 > z_1$ we're done, and if $y_1 = z_1$ then $y_1 \geq z_1$), so $x \succeq z$.
 
 Case 2: $x_1 = y_1$ and $x_2 \geq y_2$. If $y_1 > z_1$, then $x_1 = y_1 > z_1$, so $x \succeq z$. If $y_1 = z_1$, then $x_1 = y_1 = z_1$, and from $y \succeq z$ we have $y_2 \geq z_2$, so $x_2 \geq y_2 \geq z_2$, giving $x \succeq z$.
 
 (b) Suppose $u$ represents $\succeq$. For each $x_1 \in [0,1]$, consider the interval $I(x_1) = u(\{x_1\} \times \mathbb{R}_+)$. Since $(x_1, a) \succ (x_1, b)$ whenever $a > b$, $u$ must map each vertical line to an interval of real numbers. For $x_1 > y_1$, we need $(x_1, 0) \succ (y_1, a)$ for all $a$, so $\inf I(x_1) > \sup I(y_1)$. Thus the intervals must be disjoint. But we have uncountably many disjoint intervals in $\mathbb{R}$, which is impossible since $\mathbb{R}$ contains only countably many disjoint intervals (each must contain a distinct rational). Contradiction.
-:::
+::::
 
 ## Exercise Set 2.A
 
 ### Exercise 2.A.1 (Computing Utility Functions) {.exercise}
 
-::: {.exercise}
-::: {.exercise-title}
+:::: exercise
+::: exercise-title
 **Exercise 2.A.1** (Computing Utility Functions)
 :::
 
@@ -506,12 +506,12 @@ For each preference relation, find a utility function that represents it:
 (b) $u(x) = \min\{x_1, x_2\}$
 
 (c) $u(x) = ax_1 + bx_2$
-:::
+::::
 
 ### Exercise 2.A.2 (Monotonic Transformations) {.exercise}
 
-::: {.exercise}
-::: {.exercise-title}
+:::: exercise
+::: exercise-title
 **Exercise 2.A.2** (Monotonic Transformations)
 :::
 
@@ -530,8 +530,8 @@ Let $u(x_1, x_2) = x_1x_2$ represent some preferences $\succeq$.
 (b) Yes. Indifference curves are level sets of the utility function. For any $\bar{u}$, the set $\{x : u(x) = \bar{u}\}$ equals $\{x : \ln(u(x)) = \ln(\bar{u})\} = \{x : v(x) = \ln(\bar{u})\}$, so they define the same sets.
 
 (c) $w(x_1, x_2) = (x_1x_2)^2$ or $w(x_1, x_2) = \sqrt{x_1x_2}$ or infinitely many others.
-:::
+::::
 
----
+------------------------------------------------------------------------
 
 *Genrated using Claude*
