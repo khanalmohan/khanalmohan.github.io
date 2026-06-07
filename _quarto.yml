@@ -27,9 +27,9 @@ website:
       title: "R Tutorial for Data Science"
       contents:
         - r-tutorial/RBasics.qmd
-        - r-tutorial/DataImportandDatawrangling.qmd
-        - r-tutorial/ExploratoryDataAnalysis.qmd
-        - r-tutorial/StatisticalAnalysis.qmd
+        - r-tutorial/2DataImportandDatawrangling.qmd
+        - r-tutorial/3ExploratoryDataAnalysis.qmd
+        - r-tutoria/4StatisticalAnalysis.qmd
 
     - id: micro
       title: "Mas-Colell Microeconomics"
