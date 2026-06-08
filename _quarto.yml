@@ -12,13 +12,13 @@ website:
       - text: "R Tutorials"
         menu:
           - href: r-tutorial/RBasics.qmd
-            text: "Day 1: R Basics"
-          - href: r-tutorial/2DataImportandDatawrangling.qmd
-            text: "Day 2: Data Import & Wrangling"
+            text: "1: R Basics"
+          - href: r-tutorial/2DataImportandDataWrangling.qmd
+            text: "2: Data Import & Wrangling"
           - href: r-tutorial/3ExploratoryDataAnalysis.qmd
-            text: "Day 3: Exploratory Data Analysis"
+            text: "3: Exploratory Data Analysis"
           - href: r-tutorial/4StatisticalAnalysis.qmd
-            text: "Day 4: Statistical Analysis"
+            text: "4: Statistical Analysis"
       - href: mascollelmicroeconomics/Part1.qmd
         text: Microeconomics
 
