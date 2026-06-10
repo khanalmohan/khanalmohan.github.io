@@ -1,8 +1,16 @@
 ---
 title: "1 Introduction to R and RStudio"
 author: "Mohan Khanal"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 2
+  pdf:
+    toc: true
+    number-sections: true
 ---
-
 # Welcome to R Programming! 🎉
 
 ## What is R?
