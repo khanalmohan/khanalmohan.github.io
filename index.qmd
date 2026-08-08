@@ -23,8 +23,8 @@ about:
 
 ## About Me
 
-I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.  
-My teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.
+I am a Phd candidate in the [**Department of Economics**](https://econ.unm.edu/) at [**The University of New Mexico**](https://www.unm.edu/).
 
-I am engaged in tutoring econometrics and behavioral economics for **Fall 2025** at undergraduate level and conducting **R for Data Science** sessions.  
-I am passionate about data-driven research, policy analysis, and promoting local economic development.
+Before joining UNM, I worked on several applied research projects in Nepal, including studies with the National Planning Commission, tobacco harm reduction, COVID-19-affected MSMEs, and household surveys conducted through ADB and Tribhuvan University. I also taught economics at the undergraduate level. These experiences shaped my interest in behavioral, experimental, and public economics, which I hope to explore further through my research at UNM.
+
+Beyond academia, I enjoy spending time on sports, music, and content creation. I play and explore music, follow sports, and create videos for my social media platforms and YouTube channel.
