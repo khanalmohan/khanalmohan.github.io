@@ -9,6 +9,7 @@ website:
     left:
       - href: index.qmd
         text: Home
+
       - text: "R Tutorials"
         menu:
           - href: r-tutorial/RBasics.qmd
@@ -19,8 +20,12 @@ website:
             text: "3: Exploratory Data Analysis"
           - href: r-tutorial/4StatisticalAnalysis.qmd
             text: "4: Statistical Analysis"
-      - href: mascollelmicroeconomics/Part1.qmd
-        text: Microeconomics
+
+      - text: "Microeconomics"
+        href: mascollelmicroeconomics/Part1.qmd
+
+      - text: "Book"
+        href: book/index.qmd
 
   sidebar:
     - id: rtutorials
@@ -36,4 +41,11 @@ website:
       contents:
         - mascollelmicroeconomics/Part1.qmd
 
+    - id: book
+      title: "My Book"
+      contents:
+        - book/index.qmd
+        - book/chapters/chapter-01.qmd
+
   page-navigation: true
+
