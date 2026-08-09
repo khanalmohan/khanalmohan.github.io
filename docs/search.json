@@ -374,7 +374,7 @@
     "href": "r-tutorial/RBasics.html#useful-commands",
     "title": "1 Introduction to R and RStudio",
     "section": "Useful Commands",
-    "text": "Useful Commands\n\n# List objects in environment\nls()\n\n [1] \"aa\"          \"ages\"        \"bb\"          \"check_value\" \"data1\"      \n [6] \"greeting\"    \"k\"           \"l\"           \"large_num\"   \"m\"          \n[11] \"name\"        \"numbers\"     \"scores\"      \"student_age\" \"student.age\"\n[16] \"studentAge\"  \"value\"       \"Value\"       \"x\"           \"y\"          \n[21] \"z\"          \n\n# Remove an object\n# rm(x)\n\n# Clear entire environment\n# rm(list = ls())\n\n# Check current working directory\ngetwd()\n\n[1] \"/home/mk/Documents/khanalmohan.github.io/r-tutorial\"\n\n# Set working directory (example - modify path)\n# setwd(\"C:/Users/YourName/Documents/R_Training\")",
+    "text": "Useful Commands\n\n# List objects in environment\nls()\n\n [1] \"aa\"              \"ages\"            \"bb\"              \"check_value\"    \n [5] \"data1\"           \"greeting\"        \"k\"               \"l\"              \n [9] \"large_num\"       \"m\"               \"name\"            \"numbers\"        \n[13] \"pandoc_dir\"      \"quarto_bin_path\" \"scores\"          \"student_age\"    \n[17] \"student.age\"     \"studentAge\"      \"value\"           \"Value\"          \n[21] \"x\"               \"y\"               \"z\"              \n\n# Remove an object\n# rm(x)\n\n# Clear entire environment\n# rm(list = ls())\n\n# Check current working directory\ngetwd()\n\n[1] \"/home/mk/Documents/khanalmohan.github.io/r-tutorial\"\n\n# Set working directory (example - modify path)\n# setwd(\"C:/Users/YourName/Documents/R_Training\")",
     "crumbs": [
       "1 Introduction to R and RStudio"
     ]
@@ -524,14 +524,14 @@
     "href": "index.html",
     "title": "Mohan Khanal",
     "section": "",
-    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for Fall 2025 at undergraduate level and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development."
+    "text": "I am a Phd candidate in the Department of Economics at The University of New Mexico.\nBefore joining UNM, I worked on several applied research projects in Nepal, including studies with the National Planning Commission, tobacco harm reduction, COVID-19-affected MSMEs, and household surveys conducted through ADB and Tribhuvan University. I also taught economics at the undergraduate level. These experiences shaped my interest in behavioral, experimental, and public economics, which I hope to explore further through my research at UNM.\nBeyond academia, I enjoy spending time on sports, music, and content creation. I play and explore music, follow sports, and create videos for my social media platforms and YouTube channel."
   },
   {
     "objectID": "index.html#about-me",
     "href": "index.html#about-me",
     "title": "Mohan Khanal",
     "section": "",
-    "text": "I am a Kathmandu-based researcher and lecturer with a strong academic foundation in economics.\nMy teaching and research interests include microeconomics, macroeconomics, applied economics, and data science applications in public policy.\nI am engaged in tutoring econometrics and behavioral economics for Fall 2025 at undergraduate level and conducting R for Data Science sessions.\nI am passionate about data-driven research, policy analysis, and promoting local economic development."
+    "text": "I am a Phd candidate in the Department of Economics at The University of New Mexico.\nBefore joining UNM, I worked on several applied research projects in Nepal, including studies with the National Planning Commission, tobacco harm reduction, COVID-19-affected MSMEs, and household surveys conducted through ADB and Tribhuvan University. I also taught economics at the undergraduate level. These experiences shaped my interest in behavioral, experimental, and public economics, which I hope to explore further through my research at UNM.\nBeyond academia, I enjoy spending time on sports, music, and content creation. I play and explore music, follow sports, and create videos for my social media platforms and YouTube channel."
   },
   {
     "objectID": "r-tutorial/index.html",
